@@ -5,6 +5,12 @@ This is a public-health-survey AI evaluation prototype. Users ask plain-English 
 exact computation it ran. It is judged against **values CDC itself published** (BRFSS Prevalence & Trends,
 data.cdc.gov `dttw-5yxu`).
 
+> **Update (addenda A4/A5).** The LLM provider was switched to the official OpenAI API, with pinned snapshots
+> `gpt-4o-2024-11-20` and `gpt-4.1-2025-04-14`, and the provisional Azure results were moved to
+> `results/azure_provisional/` (comparison only). The OpenAI run is **blocked**: the account has no credits
+> (`insufficient_quota`). No OpenAI call succeeded and the spend is $0.00. The held-out LLM evaluation and the
+> non-inferiority decision are still pending.
+>
 > **Status (2026-11-20): LLM evaluation incomplete. All LLM results below are provisional.** Live LLM calls were
 > stopped partway through the held-out run because the Azure OpenAI endpoint used turned out not to be suitable
 > for this project. The cached responses (`results/llm_cache.jsonl`, gitignored) came from that **provisional
@@ -70,7 +76,7 @@ Tolerance is |Δ| ≤ 0.1 pp on the point estimate and on both CI limits. Number
 
 The primary prespecified comparison has **not been run**. ROUTER, GPT41 and ROUTER_T41 on the full test split
 were not completed before live calls were stopped. The rows below are what exists. Numbers come from
-`results/test_partial_summary.json`.
+`results/azure_provisional/test_partial_summary.json`.
 
 | Policy | Status | Outcome correct [95% CI] | Numeric agreement (answerable) | Abstain precision / recall | Cost total (per q) | Latency p50 / p95 |
 |---|---|---|---|---|---|---|
@@ -148,9 +154,9 @@ make data gate0 questions test
 make eval-offline        # replays cached LLM responses; fails on a cache miss, never calls an API
 ```
 
-- **Live LLM calls need all of these environment variables:** `SURVEYLAB_AZURE_ENDPOINT`,
-  `SURVEYLAB_AZURE_SUBSCRIPTION` (passed explicitly to `az account get-access-token`), optionally
-  `SURVEYLAB_AZURE_ENDPOINT_GPT52`, and `SURVEYLAB_LLM_ENABLED=1`.
+- **Live LLM calls (default provider `openai`)** need `OPENAI_API_KEY` and `SURVEYLAB_LLM_ENABLED=1`.
+  `SURVEYLAB_SPEND_CAP_USD` (default 8) stops live calls at the cap. `SURVEYLAB_LLM_PROVIDER=azure` exists only
+  to replay the superseded provisional cache.
 - **No API keys** are used, and nothing is hard-coded. Deployment names are assumed to equal the model names.
 - **Tests:** `uv run pytest` runs 48 tests, covering:
   - variance vs a hand-computed example and `samplics`;

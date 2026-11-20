@@ -245,3 +245,15 @@ not to be suitable for this project, and no further calls may be made until a su
   (`SURVEYLAB_SPEND_CAP_USD`).
 - **No dev re-run.** Dev is not re-run on the new provider, except a 3-question connectivity smoke check that is
   not scored. The frozen prompt is used as-is.
+
+### A5 (2026-11-20): OpenAI run blocked, no credits on the account
+
+The first live call under A4 was the unscored 3-question connectivity smoke check. It returned HTTP 429
+`insufficient_quota` / `credit_balance_exhausted` ("You have no credits remaining"). **No OpenAI call succeeded,
+nothing was cached, and the logged spend is $0.00.**
+
+- **Not run.** The held-out run, the non-inferiority decision, the stress-set LLM runs and the exploratory
+  ROUTER_MINI arm were not run.
+- **Retry behaviour.** Quota errors now fail immediately (`QuotaExhausted`) instead of being retried as rate
+  limits.
+- **When credits are added.** Run A4 exactly as written. Nothing else changes.

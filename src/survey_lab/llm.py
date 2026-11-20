@@ -41,6 +41,10 @@ class SpendCapReached(RuntimeError):
     pass
 
 
+class QuotaExhausted(RuntimeError):
+    """The account has no credits / quota: fatal, never retried (a 429 that is not a rate limit)."""
+
+
 def provider() -> str:
     p = os.environ.get("SURVEYLAB_LLM_PROVIDER", "openai")
     if p not in ("openai", "azure"):
@@ -163,7 +167,9 @@ class LLM:
                 try:
                     r = self.client.chat.completions.create(**kw)
                     break
-                except RateLimitError:
+                except RateLimitError as e:
+                    if "insufficient_quota" in str(e) or "credit_balance_exhausted" in str(e):
+                        raise QuotaExhausted(str(e)[:300]) from None
                     if attempt == 7:
                         raise
                     time.sleep(min(60, 8 * (attempt + 1)))
@@ -173,6 +179,8 @@ class LLM:
             cached = getattr(det, "cached_tokens", None) if det is not None else None
             finish = r.choices[0].finish_reason
             served = getattr(r, "model", None)
+        except QuotaExhausted:
+            raise
         except Exception as e:  # recorded, not cached
             return Call(self.model, "", 0, 0, None, round(time.monotonic() - t0, 3), 0.0, False, None,
                         f"{type(e).__name__}: {str(e)[:300]}", self.provider, None)
