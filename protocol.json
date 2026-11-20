@@ -1,0 +1,76 @@
+{
+  "protocol_version": "1.0",
+  "date": "2026-11-20",
+  "status": "prespecified; written and committed before Gate 0 and before any LLM call. Changes only via dated addenda in docs/protocol.md.",
+  "data": {
+    "survey": "CDC BRFSS 2025 LLCP (combined landline + cell) public-use file",
+    "url": "https://www.cdc.gov/brfss/annual_data/2025/files/LLCP2025XPT.zip",
+    "design": {"weight": "_LLCPWT", "strata": "_STSTR", "psu": "_PSU (nested within _STSTR)"},
+    "reference": {
+      "dataset": "Behavioral Risk Factor Surveillance System (BRFSS) Prevalence Data (2011 to present)",
+      "socrata_id": "dttw-5yxu",
+      "api": "https://data.cdc.gov/resource/dttw-5yxu.csv?$where=year='2025'",
+      "rowsUpdatedAt": 1789482408,
+      "snapshot_sha256": "8a27e135162fe2fee7621d1757d0f4c86f61005ea3bcd6d86cf966944f2871be",
+      "statistic": "Crude Prevalence only (the only data_value_type published for 2025)"
+    }
+  },
+  "gate0": {
+    "runs_before_any_llm_call": true,
+    "estimator": "weighted proportion; Taylor-linearization variance, with-replacement PSUs, full-design domain estimation; single-PSU strata contribute 0; Wald 95% CI p +/- 1.96 SE",
+    "cell_sets": {
+      "G0_primary": "every P&T 2025 question x response in catalog/indicators.json (55 questions) x 50 jurisdictions (47 states + DC + GU + PR), break_out = Overall, excluding cells where CDC publishes no value",
+      "G0_breakout": "same questions x responses x jurisdictions x 29 break_out values (Sex, Age Group incl. 65-74/75+, Race/Ethnicity, Education Attained, Household Income), excluding cells with no CDC value",
+      "G0_median": "US (all states, DC, territories) and UW (all states and DC) median rows, Overall, point estimate only"
+    },
+    "tolerance_pp": {"point": 0.1, "ci_low": 0.1, "ci_high": 0.1},
+    "sub_checks": ["sample_size (numerator count) exact integer match", "suppression decision agreement (denominator n < 50 or RSE > 0.3)"],
+    "cell_reproduced": "point AND ci_low AND ci_high within tolerance (median cells: point only)",
+    "pass_criterion": {"G0_primary": 0.95, "G0_breakout": 0.95, "G0_median": 0.95},
+    "indicator_flag": "any indicator with < 95% of its G0_primary cells reproduced is flagged and investigated",
+    "disclosed_prior_look": "During method validation one cell (WA, _RFHLTH, Fair or Poor Health, Overall) was computed and matched CDC (17.31 [16.64, 17.98]) before this protocol was written."
+  },
+  "tool_scope": {
+    "year": 2025,
+    "statistic": ["crude_prevalence"],
+    "geography": "one of 50 jurisdictions, or US_MEDIAN (P&T 'US'), or STATES_DC_MEDIAN (P&T 'UW')",
+    "national_convention": "Questions about 'the US' / 'nationally' are answered with the CDC P&T convention US_MEDIAN (median of jurisdiction estimates incl. territories), and the answer states that it is a median, not a pooled national prevalence.",
+    "subgroups": "at most one break_out (category, value) from catalog/indicators.json",
+    "must_abstain": ["year other than 2025", "jurisdiction not in the 2025 file (e.g. CA, MS, NV) or sub-state geography (county/city)", "age-adjusted or any statistic other than crude prevalence (means, medians of a variable, counts, trends, regressions)", "variables/topics not in the catalog", "causal or why-questions", "more than one subgroup filter or a subgroup not in the catalog", "questions that are not about the survey data"]
+  },
+  "questions": {
+    "file": "gold/questions.jsonl",
+    "authoring": "hand-written with varied phrasing; gold spec assigned by hand from the catalog; reference value = CDC P&T snapshot cell for the gold spec",
+    "split_rule": "split = 'dev' if int(sha256(question_id)[:8], 16) % 10 < 3 else 'test'",
+    "dev_use": "prompt and template-matcher iteration (at most 3 prompt revisions)",
+    "test_use": "frozen; run once per policy after the prompt and matcher are frozen at a recorded commit",
+    "reference_must_pass_gate0": "test items whose reference cell is not reproduced in Gate 0 are excluded from the primary analysis and reported separately",
+    "stress_set": "written after first held-out results (paraphrases, ambiguous denominators, wrong year/geography, subgroup traps, national-vs-median); reported separately, never part of the primary comparison"
+  },
+  "metrics": {
+    "spec_exact_match": "indicator, response, geography and subgroup all equal the gold spec (for should-abstain items: tool abstained)",
+    "numeric_agreement": "tool executed an estimate and |estimate - CDC value| <= 0.1 pp",
+    "outcome_correct": "PRIMARY ENDPOINT. Answerable item: numeric_agreement. Should-abstain item: tool abstained.",
+    "abstention": "precision and recall with 'abstain' as the positive class",
+    "cost": "USD per question from logged prompt/completion/cached tokens and docs/pricing.json",
+    "latency": "wall-clock seconds per question incl. execution; median and p95; cached replays report the originally logged latency"
+  },
+  "policies": {
+    "EXPERT": "gold spec executed by the deterministic pipeline (the expert-specified process; no NL interpretation)",
+    "TEMPLATE": "deterministic keyword/regex matcher only; abstains when not confident",
+    "GPT4O": "always Azure OpenAI gpt-4o (2024-11-20)",
+    "GPT41": "always Azure OpenAI gpt-4.1 (2025-04-14)",
+    "ROUTER": "TEMPLATE if it returns a confident spec; otherwise gpt-4o; escalate to gpt-4.1 if the gpt-4o spec is rejected by the guard or gpt-4o reports confidence 'low'",
+    "GPT52": "optional exploratory: gpt-5.2 on a subset only if capacity allows; never part of the primary comparison"
+  },
+  "llm_settings": {"temperature": 0, "response_format": "json_object", "max_tokens": 400, "cache": "results/llm_cache.jsonl keyed by sha256(deployment, messages)"},
+  "noninferiority": {
+    "comparison": "ROUTER vs EXPERT on the held-out test split",
+    "endpoint": "outcome_correct (paired per question)",
+    "margin_pp": 7.5,
+    "method": "paired difference ROUTER - EXPERT; Newcombe (1998) method 10 hybrid score 95% CI",
+    "decision": "non-inferior if the lower 95% limit > -7.5 pp; otherwise 'not shown non-inferior'",
+    "secondary": ["GPT41 vs EXPERT (same test)", "ROUTER vs GPT41 cost and latency (descriptive)"]
+  },
+  "budget": {"llm_usd_max": 10}
+}

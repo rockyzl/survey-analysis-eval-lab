@@ -1,0 +1,10 @@
+{
+  "source": "Azure Retail Prices API (https://prices.azure.com/api/retail/prices), productName contains 'OpenAI', armRegionName 'eastus2', Global deployment meters, retrieved 2026-11-20. Raw response saved (gitignored) at data/raw/azure_retail_prices_eastus2_2026-11-20.json.",
+  "unit": "USD per 1M tokens",
+  "assumption": "GlobalStandard pay-as-you-go list prices; the deployments are GlobalStandard. Any negotiated or credit-based pricing on the subscription is ignored.",
+  "models": {
+    "gpt-4o": {"meters": ["gpt 4o 1120 Inp glbl", "gpt 4o 1120 cached Inp glbl", "gpt 4o 1120 Outp glbl"], "input": 2.50, "cached_input": 1.25, "output": 10.00},
+    "gpt-4.1": {"meters": ["gpt 4.1 Inp glbl", "gpt 4.1 cached Inp glbl", "gpt 4.1 Outp glbl"], "input": 2.00, "cached_input": 0.50, "output": 8.00},
+    "gpt-5.2": {"meters": ["GPT 5.2 inp Gl", "GPT 5.2 cd inp Gl", "GPT 5.2 opt Gl"], "input": 1.75, "cached_input": 0.175, "output": 14.00}
+  }
+}

@@ -1,0 +1,46 @@
+{
+ "retrieved": "2026-11-20",
+ "files": [
+  {
+   "path": "data/raw/brfss2025/LLCP2025XPT.zip",
+   "url": "https://www.cdc.gov/brfss/annual_data/2025/files/LLCP2025XPT.zip",
+   "bytes": 64642184,
+   "sha256": "d26a8b391aa2966b58dc2a3ffddf8da050e9f38eb143d0f5ca7b3d21ece08f98"
+  },
+  {
+   "path": "data/raw/brfss2025/codebook25_llcp-v2-508.zip",
+   "url": "https://www.cdc.gov/brfss/annual_data/2025/zip/codebook25_llcp-v2-508.zip",
+   "bytes": 97628,
+   "sha256": "70d920a440fd651a12f9dc62c100626a15ca2503774128ba2cbe62b056f861f3"
+  },
+  {
+   "path": "data/raw/brfss2025/2025-calculated-variables-version4-508.pdf",
+   "url": "https://www.cdc.gov/brfss/annual_data/2025/pdf/2025-calculated-variables-version4-508.pdf",
+   "bytes": 611309,
+   "sha256": "864308cc5982b314f3b609058301233ede16d4ece9620d99ada75e5278b44a7d"
+  },
+  {
+   "path": "data/raw/brfss2025/xpt/LLCP2025.XPT",
+   "url": "(extracted from LLCP2025XPT.zip)",
+   "bytes": 799971280,
+   "sha256": "d99262f8854f018a600c3538ee78e4308569af700abe6b92b36180336c24dec2"
+  },
+  {
+   "path": "data/raw/cdc_pt/cdc_pt_2025.csv",
+   "url": "https://data.cdc.gov/resource/dttw-5yxu.csv?$select=year,locationabbr,locationdesc,class,topic,question,questionid,response,responseid,break_out,break_out_category,breakoutid,sample_size,data_value,confidence_limit_low,confidence_limit_high,data_value_type,data_value_footnote_symbol,data_value_footnote&$where=year='2025'&$order=questionid,responseid,locationabbr,breakoutid&$limit=400000",
+   "bytes": 64588527,
+   "sha256": "8a27e135162fe2fee7621d1757d0f4c86f61005ea3bcd6d86cf966944f2871be"
+  },
+  {
+   "path": "data/raw/azure_retail_prices_eastus2_2026-11-20.json",
+   "url": "https://prices.azure.com/api/retail/prices?$filter=contains(productName,'OpenAI') and armRegionName eq 'eastus2' (all pages)",
+   "bytes": 946270,
+   "sha256": "dd808769688a7575775269c883e0db1b9680348e095e4ea3f922b61206d9dbca"
+  }
+ ],
+ "notes": [
+  "CDC P&T dataset dttw-5yxu rowsUpdatedAt=1789482408 (2026-09-15T14:26:48Z)",
+  "The XPT member name in the zip has a trailing space ('LLCP2025.XPT '); it was renamed on extraction.",
+  "First download of LLCP2025XPT.zip was truncated (48.5 of 64.6 MB) and was resumed; the SHA-256 above is of the complete file."
+ ]
+}

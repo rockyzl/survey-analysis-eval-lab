@@ -1,0 +1,3545 @@
+{
+ "_STATE": {
+  "name": "_STATE",
+  "label": "State FIPS Code",
+  "section": "Record Identification",
+  "question": "State FIPS Code",
+  "values": {
+   "1": "Alabama",
+   "2": "Alaska",
+   "4": "Arizona",
+   "5": "Arkansas",
+   "8": "Colorado",
+   "9": "Connecticut",
+   "10": "Delaware",
+   "11": "District of Columbia",
+   "12": "Florida",
+   "13": "Georgia",
+   "15": "Hawaii",
+   "16": "Idaho",
+   "17": "Illinois",
+   "18": "Indiana",
+   "19": "Iowa",
+   "20": "Kansas",
+   "21": "Kentucky",
+   "22": "Louisiana",
+   "23": "Maine",
+   "24": "Maryland",
+   "25": "Massachusetts",
+   "26": "Michigan",
+   "27": "Minnesota",
+   "29": "Missouri",
+   "30": "Montana",
+   "31": "Nebraska",
+   "33": "New Hampshire",
+   "34": "New Jersey",
+   "35": "New Mexico",
+   "36": "New York",
+   "37": "North Carolina",
+   "38": "North Dakota",
+   "39": "Ohio",
+   "40": "Oklahoma",
+   "41": "Oregon",
+   "42": "Pennsylvania",
+   "44": "Rhode Island",
+   "45": "South Carolina",
+   "46": "South Dakota",
+   "47": "Tennessee",
+   "48": "Texas",
+   "49": "Utah",
+   "50": "Vermont",
+   "51": "Virginia",
+   "53": "Washington",
+   "54": "West Virginia",
+   "55": "Wisconsin",
+   "56": "Wyoming",
+   "66": "Guam",
+   "72": "Puerto Rico"
+  }
+ },
+ "_PSU": {
+  "name": "_PSU",
+  "label": "Primary Sampling Unit",
+  "section": "Record Identification",
+  "question": "Primary Sampling Unit (Equal to Annual Sequence Number)",
+  "values": {
+   "HIDDEN": "Data not displayed Notes: Value should be unique for a state for a year. Due to the nature of the data or the size of the table for display, this information is not printed for this report"
+  }
+ },
+ "SEXVAR": {
+  "name": "SEXVAR",
+  "label": "Sex of Respondent",
+  "section": "Respondent Sex",
+  "question": "Sex of Respondent",
+  "values": {
+   "1": "Male - Code=1 if LANDSEX4=1 or CELLSEX4=1",
+   "2": "Female - Code=2 if LANDSEX4=2 or CELLSEX4=2"
+  }
+ },
+ "GENHLTH": {
+  "name": "GENHLTH",
+  "label": "General Health",
+  "section": "Health Status Core",
+  "question": "Would you say that in general your health is:",
+  "values": {
+   "1": "Excellent",
+   "2": "Very good",
+   "3": "Good",
+   "4": "Fair",
+   "5": "Poor",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "PHYSHLTH": {
+  "name": "PHYSHLTH",
+  "label": "Number of Days Physical Health Not Good",
+  "section": "Healthy Days Core",
+  "question": "Now thinking about your physical health, which includes physical illness and injury, for how many days during the past 30 days was your physical health not good?",
+  "values": {
+   "1 - 30": "Number of days",
+   "88": "None",
+   "77": "Don't know/Not sure",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "MENTHLTH": {
+  "name": "MENTHLTH",
+  "label": "Number of Days Mental Health Not Good",
+  "section": "Healthy Days Core",
+  "question": "Now thinking about your mental health, which includes stress, depression, and problems with emotions, for how many days during the past 30 days was your mental health not good?",
+  "values": {
+   "1 - 30": "Number of days Notes: _ _ Number of days",
+   "88": "None",
+   "77": "Don't know/Not sure",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "POORHLTH": {
+  "name": "POORHLTH",
+  "label": "Poor Physical or Mental Health",
+  "section": "Healthy Days Core",
+  "question": "During the past 30 days, for about how many days did poor physical or mental health keep you from doing your usual activities, such as self-care, work, or recreation?",
+  "values": {
+   "1 - 30": "Number of days Notes: _ _ Number of days",
+   "88": "None",
+   "77": "Don't know/Not sure",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 02.01, PHYSHLTH, is 88 and Section 2.02, MENTHLTH, is 88"
+  }
+ },
+ "PRIMINS2": {
+  "name": "PRIMINS2",
+  "label": "What is Your Current Primary Source of Health Care Coverage?",
+  "section": "Health Care Access Core",
+  "question": "What is the current primary source of your health care coverage?",
+  "values": {
+   "1": "A plan purchased through an employer or union (including plans purchased through another person's employer)",
+   "2": "A private nongovernmental plan that you or another family member buys on your own",
+   "3": "Medicare",
+   "4": "Medigap",
+   "5": "Medicaid",
+   "6": "Children's Health Insurance Program (CHIP)",
+   "7": "Military related health care: TRICARE (CHAMPUS) / VA health care / CHAMP- VA",
+   "8": "Indian Health Service",
+   "9": "State sponsored health plan",
+   "10": "Other government program",
+   "88": "No coverage of any type",
+   "77": "Don't know/Not Sure",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "PERSDOC3": {
+  "name": "PERSDOC3",
+  "label": "Have Personal Health Care Provider?",
+  "section": "Health Care Access Core",
+  "question": "Do you have one person or a group of doctors that you think of as your personal health care provider?",
+  "values": {
+   "1": "Yes, only one",
+   "2": "More than one",
+   "3": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "MEDCOST1": {
+  "name": "MEDCOST1",
+  "label": "Could Not Aï¬ord To See Doctor",
+  "section": "Health Care Access Core",
+  "question": "Was there a time in the past 12 months when you needed to see a doctor but could not because you could not aï¬ord it?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "CHECKUP1": {
+  "name": "CHECKUP1",
+  "label": "Length of time since last routine checkup",
+  "section": "Health Care Access Core",
+  "question": "About how long has it been since you last visited a doctor for a routine checkup?",
+  "values": {
+   "1": "Within past year (anytime less than 12 months ago)",
+   "2": "Within past 2 years (1 year but less than 2 years ago)",
+   "3": "Within past 5 years (2 years but less than 5 years ago)",
+   "4": "5 or more years ago",
+   "7": "Don't know/Not sure",
+   "8": "Never",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "EXERANY2": {
+  "name": "EXERANY2",
+  "label": "Exercise in Past 30 Days",
+  "section": "Exercise (Physical Activity) Core",
+  "question": "During the past month, other than your regular job, did you participate in any physical activities or exercises such as running, calisthenics, golf, gardening, or walking for exercise?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "BPHIGH6": {
+  "name": "BPHIGH6",
+  "label": "Ever Told Blood Pressure High",
+  "section": "Hypertension Awareness Core",
+  "question": "Have you ever been told by a doctor, nurse or other health professional that you have high blood pressure? (If 'Yes' and respondent is female, ask 'Was this only when you were pregnant?'.)",
+  "values": {
+   "1": "Yes",
+   "2": "Yes, but female told only during pregnancy - Go to Section 06.01 CHOLCHK3",
+   "3": "No - Go to Section 06.01 CHOLCHK3",
+   "4": "Told borderline high or pre-hypertensive or elevated blood pressure - Go to Section 06.01 CHOLCHK3",
+   "7": "Don't know/Not Sure - Go to Section 06.01 CHOLCHK3",
+   "9": "Refused - Go to Section 06.01 CHOLCHK3",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "BPMEDS1": {
+  "name": "BPMEDS1",
+  "label": "Currently Taking Prescription Blood Pressure Medication",
+  "section": "Hypertension Awareness Core",
+  "question": "Are you currently taking prescription medicine for your high blood pressure?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 05.01, BPHIGH6, is coded 2, 3, 4, 7, 9, or Missing"
+  }
+ },
+ "CHOLCHK3": {
+  "name": "CHOLCHK3",
+  "label": "How Long since Cholesterol Checked",
+  "section": "Cholesterol Awareness Core",
+  "question": "About how long has it been since you last had your cholesterol checked?",
+  "values": {
+   "1": "Never - Go to Section 07.01 CVDINFR4",
+   "2": "Within the past year (anytime less than one year ago)",
+   "3": "Within the past 2 years (1 year but less than 2 years ago)",
+   "4": "Within the past 3 years (2 years but less than 3 years ago)",
+   "5": "Within the past 4 years (3 years but less than 4 years ago)",
+   "6": "Within the past 5 years (4 years but less than 5 years ago)",
+   "7": "Don't know/Not Sure - Go to Section 07.01 CVDINFR4",
+   "8": "5 or more years ago",
+   "9": "Refused - Go to Section 07.01 CVDINFR4",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "TOLDHI3": {
+  "name": "TOLDHI3",
+  "label": "Ever Told Cholesterol Is High",
+  "section": "Cholesterol Awareness Core",
+  "question": "Have you ever been told by a doctor, nurse or other health professional that your cholesterol is high?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 06.01, CHOLCHK3, is coded 1, 7, 9, or Missing"
+  }
+ },
+ "CHOLMED3": {
+  "name": "CHOLMED3",
+  "label": "Currently taking medicine for high cholesterol",
+  "section": "Cholesterol Awareness Core",
+  "question": "Are you currently taking medicine prescribed by your doctor or other health professional for your cholesterol?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 06.01, CHOLCHK3, is coded 1, 7, 9, or Missing"
+  }
+ },
+ "CVDINFR4": {
+  "name": "CVDINFR4",
+  "label": "Ever Diagnosed with Heart Attack",
+  "section": "Chronic Health Conditions Core",
+  "question": "(Ever told) you had a heart attack, also called a myocardial infarction?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "CVDCRHD4": {
+  "name": "CVDCRHD4",
+  "label": "Ever Diagnosed with Angina or Coronary Heart Disease",
+  "section": "Chronic Health Conditions Core",
+  "question": "(Ever told) (you had) angina or coronary heart disease?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "CVDSTRK3": {
+  "name": "CVDSTRK3",
+  "label": "Ever Diagnosed with a Stroke",
+  "section": "Chronic Health Conditions Core",
+  "question": "(Ever told) (you had) a stroke.",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ASTHMA3": {
+  "name": "ASTHMA3",
+  "label": "Ever Told Had Asthma",
+  "section": "Chronic Health Conditions Core",
+  "question": "(Ever told) (you had) asthma?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to Section 07.06 CHCSCNC1",
+   "7": "Don't know/Not Sure - Go to Section 07.06 CHCSCNC1",
+   "9": "Refused - Go to Section 07.06 CHCSCNC1",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ASTHNOW": {
+  "name": "ASTHNOW",
+  "label": "Still Have Asthma",
+  "section": "Chronic Health Conditions Core",
+  "question": "Do you still have asthma?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.04, ASTHMA3 is coded 2, 7, 9, or Missing"
+  }
+ },
+ "CHCSCNC1": {
+  "name": "CHCSCNC1",
+  "label": "(Ever told) (you had) skin cancer that is not melanoma?",
+  "section": "Chronic Health Conditions Core",
+  "question": "(Ever told) (you had) skin cancer that is not melanoma?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know / Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "CHCOCNC1": {
+  "name": "CHCOCNC1",
+  "label": "(Ever told) (you had) melanoma or any other types of cancer?",
+  "section": "Chronic Health Conditions Core",
+  "question": "(Ever told) (you had) melanoma or any other types of cancer?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know / Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "CHCCOPD3": {
+  "name": "CHCCOPD3",
+  "label": "Ever told you had C.O.P.D. emphysema or chronic bronchitis?",
+  "section": "Chronic Health Conditions Core",
+  "question": "(Ever told) (you had) C.O.P.D. (chronic obstructive pulmonary disease), emphysema or chronic bronchitis?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know / Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ADDEPEV3": {
+  "name": "ADDEPEV3",
+  "label": "(Ever told) you had a depressive disorder",
+  "section": "Chronic Health Conditions Core",
+  "question": "(Ever told) (you had) a depressive disorder (including depression, major depression, dysthymia, or minor depression)?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "CHCKDNY2": {
+  "name": "CHCKDNY2",
+  "label": "Ever told you have kidney disease?",
+  "section": "Chronic Health Conditions Core",
+  "question": "Not including kidney stones, bladder infection or incontinence, were you ever told you had kidney disease?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know / Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "HAVARTH4": {
+  "name": "HAVARTH4",
+  "label": "Told Had Arthritis",
+  "section": "Chronic Health Conditions Core",
+  "question": "(Ever told) (you had) some form of arthritis, rheumatoid arthritis, gout, lupus, or fibromyalgia?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "DIABETE4": {
+  "name": "DIABETE4",
+  "label": "(Ever told) you had diabetes",
+  "section": "Chronic Health Conditions Core",
+  "question": "(Ever told) (you had) diabetes? (If 'Yes' and respondent is female, ask 'Was this only when you were pregnant?'. If Respondent says pre-diabetes or borderline diabetes, use response code 4.)",
+  "values": {
+   "1": "Yes",
+   "2": "Yes, but female told only during pregnancy - Go to Section 08.01 AGE",
+   "3": "No - Go to Section 08.01 AGE",
+   "4": "No, pre-diabetes or borderline diabetes - Go to Section 08.01 AGE",
+   "7": "Don't know/Not Sure - Go to Section 08.01 AGE",
+   "9": "Refused - Go to Section 08.01 AGE",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "DIABAGE4": {
+  "name": "DIABAGE4",
+  "label": "Age When First Told You Had Diabetes",
+  "section": "Chronic Health Conditions Core",
+  "question": "How old were you when you were first told you had diabetes?",
+  "values": {
+   "1 - 97": "Age in years [97 = 97 and older] Notes: _ _ Code age in years, 97 = 97 or older",
+   "98": "Don't know/Not sure",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.12, DIABETE4, is coded 2, 3, 4, 7, 9, or Missing"
+  }
+ },
+ "MARITAL": {
+  "name": "MARITAL",
+  "label": "Marital Status",
+  "section": "Demographics Core",
+  "question": "Are you: (marital status)",
+  "values": {
+   "1": "Married",
+   "2": "Divorced",
+   "3": "Widowed",
+   "4": "Separated",
+   "5": "Never married",
+   "6": "A member of an unmarried couple",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "EDUCA": {
+  "name": "EDUCA",
+  "label": "Education Level",
+  "section": "Demographics Core",
+  "question": "What is the highest grade or year of school you completed?",
+  "values": {
+   "1": "Never attended school or only kindergarten",
+   "2": "Grades 1 through 8 (Elementary)",
+   "3": "Grades 9 through 11 (Some high school)",
+   "4": "Grade 12 or GED (High school graduate)",
+   "5": "College 1 year to 3 years (Some college or technical school)",
+   "6": "College 4 years or more (College graduate)",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "RENTHOM1": {
+  "name": "RENTHOM1",
+  "label": "Own or Rent Home",
+  "section": "Demographics Core",
+  "question": "Do you own or rent your home?",
+  "values": {
+   "1": "Own",
+   "2": "Rent",
+   "3": "Other arrangement",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "NUMHHOL4": {
+  "name": "NUMHHOL4",
+  "label": "Household Landline Telephones",
+  "section": "Demographics Core",
+  "question": "Not including cell phones or numbers used for computers, fax machines or security systems, do you have more than one landline telephone number in your household?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to Section 08.11 CPDEMO1C",
+   "7": "Don't know/Not sure - Go to Section 08.11 CPDEMO1C",
+   "9": "Refused - Go to Section 08.11 CPDEMO1C",
+   "BLANK": "Not asked or Missing Notes: QSTVER >= 20"
+  }
+ },
+ "NUMPHON4": {
+  "name": "NUMPHON4",
+  "label": "Residential Landline Phones",
+  "section": "Demographics Core",
+  "question": "How many of these landline telephone numbers are residential numbers?",
+  "values": {
+   "1 - 5": "Residential telephone number(s)",
+   "6": "Residential telephone numbers Notes: 6 = 6 or more",
+   "7": "Don't know/Not Sure",
+   "8": "None",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 08.10, NUMHHOL4, is coded 2, 7, 9, or Missing; or QSTVER >= 20"
+  }
+ },
+ "CPDEMO1C": {
+  "name": "CPDEMO1C",
+  "label": "Do you have a cell phone for your personal use?",
+  "section": "Demographics Core",
+  "question": "How many cell phones do you have for your personal use? (Last question needed for partial complete.)",
+  "values": {
+   "1 - 5": "Enter number (1-5) Notes: Last question needed for partial complete.",
+   "6": "Six or more",
+   "7": "Don't know/Not sure",
+   "8": "None",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "VETERAN3": {
+  "name": "VETERAN3",
+  "label": "Are You A Veteran",
+  "section": "Demographics Core",
+  "question": "Have you ever served on active duty in the United States Armed Forces, either in the regular military or in a National Guard or military reserve unit?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "EMPLOY1": {
+  "name": "EMPLOY1",
+  "label": "Employment Status",
+  "section": "Demographics Core",
+  "question": "Are you currentlyâ¦?",
+  "values": {
+   "1": "Employed for wages",
+   "2": "Self-employed",
+   "3": "Out of work for 1 year or more",
+   "4": "Out of work for less than 1 year",
+   "5": "A homemaker",
+   "6": "A student",
+   "7": "Retired",
+   "8": "Unable to work",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "CHILDREN": {
+  "name": "CHILDREN",
+  "label": "Number of Children in Household",
+  "section": "Demographics Core",
+  "question": "How many children less than 18 years of age live in your household?",
+  "values": {
+   "1 - 87": "Number of children Notes: _ _ = Number of children",
+   "88": "None",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "INCOME3": {
+  "name": "INCOME3",
+  "label": "Income Level",
+  "section": "Demographics Core",
+  "question": "Is your annual household income from all sources: (If respondent refuses at any income level, code 'Refused. ')",
+  "values": {
+   "1": "Less than $10,000",
+   "2": "Less than $15,000 ($10,000 to < $15,000)",
+   "3": "Less than $20,000 ($15,000 to < $20,000)",
+   "4": "Less than $25,000 ($20,000 to < $25,000)",
+   "5": "Less than $35,000 ($25,000 to < $35,000)",
+   "6": "Less than $50,000 ($35,000 to < $50,000)",
+   "7": "Less than $75,000 ($50,000 to < $75,000)",
+   "8": "Less than $100,000 ($75,000 to < $100,000)",
+   "9": "Less than $150,000 ($100,000 to < $150,000)",
+   "10": "Less than $200,000 ($150,000 to < $200,000)",
+   "11": "$200,000 or more",
+   "77": "Don't know/Not sure",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "PREGNANT": {
+  "name": "PREGNANT",
+  "label": "Pregnancy Status",
+  "section": "Demographics Core",
+  "question": "To your knowledge, are you now pregnant?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: respondent sex, SEXVAR, is coded 1; or Section 07.01, AGE, is greater than 49"
+  }
+ },
+ "WEIGHT2": {
+  "name": "WEIGHT2",
+  "label": "Reported Weight in Pounds",
+  "section": "Demographics Core",
+  "question": "About how much do you weigh without shoes? (If respondent answers in metrics, put a 9 in the first column)[Round fractions up.]",
+  "values": {
+   "50 - 0776": "Weight (pounds) Notes: 0 _ _ _ = weight in pounds",
+   "7777": "Don't know/Not sure",
+   "9023 - 9352": "Weight (kilograms) Notes: The initial '9' indicates this was a metric value.",
+   "9999": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "HEIGHT3": {
+  "name": "HEIGHT3",
+  "label": "Reported Height in Feet and Inches",
+  "section": "Demographics Core",
+  "question": "About how tall are you without shoes? (If respondent answers in metrics, put a 9 in the first column)[Round fractions down.]",
+  "values": {
+   "200 - 711": "Height (ft/inches) Notes: 0 _ / _ _ = feet / inches",
+   "7777": "Don't know/Not sure",
+   "9061 - 9998": "Height (meters/centimeters) Notes: The initial '9 ' indicates this was a metric value.",
+   "9999": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "DEAF": {
+  "name": "DEAF",
+  "label": "Are you deaf or do you have serious diï¬culty hearing?",
+  "section": "Disability Core",
+  "question": "Are you deaf or do you have serious diï¬culty hearing?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "BLIND": {
+  "name": "BLIND",
+  "label": "Blind or Diï¬culty seeing",
+  "section": "Disability Core",
+  "question": "Are you blind or do you have serious diï¬culty seeing, even when wearing glasses?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "DECIDE": {
+  "name": "DECIDE",
+  "label": "Diï¬culty Concentrating or Remembering",
+  "section": "Disability Core",
+  "question": "Because of a physical, mental, or emotional condition, do you have serious diï¬culty concentrating, remembering, or making decisions?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "DIFFWALK": {
+  "name": "DIFFWALK",
+  "label": "Diï¬culty Walking or Climbing Stairs",
+  "section": "Disability Core",
+  "question": "Do you have serious diï¬culty walking or climbing stairs?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "DIFFDRES": {
+  "name": "DIFFDRES",
+  "label": "Diï¬culty Dressing or Bathing",
+  "section": "Disability Core",
+  "question": "Do you have diï¬culty dressing or bathing?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "DIFFALON": {
+  "name": "DIFFALON",
+  "label": "Diï¬culty Doing Errands Alone",
+  "section": "Disability Core",
+  "question": "Because of a physical, mental, or emotional condition, do you have diï¬culty doing errands alone such as visiting a doctor's oï¬ce or shopping?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "SLEPTIM1": {
+  "name": "SLEPTIM1",
+  "label": "How Much Time Do You Sleep",
+  "section": "Inadequate Sleep Core",
+  "question": "On average, how many hours of sleep do you get in a 24-hour period?",
+  "values": {
+   "1 - 24": "Number of hours [1-24]",
+   "77": "Don't know/Not Sure",
+   "99": "Refused",
+   "BLANK": "Missing"
+  }
+ },
+ "SMOKE100": {
+  "name": "SMOKE100",
+  "label": "Smoked at Least 100 Cigarettes",
+  "section": "Tobacco Use Core",
+  "question": "Have you smoked at least 100 cigarettes in your entire life? [Note: 5 packs = 100 cigarettes]",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to Section 11.03 USENOW3",
+   "7": "Don't know/Not Sure - Go to Section 11.03 USENOW3",
+   "9": "Refused - Go to Section 11.03 USENOW3",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "SMOKDAY2": {
+  "name": "SMOKDAY2",
+  "label": "Frequency of Days Now Smoking",
+  "section": "Tobacco Use Core",
+  "question": "Do you now smoke cigarettes every day, some days, or not at all?",
+  "values": {
+   "1": "Every day",
+   "2": "Some days",
+   "3": "Not at all",
+   "7": "Don't Know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 11.01, SMOKE100, is coded 2, 7, 9, or Missing"
+  }
+ },
+ "USENOW3": {
+  "name": "USENOW3",
+  "label": "Use of Smokeless Tobacco Products",
+  "section": "Tobacco Use Core",
+  "question": "Do you currently use chewing tobacco, snuï¬, or snus every day, some days, or not at all? (Snus (Swedish for snuï¬) is a moist smokeless tobacco, usually sold in small pouches that are placed under the lip against the gum.)",
+  "values": {
+   "1": "Every day",
+   "2": "Some days",
+   "3": "Not at all",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ECIGNOW3": {
+  "name": "ECIGNOW3",
+  "label": "Do you now use e-cigarettes, or vaping products every day, some days, or not at all?",
+  "section": "Tobacco Use Core",
+  "question": "Would you say you have never used e-cigarettes or other electronic vaping products in your entire life or now use them every day, use them some days, or used them in the past but do not currently use them at all?",
+  "values": {
+   "1": "Never used e-cigarettes in your entire life",
+   "2": "Use them every day",
+   "3": "Use them some days",
+   "4": "Used them in the past but do not currently use them at all",
+   "7": "Don't know / Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ALCDAY4": {
+  "name": "ALCDAY4",
+  "label": "Days in past 30 had alcoholic beverage",
+  "section": "Alcohol Consumption Core",
+  "question": "During the past 30 days, how many days per week or per month did you have at least one drink of any alcoholic beverage? (A 40 ounce beer would count as 3 drinks, or a cocktail drink with 2 shots would count as 2 drinks.)",
+  "values": {
+   "101 - 107": "Days per week Notes: 1_ _ = Days per week",
+   "201 - 230": "Days in past 30 days Notes: 2_ _ = Days in past 30",
+   "777": "Don't know/Not sure - Go to Section 13.01 FLUSHOT7",
+   "888": "No drinks in past 30 days - Go to Section 13.01 FLUSHOT7",
+   "999": "Refused - Go to Section 13.01 FLUSHOT7",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "AVEDRNK4": {
+  "name": "AVEDRNK4",
+  "label": "Avg alcoholic drinks per day in past 30",
+  "section": "Alcohol Consumption Core",
+  "question": "During the past 30 days, on the days when you drank, about how many drinks did you drink on the average? (A 40 ounce beer would count as 3 drinks, or a cocktail drink with 2 shots would count as 2 drinks.)",
+  "values": {
+   "1 - 76": "Number of drinks Notes: _ _ Number of drinks",
+   "88": "None",
+   "77": "Don't know/Not sure",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 12.01, ALCDAY4, is coded 888, 777, or 999, or Missing;"
+  }
+ },
+ "DRNK3GE5": {
+  "name": "DRNK3GE5",
+  "label": "Binge Drinking",
+  "section": "Alcohol Consumption Core",
+  "question": "Considering all types of alcoholic beverages, how many times during the past 30 days did you have 5 or more drinks for men or 4 or more drinks for women on an occasion?",
+  "values": {
+   "1 - 76": "Number of Times",
+   "88": "None",
+   "77": "Don't know/Not Sure",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 12.01, ALCDAY4, is coded 888, 777, or 999 or Missing"
+  }
+ },
+ "MAXDRNKS": {
+  "name": "MAXDRNKS",
+  "label": "Most drinks on single occasion past 30 days",
+  "section": "Alcohol Consumption Core",
+  "question": "During the past 30 days, what is the largest number of drinks you had on any occasion?",
+  "values": {
+   "1 - 76": "Number of drinks",
+   "77": "Don't know/Not sure",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 12.01, ALCDAY4, is coded 888, 777, or 999 or Missing"
+  }
+ },
+ "FLUSHOT7": {
+  "name": "FLUSHOT7",
+  "label": "Adult ï¬u shot/spray past 12 mos",
+  "section": "Immunization Core",
+  "question": "During the past 12 months, have you had either a ï¬u vaccine that was sprayed in your nose or a ï¬u shot injected into your arm?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to Section 13.03 PNEUVAC4",
+   "7": "Don't know/Not Sure - Go to Section 13.03 PNEUVAC4",
+   "9": "Refused - Go to Section 13.03 PNEUVAC4",
+   "BLANK": ""
+  }
+ },
+ "FLSHTMY3": {
+  "name": "FLSHTMY3",
+  "label": "When did you receive your most recent seasonal ï¬u shot/spray?",
+  "section": "Immunization Core",
+  "question": "During what month and year did you receive your most recent ï¬u vaccine that was sprayed in your nose or ï¬u shot injected into your arm?",
+  "values": {
+   "12024 - 122025": "Month / Year",
+   "777777": "Don't know/Not Sure",
+   "999999": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 13.01, FLUSHOT7, is coded 2, 7, or 9 or Missing"
+  }
+ },
+ "PNEUVAC4": {
+  "name": "PNEUVAC4",
+  "label": "Pneumonia shot ever",
+  "section": "Immunization Core",
+  "question": "Have you ever had a pneumonia shot also known as a pneumococcal vaccine?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "TETANUS1": {
+  "name": "TETANUS1",
+  "label": "Received Tetanus Shot Since 2005?",
+  "section": "Immunization Core",
+  "question": "Have you received a tetanus shot in the past 10 years? (If yes, ask: âWas this Tdap, the tetanus shot that also has pertussis or whooping cough vaccine?â)",
+  "values": {
+   "1": "Yes, received Tdap",
+   "2": "Yes, received tetanus shot, but not Tdap",
+   "3": "Yes, received tetanus shot but not sure what type",
+   "4": "No, did not receive any tetanus shot in the past 10 years",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "FRUIT2": {
+  "name": "FRUIT2",
+  "label": "How many times did you eat fruit?",
+  "section": "Fruits and Vegetables Core",
+  "question": "Not including juices, how often did you eat fruit?",
+  "values": {
+   "101 - 199": "Days",
+   "201 - 299": "Weeks",
+   "300": "Less than once a month",
+   "301 - 399": "Month / Year",
+   "555": "Never",
+   "777": "Don't know/Not sure",
+   "999": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "FRUITJU2": {
+  "name": "FRUITJU2",
+  "label": "How many times did you drink 100 percent PURE fruit juices?",
+  "section": "Fruits and Vegetables Core",
+  "question": "Not including fruit-ï¬avored drinks or fruit juices with added sugar, how often did you drink 100% fruit juice such as apple or orange juice?",
+  "values": {
+   "101 - 199": "Days",
+   "201 - 299": "Weeks",
+   "300": "Less than once a month",
+   "301 - 399": "Month / Year",
+   "555": "Never",
+   "777": "Don't know/Not sure",
+   "999": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "FVGREEN1": {
+  "name": "FVGREEN1",
+  "label": "How many times did you eat dark green vegetables?",
+  "section": "Fruits and Vegetables Core",
+  "question": "How often did you eat a green leafy or lettuce salad, with or without other vegetables?",
+  "values": {
+   "101 - 199": "Days",
+   "201 - 299": "Weeks",
+   "300": "Less than once a month",
+   "301 - 399": "Month / Year",
+   "555": "Never",
+   "777": "Don't know/Not sure",
+   "999": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "FRENCHF1": {
+  "name": "FRENCHF1",
+  "label": "How often do you eat french fries or fried potatoes?",
+  "section": "Fruits and Vegetables Core",
+  "question": "How often did you eat any kind of fried potatoes, including french fries, home fries, or hash browns?",
+  "values": {
+   "101 - 199": "Days",
+   "201 - 299": "Weeks",
+   "300": "Less than once a month",
+   "301 - 399": "Month / Year",
+   "555": "Never",
+   "777": "Don't know/Not sure",
+   "999": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "POTATOE1": {
+  "name": "POTATOE1",
+  "label": "How Often Do You Eat Potatoes",
+  "section": "Fruits and Vegetables Core",
+  "question": "How often did you eat any other kind of potatoes, or sweet potatoes, such as baked, boiled, mashed potatoes, or potato salad?",
+  "values": {
+   "101 - 199": "Days",
+   "201 - 299": "Weeks",
+   "300": "Less than once a month",
+   "301 - 399": "Month / Year",
+   "555": "Never",
+   "777": "Don't know/Not sure",
+   "999": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "VEGETAB2": {
+  "name": "VEGETAB2",
+  "label": "How many times did you eat OTHER vegetables?",
+  "section": "Fruits and Vegetables Core",
+  "question": "Not including lettuce salads and potatoes, how often did you eat other vegetables?",
+  "values": {
+   "101 - 199": "Days",
+   "201 - 299": "Weeks",
+   "300": "Less than once a month",
+   "301 - 399": "Month / Year",
+   "555": "Never",
+   "777": "Don't know/Not sure",
+   "999": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "HIVTST7": {
+  "name": "HIVTST7",
+  "label": "Ever tested H.I.V.",
+  "section": "HIV/AIDS Core",
+  "question": "Including ï¬uid testing from your mouth, but not including tests you may have had for blood donation, have you ever been tested for H.I.V?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to Modules or Closing Statement",
+   "7": "Don't know/Not Sure - Go to Modules or Closing Statement",
+   "9": "Refused - Go to Modules or Closing Statement",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "HIVTSTD3": {
+  "name": "HIVTSTD3",
+  "label": "Month and Year of Last HIV Test",
+  "section": "HIV/AIDS Core",
+  "question": "Not including blood donations, in what month and year was your last H.I.V. test? (If response is before January 1985, code '777777'.)",
+  "values": {
+   "11985 - 122026": "Code month and year Notes: _ _/_ _ _ _ month and year",
+   "777777": "Don't know/Not sure",
+   "999999": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 15.01, HIVTST7, is coded 2, 7, 9, or Missing"
+  }
+ },
+ "PDIABTS1": {
+  "name": "PDIABTS1",
+  "label": "When was your last blood test for high blood sugar?",
+  "section": "",
+  "question": "When was the last time you had a blood test for high blood sugar or diabetes by a doctor, nurse, or other health professional?",
+  "values": {
+   "1": "Within the past year (anytime less than 12 months ago)",
+   "2": "Within the past 2 years (1 year but less than 2 years)",
+   "3": "Within the past 3 years (2 years but less than 3 years)",
+   "4": "Within the past 5 years (3 to 4 years but less than 5 years ago)",
+   "5": "Within the past 10 years (5 to 9 years but less than 10 years ago)",
+   "6": "10 years ago or more",
+   "7": "Don't know / Not sure",
+   "8": "Never",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.12, DIABETE4, is coded 1"
+  }
+ },
+ "PREDIAB2": {
+  "name": "PREDIAB2",
+  "label": "Ever been told by a doctor or other health professional that you have pre-diabetes or borderline diabetes?",
+  "section": "",
+  "question": "Has a doctor or other health professional ever told you that you had prediabetes or borderline diabetes? (If âYesâ and respondent is female, ask: âWas this only when you were pregnant?â)",
+  "values": {
+   "1": "Yes",
+   "2": "Yes, during pregnancy",
+   "3": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.12, DIABETE4, is coded 1; If Section 07.12, DIABETE4, is coded 4 automatically code Module 01.02, PREDIAB2, equal to 1 (yes);"
+  }
+ },
+ "DIABTYPE": {
+  "name": "DIABTYPE",
+  "label": "What type of diabetes do you have?",
+  "section": "",
+  "question": "According to your doctor or other health professional, what type of diabetes do you have?",
+  "values": {
+   "1": "Type 1",
+   "2": "Type 2",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.12, DIABETE4, is coded 2, 3, 4, 7, 9, or Missing"
+  }
+ },
+ "INSULIN1": {
+  "name": "INSULIN1",
+  "label": "Now Taking Insulin",
+  "section": "",
+  "question": "Are you now taking insulin?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.12, DIABETE4, is coded 2, 3, 4, 7, 9, or Missing"
+  }
+ },
+ "CHKHEMO3": {
+  "name": "CHKHEMO3",
+  "label": "Times Checked for Glycosylated Hemoglobin",
+  "section": "",
+  "question": "About how many times in the past 12 months has a doctor, nurse, or other health professional checked you for A-one-C?",
+  "values": {
+   "1 - 76": "Number of times [76=76 or more] Notes: _ _ Number of times, 76 = 76 or more",
+   "88": "None",
+   "98": "Never heard of âA one Câ test",
+   "77": "Don't know/Not sure",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.12, DIABETE4, is coded 2, 3, 4, 7, 9, or Missing"
+  }
+ },
+ "EYEEXAM1": {
+  "name": "EYEEXAM1",
+  "label": "Last Eye Exam Where Pupils Were Dilated",
+  "section": "",
+  "question": "When was the last time you had an eye exam in which the pupils were dilated, making you temporarily sensitive to bright light?",
+  "values": {
+   "1": "Within the past month (anytime less than 1 month ago)",
+   "2": "Within the past year (1 month but less than 12 months ago)",
+   "3": "Within the past 2 years (1 year but less than 2 years ago)",
+   "4": "2 or more years ago",
+   "7": "Don't know/Not sure",
+   "8": "Never",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.12, DIABETE4, is coded 2, 3, 4, 7, 9, or Missing"
+  }
+ },
+ "DIABEYE1": {
+  "name": "DIABEYE1",
+  "label": "When was the last time they took a photo of the back of your eye?",
+  "section": "",
+  "question": "When was the last time doctor, nurse or other health professional took a photo of the back of your eye with a specialized camera?",
+  "values": {
+   "1": "Within the past month (anytime less than 1 month ago)",
+   "2": "Within the past year (1 month but less than 12 months ago)",
+   "3": "Within the past 2 years (1 year but less than 2 years ago)",
+   "4": "2 or more years ago",
+   "7": "Don't know/Not sure",
+   "8": "Never",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.12, DIABETE4, is coded 2, 3, 4, 7, 9, or Missing"
+  }
+ },
+ "DIABEDU1": {
+  "name": "DIABEDU1",
+  "label": "When was the last time you took a course or class in how to manage your diabetes?",
+  "section": "",
+  "question": "When was the last time you took a course or class in how to manage your diabetes yourself?",
+  "values": {
+   "1": "Within the past year (anytime less than 12 months ago)",
+   "2": "Within the last 2 years (1 year but less than 2 years ago)",
+   "3": "Within the last 3 years (2 years but less than 3 years ago)",
+   "4": "Within the last 5 years (3 to 4 years but less than 5 years ago)",
+   "5": "Within the last 10 years (5 to 9 years but less than 10 years ago)",
+   "6": "10 years ago or more",
+   "7": "Don't know/Not sure",
+   "8": "Never",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.12, DIABETE4, is coded 2, 3, 4, 7, 9, or Missing"
+  }
+ },
+ "FEETSORE": {
+  "name": "FEETSORE",
+  "label": "Ever Had Feet Sores or Irritations Lasting More Than Four Weeks",
+  "section": "",
+  "question": "Have you ever had any sores or irritations on your feet that took more than four weeks to heal?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.12, DIABETE4, is coded 2, 3, 4, 7, 9, or Missing"
+  }
+ },
+ "ARTHEXER": {
+  "name": "ARTHEXER",
+  "label": "Dr. Suggest Use of Physical Activity or Exercise for Arthritis or Joint Symptoms",
+  "section": "",
+  "question": "Has a doctor or other health professional ever suggested physical activity or exercise to help your arthritis or joint symptoms? (If the respondent is unclear about whether this means an increase or decrease in physical activity, this means increase.)",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.11, HAVARTH4, is coded 2, 7, 9, or Missing"
+  }
+ },
+ "ARTHEDU": {
+  "name": "ARTHEDU",
+  "label": "Ever Taken Class in Managing Arthritis or Joint Symptoms",
+  "section": "",
+  "question": "Have you ever taken an educational course or class to teach you how to manage problems related to your arthritis or joint symptoms?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.11, HAVARTH4, is coded 2, 7, 9, or Missing"
+  }
+ },
+ "LMTJOIN3": {
+  "name": "LMTJOIN3",
+  "label": "Limited Because of Joint Symptoms",
+  "section": "",
+  "question": "Are you now limited in any way in any of your usual activities because of arthritis or joint symptoms?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.11, HAVARTH4, is coded 2, 7, 9, or Missing"
+  }
+ },
+ "ARTHDIS2": {
+  "name": "ARTHDIS2",
+  "label": "Does Arthritis Aï¬ect Whether You Work",
+  "section": "",
+  "question": "Do arthritis or joint symptoms now aï¬ect whether you work, the type of work you do or the amount of work you do?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Missing Notes: Section 07.11, HAVARTH4, is coded 2, 7, 9, or Missing"
+  }
+ },
+ "JOINPAI2": {
+  "name": "JOINPAI2",
+  "label": "How Bad Was Joint Pain",
+  "section": "",
+  "question": "During the past 30 days, how bad was your joint pain on average on a scale of 0 to 10 where 0 is no pain and 10 is pain or aching as bad as it can be?",
+  "values": {
+   "0 - 10": "Enter number [0-10]",
+   "77": "Don't know/Not Sure",
+   "99": "Refused",
+   "BLANK": "Missing Notes: Section 07.11, HAVARTH4, is coded 2, 7, 9, or Missing"
+  }
+ },
+ "PSATEST1": {
+  "name": "PSATEST1",
+  "label": "Ever Had PSA Test",
+  "section": "",
+  "question": "Have you ever had a P.S.A. test?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to Module 04.05 PCSTALK2",
+   "7": "Don't know/Not Sure - Go to Module 04.05 PCSTALK2",
+   "9": "Refused - Go to Module 04.05 PCSTALK2",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE, is less than 40; or respondent sex, SEXVAR, is coded 2;"
+  }
+ },
+ "PSATIME1": {
+  "name": "PSATIME1",
+  "label": "Time Since Most Recent PSA Test",
+  "section": "",
+  "question": "About how long has it been since your most recent P.S.A. test?",
+  "values": {
+   "1": "Within the past year (anytime less than 12 months ago)",
+   "2": "Within the past 2 years (1 year but less than 2 years ago)",
+   "3": "Within the past 3 years (2 years but less than 3 years ago)",
+   "4": "Within the past 5 years (3 years but less than 5 years ago)",
+   "5": "5 or more years ago",
+   "7": "Don't know/Not Sure",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE, is less than 40; or respondent sex, SEXVAR, is coded 2; or Module 04.01, PSATEST1, is coded, 2, 7, 9, or Missing"
+  }
+ },
+ "PCPSARS2": {
+  "name": "PCPSARS2",
+  "label": "What was the MAIN reason you had this PSA test?",
+  "section": "",
+  "question": "What was the main reason you had this P.S.A. test â was it â¦?",
+  "values": {
+   "1": "Part of a routine exam",
+   "2": "Because of a problem",
+   "3": "Other reason",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE, is less than 40; or respondent sex, SEXVAR, is coded 2; or Module 04.01, PSATEST1, is coded, 2, 7, 9, or Missing"
+  }
+ },
+ "PSASUGS1": {
+  "name": "PSASUGS1",
+  "label": "Who first suggested this P.S.A. test?",
+  "section": "",
+  "question": "Who first suggested (a or this) P.S.A. test: you, your doctor, or someone else?",
+  "values": {
+   "1": "Self",
+   "2": "Doctor, nurse, health care professional",
+   "3": "Someone else",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE, is less than 40; or respondent sex, SEXVAR, is coded 2; or Module 04.01, PSATEST1, is coded, 2, 7, 9, or Missing"
+  }
+ },
+ "PCSTALK2": {
+  "name": "PCSTALK2",
+  "label": "Did you talk about the advantages or disadvantages of P.S.A. test",
+  "section": "",
+  "question": "When you met with a doctor, nurse, or other health professional, did they ever talk about the advantages, the disadvantages, or both advantages and disadvantages of the prostate-specific antigen or P.S.A. test?",
+  "values": {
+   "1": "Advantages",
+   "2": "Disadvantages",
+   "3": "Both Advantages and Disadvantages",
+   "4": "Neither",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE, is less than 40; or respondent sex, SEXVAR, is coded 2;"
+  }
+ },
+ "CNCRDIFF": {
+  "name": "CNCRDIFF",
+  "label": "How Many Types of Cancer?",
+  "section": "",
+  "question": "How many diï¬erent types of cancer have you had?",
+  "values": {
+   "1": "Only one",
+   "2": "Two",
+   "3": "Three or more",
+   "7": "Don't know/Not Sure - Go to next module",
+   "9": "Refused - Go to next module",
+   "BLANK": "Not asked or Missing Notes: Section 07.06, CHCSCNC1, is coded 2, 7, 9 or Missing and Section 07.07, CHCOCNC1, is coded 2, 7, 9 or Missing;"
+  }
+ },
+ "CNCRAGE": {
+  "name": "CNCRAGE",
+  "label": "Age Told Had Cancer",
+  "section": "",
+  "question": "At what age were you told that you had cancer? (If Response = 2 (Two) or 3 (Three or more), ask: âAt what age was your first diagnosis of cancer?â)",
+  "values": {
+   "1 - 97": "Age in years (97=97 and older) Notes: 97 = 97 and older",
+   "98": "Don't know/Not Sure",
+   "99": "Refused",
+   "BLANK": "Missing Notes: Section 07.06, CHCSCNC1, is coded 2, 7, 9 or Missing and Section 07.07, CHCOCNC1, is coded 2, 7, 9 or Missing;or Module 05.01, CNCRDIFF, is coded 7, 9 or Missing"
+  }
+ },
+ "CNCRTYP2": {
+  "name": "CNCRTYP2",
+  "label": "Type of Cancer",
+  "section": "",
+  "question": "What kind of cancer is it?",
+  "values": {
+   "1": "Bladder",
+   "2": "Blood",
+   "3": "Bone",
+   "4": "Brain",
+   "5": "Breast",
+   "6": "Cervix/Cervical",
+   "7": "Colon",
+   "8": "Esophagus/Esophageal",
+   "9": "Gallbladder",
+   "10": "Kidney",
+   "11": "Larynx-trachea",
+   "12": "Leukemia",
+   "13": "Liver",
+   "14": "Lung",
+   "15": "Lymphoma",
+   "16": "Melanoma",
+   "17": "Mouth/tongue/lip",
+   "18": "Ovary/Ovarian",
+   "19": "Pancreas/Pancreatic",
+   "20": "Prostate",
+   "21": "Rectum/Rectal",
+   "22": "Skin (non-melanoma)",
+   "23": "Skin (don't know what kind)",
+   "24": "Soft tissue (muscle or fat)",
+   "25": "Stomach",
+   "26": "Testis/Testicular",
+   "27": "Throat - pharynx",
+   "28": "Thyroid",
+   "29": "Uterus/Uterine",
+   "30": "Other",
+   "77": "Don't know/Not sure",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.06, CHCSCNC1, is coded 2, 7, 9 or Missing and Section 07.07, CHCOCNC1, is coded 2, 7, 9 or Missing;or Module 05.01, CNCRDIFF, is coded 7, 9 or Missing"
+  }
+ },
+ "CSRVTRT3": {
+  "name": "CSRVTRT3",
+  "label": "Currently Receiving Treatment for Cancer",
+  "section": "",
+  "question": "Are you currently receiving treatment for cancer?",
+  "values": {
+   "1": "Yes - Go to next module",
+   "2": "No, I've completed treatment",
+   "3": "No, I've refused treatment - Go to next module",
+   "4": "No, I haven't started treatment - Go to next module",
+   "5": "Treatment was not necessary - Go to next module",
+   "7": "Don't know/Not Sure - Go to next module",
+   "9": "Refused - Go to next module",
+   "BLANK": "Not asked or Missing Notes: Section 07.06, CHCSCNC1, is coded 2, 7, 9 or Missing and Section 07.07, CHCOCNC1, is coded 2, 7, 9 or Missing;"
+  }
+ },
+ "CSRVDOC1": {
+  "name": "CSRVDOC1",
+  "label": "What Type of Doctor Provides Majority of Your Care",
+  "section": "",
+  "question": "What type of doctor provides the majority of your health care? Is it aâ¦.",
+  "values": {
+   "1": "Cancer Surgeon",
+   "2": "Family Practitioner",
+   "3": "General Surgeon",
+   "4": "Gynecologic Oncologist",
+   "5": "General Practitioner, Internist",
+   "6": "Plastic Surgeon, Reconstructive Surgeon",
+   "7": "Medical Oncologist",
+   "8": "Radiation Oncologist",
+   "9": "Urologist",
+   "10": "Other",
+   "77": "Don't know/Not Sure",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.06, CHCSCNC1, is coded 2, 7, 9 or Missing and Section 07.07, CHCOCNC1, is coded 2, 7, 9 or Missing;or Module 06.01, CSRVTRT3, is coded 1, 3, 4, 5, 7, 9 or Missing;"
+  }
+ },
+ "CSRVSUM": {
+  "name": "CSRVSUM",
+  "label": "Did You Receive a Summary of Cancer Treatments Received",
+  "section": "",
+  "question": "Did any doctor, nurse, or other health professional ever give you a written summary of all the cancer treatments that you received?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.06, CHCSCNC1, is coded 2, 7, 9 or Missing and Section 07.07, CHCOCNC1, is coded 2, 7, 9 or Missing;or Module 06.01, CSRVTRT3, is coded 1, 3, 4, 5, 7, 9 or Missing;"
+  }
+ },
+ "CSRVRTRN": {
+  "name": "CSRVRTRN",
+  "label": "Ever Receive Instructions From A Doctor For Follow-Up Check-Ups",
+  "section": "",
+  "question": "Have you ever received instructions from a doctor, nurse, or other health professional about where you should return or who you should see for routine cancer check-ups after completing treatment for cancer?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to Module 06.06 CSRVINSR",
+   "7": "Don't know/Not Sure - Go to Module 06.06 CSRVINSR",
+   "9": "Refused - Go to Module 06.06 CSRVINSR",
+   "BLANK": "Not asked or Missing Notes: Section 07.06, CHCSCNC1, is coded 2, 7, 9 or Missing and Section 07.07, CHCOCNC1, is coded 2, 7, 9 or Missing;or Module 06.01, CSRVTRT3, is coded 1, 3, 4, 5, 7, 9 or Missing;"
+  }
+ },
+ "CSRVINST": {
+  "name": "CSRVINST",
+  "label": "Instructions Written or Printed",
+  "section": "",
+  "question": "Were these instructions written down or printed on paper for you?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.06, CHCSCNC1, is coded 2, 7, 9 or Missing and Section 07.07, CHCOCNC1, is coded 2, 7, 9 or Missing; or Module 06.01, CSRVTRT3, is coded 1, 3, 4, 5, 7, 9 or Missing;"
+  }
+ },
+ "CSRVINSR": {
+  "name": "CSRVINSR",
+  "label": "Did Health Insurance Pay For All Of Your Cancer Treatment",
+  "section": "",
+  "question": "With your most recent diagnosis of cancer, did you have health insurance that paid for all or part of your cancer treatment? (âHealth insuranceâ also includes Medicare, Medicaid, or other types of state health programs.)",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.06, CHCSCNC1, is coded 2, 7, 9 or Missing and Section 07.07, CHCOCNC1, is coded 2, 7, 9 or Missing;or Module 06.01, CSRVTRT3, is coded 1, 3, 4, 5, 7, 9 or Missing;"
+  }
+ },
+ "CSRVDEIN": {
+  "name": "CSRVDEIN",
+  "label": "Ever Denied Insurance Coverage Because Of Your Cancer?",
+  "section": "",
+  "question": "Were you ever denied health insurance or life insurance coverage because of your cancer?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.06, CHCSCNC1, is coded 2, 7, 9 or Missing and Section 07.07, CHCOCNC1, is coded 2, 7, 9 or Missing;or Module 06.01, CSRVTRT3, is coded 1, 3, 4, 5, 7, 9 or Missing;"
+  }
+ },
+ "CSRVCLIN": {
+  "name": "CSRVCLIN",
+  "label": "Participate In Clinical Trial As Part Of Cancer Treatment?",
+  "section": "",
+  "question": "Did you participate in a clinical trial as part of your cancer treatment?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.06, CHCSCNC1, is coded 2, 7, 9 or Missing and Section 07.07, CHCOCNC1, is coded 2, 7, 9 or Missing;or Module 06.01, CSRVTRT3, is coded 1, 3, 4, 5, 7, 9 or Missing;"
+  }
+ },
+ "CSRVPAIN": {
+  "name": "CSRVPAIN",
+  "label": "Currently Have Physical Pain From Cancer Or Treatment?",
+  "section": "",
+  "question": "Do you currently have physical pain caused by your cancer or cancer treatment?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to next module",
+   "7": "Don't know/Not Sure - Go to next module",
+   "9": "Refused - Go to next module",
+   "BLANK": "Not asked or Missing Notes: Section 07.06, CHCSCNC1, is coded 2, 7, 9 or Missing and Section 07.07, CHCOCNC1, is coded 2, 7, 9 or Missing;"
+  }
+ },
+ "CSRVCTL2": {
+  "name": "CSRVCTL2",
+  "label": "Is Pain Under Control?",
+  "section": "",
+  "question": "Would you say your pain is currently under controlâ¦?",
+  "values": {
+   "1": "With medication (or treatment)",
+   "2": "Without medication (or treatment)",
+   "3": "Not under control, with medication (or treatment)",
+   "4": "Not under control, without medication (or treatment)",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 07.06, CHCSCNC1, is coded 2, 7, 9 or Missing and Section 07.07, CHCOCNC1, is coded 2, 7, 9 or Missing; or Module 07.01, CSRVPAIN, is coded 2, 7, 9 or Missing;"
+  }
+ },
+ "CIMEMLO1": {
+  "name": "CIMEMLO1",
+  "label": "Have you experienced diï¬culties with thinking or memory that is happening more often or is getting worse?",
+  "section": "",
+  "question": "During the past 12 months, have you experienced diï¬culties with thinking or memory that are happening more often or are getting worse?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to next module",
+   "7": "Don't know/Not sure - Go to next module",
+   "9": "Refused - Go to next module",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE, is less than 45;"
+  }
+ },
+ "CDWORRY": {
+  "name": "CDWORRY",
+  "label": "Are you worried about these diï¬culties with thinking or memory?",
+  "section": "",
+  "question": "Are you worried about these diï¬culties with thinking or memory?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE, is less than 45; or Module 08.01, CIMEMLO1, is coded 2, 7, 9, or Missing"
+  }
+ },
+ "CDDISCU1": {
+  "name": "CDDISCU1",
+  "label": "Have you discussed your diï¬culties with thinking with a health care provider?",
+  "section": "",
+  "question": "Have you or anyone else discussed your diï¬culties with thinking or memory with a health care provider?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE, is less than 45; or Module 08.01, CIMEMLO1, is coded 2, 7, 9, or Missing"
+  }
+ },
+ "CDHOUS1": {
+  "name": "CDHOUS1",
+  "label": "Given up day-to-day chores due to diï¬culties with thinking or memory",
+  "section": "",
+  "question": "During the past 12 months, have your diï¬culties with thinking or memory interfered with day-to-day activities, such as managing medications, paying bills, or keeping track of appointments?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE, is less than 45; or Module 08.01, CIMEMLO1, is coded 2, 7, 9, or Missing"
+  }
+ },
+ "CDSOCIA1": {
+  "name": "CDSOCIA1",
+  "label": "Does diï¬culties with thinking or memory interfere with work or social activities",
+  "section": "",
+  "question": "During the past 12 months, have your diï¬culties with thinking or memory interfered with your ability to work or volunteer?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE, is less than 45; or Module 08.01, CIMEMLO1, is coded 2, 7, 9, or Missing"
+  }
+ },
+ "CAREGIV1": {
+  "name": "CAREGIV1",
+  "label": "Provided regular care for family or friend",
+  "section": "",
+  "question": "During the past 30 days, did you provide regular care or assistance to a friend or family member who has a health problem or disability?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to next module",
+   "7": "Don't know/Not Sure - Go to next module",
+   "8": "Caregiving recipient died in past 30 days - Go to next module",
+   "9": "Refused - Go to next module",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "CRGVREL5": {
+  "name": "CRGVREL5",
+  "label": "Relationship Of Person To Whom You Are Giving Care?",
+  "section": "",
+  "question": "What is their relationship to you?",
+  "values": {
+   "1": "Parent, stepparent, or parent-in-law",
+   "2": "Grandparent, step grandparent or grandparent-in-law",
+   "3": "Spouse or partner",
+   "4": "Child or stepchild",
+   "5": "Grandchild or step grandchild",
+   "6": "Sibling, stepsibling, or sibling-in-law",
+   "7": "Other relative",
+   "8": "Friend or non-relative",
+   "77": "Don't know/Not Sure",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 09.01, CAREGIV1, is coded 2, 8, 7, or 9"
+  }
+ },
+ "CRGVPRB4": {
+  "name": "CRGVPRB4",
+  "label": "What Is The Main Health Problem, Illness, Disability For Care For Person?",
+  "section": "",
+  "question": "What is the main health problem or disability that the person you care for has?",
+  "values": {
+   "1": "Alzheimer's disease, dementia, or other cognitive impairment - Go to Module 09.05 CRGVNURS",
+   "2": "Heart disease, hypertension, or stroke",
+   "3": "Cancer",
+   "4": "Diabetes",
+   "5": "Injuries including broken bones or traumatic brain injury",
+   "6": "Mental illness such as depression, anxiety, or schizophrenia",
+   "7": "Developmental disorders such as autism, Down syndrome, or spina bifida",
+   "8": "Respiratory conditions such as asthma, emphysema, or chronic obstructive pulmonary disease",
+   "9": "Arthritis/rheumatism",
+   "10": "Hearing or vision loss",
+   "11": "Movement disorders such as Parkinson's, spinal cord injury, multiple sclerosis or cerebral palsy",
+   "12": "Old age, infirmity, or frailty",
+   "13": "Other",
+   "77": "Don't know/Not Sure",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 09.01, CAREGIV1, is coded 2, 8, 7, or 9"
+  }
+ },
+ "CRGVALZD": {
+  "name": "CRGVALZD",
+  "label": "Does Person Being Cared For Have Alzheimer's Disease?",
+  "section": "",
+  "question": "Does the person you care for also have Alzheimer's disease, dementia or other cognitive impairment disorder?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 09.01, CAREGIV1, is coded 2, 8, 7, or 9; or Module 09.03, CRGVPRB4, is coded 1"
+  }
+ },
+ "CRGVNURS": {
+  "name": "CRGVNURS",
+  "label": "Help with Nursing or Medical Tasks",
+  "section": "",
+  "question": "In the past 30 days, did you provide regular care for this person by helping with nursing or medical tasks such as injections, wound care, or tube feedings?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 09.01, CAREGIV1, is coded 2, 8, 7, or 9"
+  }
+ },
+ "CRGVPER2": {
+  "name": "CRGVPER2",
+  "label": "Managed personal care",
+  "section": "",
+  "question": "In the past 30 days, did you provide regular care for this person by managing personal care such as bathing, getting to the bathroom, or helping to eat?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 09.01, CAREGIV1, is coded 2, 8, 7, or 9"
+  }
+ },
+ "CRGVHOU2": {
+  "name": "CRGVHOU2",
+  "label": "Managed household tasks",
+  "section": "",
+  "question": "In the past 30 days, did you provide regular care for this person by managing household tasks such as help with transportation, shopping, or managing money?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 09.01, CAREGIV1, is coded 2, 8, 7, or 9"
+  }
+ },
+ "CRGVHRS2": {
+  "name": "CRGVHRS2",
+  "label": "How Many Hours Do You Provide Care For Person?",
+  "section": "",
+  "question": "In an average week, how many hours do you provide regular care or assistance? Would you sayâ¦",
+  "values": {
+   "1": "Less than 20 hours per week (19 hours or less)",
+   "2": "Less than 40 hours per week (more than 19 hours, but less than 40 hours)",
+   "3": "40 hours or more per week",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 09.01, CAREGIV1, is coded 2, 8, 7, or 9"
+  }
+ },
+ "CRGVLNG2": {
+  "name": "CRGVLNG2",
+  "label": "How Long Provided Care For Person.",
+  "section": "",
+  "question": "For how long have you provided regular care to this person?",
+  "values": {
+   "1": "Within the past 30 days (anytime less than 30 days ago)",
+   "2": "Within the past 2 years (more than 30 days but less than 2 years ago)",
+   "3": "Within the past 5 years (more than 2 years but less than 5 years ago)",
+   "4": "5 years or more",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 09.01, CAREGIV1, is coded 2, 8, 7, or 9"
+  }
+ },
+ "LASTSMK2": {
+  "name": "LASTSMK2",
+  "label": "Interval Since Last Smoked",
+  "section": "",
+  "question": "How long has it been since you last smoked a cigarette, even one or two puï¬s?",
+  "values": {
+   "1": "Within the past month (less than 1 month ago) - Go to next module",
+   "2": "Within the past 3 months (1 month but less than 3 months ago) - Go to next module",
+   "3": "Within the past 6 months (3 months but less than 6 months ago) - Go to next module",
+   "4": "Within the past year (6 months but less than 1 year ago) - Go to next module",
+   "5": "Within the past 5 years (1 year but less than 5 years ago) - Go to next module",
+   "6": "Within the past 10 years (5 years but less than 10 years ago) - Go to next module",
+   "7": "10 years or more - Go to next module",
+   "8": "Never smoked regularly - Go to next module",
+   "77": "Don't know/Not sure - Go to next module",
+   "99": "Refused - Go to next module",
+   "BLANK": "Not asked or Missing Notes: Section 11.01, SMOKE100, is coded 2, 7, 9, or Missing; or Section 11.02, SMOKDAY2, is coded 1, 2, 7, 9, or Missing;"
+  }
+ },
+ "STOPSMK2": {
+  "name": "STOPSMK2",
+  "label": "Stopped Smoking in past 12 months",
+  "section": "",
+  "question": "During the past 12 months, have you stopped smoking for one day or longer because you were trying to quit smoking?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 11.01, SMOKE100, is coded 2, 7, 9, or Missing; or Section 11.02, SMOKDAY2, is coded 3, 7, 9, or Missing; or Module 10.01, LASTSMK2 is not missing"
+  }
+ },
+ "MENTCIGS": {
+  "name": "MENTCIGS",
+  "label": "Do you usually smoke menthol cigarettes?",
+  "section": "",
+  "question": "Currently, when you smoke cigarettes, do you usually smoke menthol cigarettes?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 11.02, SMOKDAY2, is coded 3, 7, 9 or Missing;"
+  }
+ },
+ "MENTECIG": {
+  "name": "MENTECIG",
+  "label": "Do you usually use menthol e-cigarettes?",
+  "section": "",
+  "question": "Currently, when you use e-cigarettes, do you usually use menthol e-cigarettes?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 11.04, ECIGNOW2, is coded 1, 4, 7, 9 or Missing"
+  }
+ },
+ "HEATTBCO": {
+  "name": "HEATTBCO",
+  "label": "Have you heard of heated tobacco products?",
+  "section": "",
+  "question": "Before today, have you heard of heated tobacco products?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "FIREARM5": {
+  "name": "FIREARM5",
+  "label": "Any Firearms in Home",
+  "section": "",
+  "question": "Are any firearms now kept in or around your home?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to Next Module",
+   "7": "Don't know/Not Sure - Go to Next Module",
+   "9": "Refused - Go to Next Module",
+   "BLANK": "Missing"
+  }
+ },
+ "GUNLOAD": {
+  "name": "GUNLOAD",
+  "label": "Any Firearms Loaded",
+  "section": "",
+  "question": "Are any of these firearms now loaded?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to Next Module",
+   "7": "Don't know/Not sure - Go to Next Module",
+   "9": "Refused - Go to Next Module",
+   "BLANK": "Not asked or Missing Notes: Module 12.01, FIREARM5, is coded 2, 7, 9, or Missing"
+  }
+ },
+ "LOADULK2": {
+  "name": "LOADULK2",
+  "label": "Any Loaded Firearms Also Unlocked",
+  "section": "",
+  "question": "Are any of these loaded firearms also unlocked?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 12.01, FIREARM5, is coded 2, 7, 9, or Missing; or Module 12.02, GUNLOAD, is coded 2, 7, 9, or Missing"
+  }
+ },
+ "HOMBPCHK": {
+  "name": "HOMBPCHK",
+  "label": "Told check blood pressure at home",
+  "section": "",
+  "question": "Has your doctor nurse or other health professional recommended you check your blood pressure outside of the oï¬ce or at home?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "HOMRGCHK": {
+  "name": "HOMRGCHK",
+  "label": "Regularly check blood pressure at home",
+  "section": "",
+  "question": "Do you regularly check your blood pressure outside of your healthcare professional's oï¬ce or at home?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to Next Module",
+   "7": "Don't know/Not Sure - Go to Next Module",
+   "9": "Refused - Go to Next Module",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "WHEREBP": {
+  "name": "WHEREBP",
+  "label": "Where do you get blood pressure taken",
+  "section": "",
+  "question": "Do you take it mostly at home or on a machine at a pharmacy, grocery or similar location?",
+  "values": {
+   "1": "At home",
+   "2": "On a machine at a pharmacy, grocery or similar location",
+   "3": "Do not check it",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 14.02, HOMRGCHK, is coded 2, 7, 9 or Missing"
+  }
+ },
+ "SHAREBP": {
+  "name": "SHAREBP",
+  "label": "How do you share your blood pressure numbers",
+  "section": "",
+  "question": "How do you share your blood pressure numbers that you collected with your health professional? Is it mostly by telephone, other methods such as emails, internet portal or fax, or in person?",
+  "values": {
+   "1": "Telephone",
+   "2": "Other methods such as email, internet portal, or fax",
+   "3": "In person",
+   "4": "Do not share information",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 14.02, HOMRGCHK, is coded 2, 7, 9 or Missing"
+  }
+ },
+ "WTCHSALT": {
+  "name": "WTCHSALT",
+  "label": "Watching Sodium or Salt Intake",
+  "section": "",
+  "question": "Are you currently watching or reducing your sodium or salt intake?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "DRADVISE": {
+  "name": "DRADVISE",
+  "label": "Doctor Advised Reduced Sodium/Salt Intake",
+  "section": "",
+  "question": "Has a doctor or other health professional ever advised you to reduce sodium or salt intake?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "SOMALE": {
+  "name": "SOMALE",
+  "label": "Sexual orientation",
+  "section": "",
+  "question": "Which of the following best represents how you think of yourself?",
+  "values": {
+   "1": "Gay",
+   "2": "Straight, that is, not gay",
+   "3": "Bisexual",
+   "4": "Something else",
+   "7": "I don't know the answer",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: respondent sex, SEXVAR, is coded 2;"
+  }
+ },
+ "SOFEMALE": {
+  "name": "SOFEMALE",
+  "label": "Sexual orientation",
+  "section": "",
+  "question": "Which of the following best represents how you think of yourself?",
+  "values": {
+   "1": "Lesbian or Gay",
+   "2": "Straight, that is, not gay",
+   "3": "Bisexual",
+   "4": "Something else",
+   "7": "I don't know the answer",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: respondent sex, SEXVAR, is coded 1;"
+  }
+ },
+ "MARIJAN1": {
+  "name": "MARIJAN1",
+  "label": "During the past 30 days, on how many days did you use marijuana or cannabis?",
+  "section": "",
+  "question": "During the past 30 days, on how many days did you use marijuana or cannabis?",
+  "values": {
+   "1 - 30": "Number of Days",
+   "88": "None - Go to next module",
+   "77": "Don't know/Not Sure - Go to next module",
+   "99": "Refused - Go to next module",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "MARJSMOK": {
+  "name": "MARJSMOK",
+  "label": "Did you smoke marijuana or cannabis?",
+  "section": "",
+  "question": "During the past 30 days, did you smoke it (for example, in a joint, bong, pipe, or blunt)?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 17.01, MARIJAN1, is coded 77, 88, 99 or Missing"
+  }
+ },
+ "MARJEAT": {
+  "name": "MARJEAT",
+  "label": "Did you eat marijuana or cannabis?",
+  "section": "",
+  "question": "Did you eat it or drink it (for example, in brownies, cakes, cookies, or candy, or in tea, cola, or alcohol)?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 17.01, MARIJAN1, is coded 77, 88, 99 or Missing"
+  }
+ },
+ "MARJVAPE": {
+  "name": "MARJVAPE",
+  "label": "Did you vape marijuana or cannabis?",
+  "section": "",
+  "question": "Did you vaporize it (for example, in an e-cigarette-like vaporizer or another vaporizing device)",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 17.01, MARIJAN1, is coded 77, 88, 99 or Missing"
+  }
+ },
+ "MARJDAB": {
+  "name": "MARJDAB",
+  "label": "Did you dab marijuana or cannabis?",
+  "section": "",
+  "question": "Did you dab it (for example, using a dabbing rig, knife, or dab pen)?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 17.01, MARIJAN1, is coded 77, 88, 99 or Missing"
+  }
+ },
+ "MARJOTHR": {
+  "name": "MARJOTHR",
+  "label": "Did you use marijuana or cannabis some other way?",
+  "section": "",
+  "question": "Did you use it in some other way?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 17.01, MARIJAN1, is coded 77, 88, 99 or Missing"
+  }
+ },
+ "USEMRJN4": {
+  "name": "USEMRJN4",
+  "label": "During the past 30 days, how did you primarily use marijuana?",
+  "section": "",
+  "question": "During the past 30 days, which one of the following ways did you use marijuana the most often? Did you usuallyâ¦ [Please select one. Did youâ¦]",
+  "values": {
+   "1": "Smoke it (for example, in a joint, bong, pipe, or blunt)",
+   "2": "Eat it or drink it (for example, in brownies, cakes, cookies, or candy, or in tea, cola, or alcohol)",
+   "3": "Vaporize it (for example, in an e-cigarette-like vaporizer or another vaporizing device)",
+   "4": "Dab it (for example, using a dabbing rig, knife, or dab pen)",
+   "5": "Use it some other way",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 17.01, MARIJAN1, is coded 77, 88, 99 or Missing; or if there is only one yes response for questisons M17.02 (MARJSMOK), M17.03 (MARJEAT), M17.04 (MARJVAPE), M17.05 (MARJDAB), M17.06(MARJOTHR);"
+  }
+ },
+ "ACEDEPRS": {
+  "name": "ACEDEPRS",
+  "label": "Live With Anyone Depressed, Mentally Ill, Or Suicidal?",
+  "section": "",
+  "question": "Did you live with anyone who was depressed, mentally ill, or suicidal?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ACEDRINK": {
+  "name": "ACEDRINK",
+  "label": "Live With a Problem Drinker/Alcoholic?",
+  "section": "",
+  "question": "Did you live with anyone who was a problem drinker or alcoholic?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ACEDRUGS": {
+  "name": "ACEDRUGS",
+  "label": "Live With Anyone Who Used Illegal Drugs or Abused Prescriptions?",
+  "section": "",
+  "question": "Did you live with anyone who used illegal street drugs or who abused prescription medications?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ACEPRISN": {
+  "name": "ACEPRISN",
+  "label": "Live With Anyone Who Served Time in Prison or Jail?",
+  "section": "",
+  "question": "Did you live with anyone who served time or was sentenced to serve time in a prison, jail, or other correctional facility?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ACEDIVRC": {
+  "name": "ACEDIVRC",
+  "label": "Were Your Parents Divorced/Separated?",
+  "section": "",
+  "question": "Were your parents separated or divorced?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "8": "Parents not married",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ACEPUNCH": {
+  "name": "ACEPUNCH",
+  "label": "How Often Did Your Parents Beat Each Other Up?",
+  "section": "",
+  "question": "How often did your parents or adults in your home ever slap, hit, kick, punch or beat each other up? Was it -",
+  "values": {
+   "1": "Never",
+   "2": "Once",
+   "3": "More than once",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ACEHURT1": {
+  "name": "ACEHURT1",
+  "label": "How Often Did A Parent Physically Hurt You In Any Way?",
+  "section": "",
+  "question": "Not including spanking, (before age 18), how often did a parent or adult in your home ever hit, beat, kick, or physically hurt you in any way? Was it -",
+  "values": {
+   "1": "Never",
+   "2": "Once",
+   "3": "More than once",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ACESWEAR": {
+  "name": "ACESWEAR",
+  "label": "How Often Did A Parent Swear At You?",
+  "section": "",
+  "question": "How often did a parent or adult in your home ever swear at you, insult you, or put you down? Was it -",
+  "values": {
+   "1": "Never",
+   "2": "Once",
+   "3": "More than once",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ACETOUCH": {
+  "name": "ACETOUCH",
+  "label": "How Often Did Anyone Ever Touch You Sexually?",
+  "section": "",
+  "question": "How often did anyone at least 5 years older than you or an adult, ever touch you sexually? Was it -",
+  "values": {
+   "1": "Never",
+   "2": "Once",
+   "3": "More than once",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ACETTHEM": {
+  "name": "ACETTHEM",
+  "label": "How Often Did Anyone Make You Touch Them Sexually?",
+  "section": "",
+  "question": "How often did anyone at least 5 years older than you or an adult, try to make you touch them sexually? Was it -",
+  "values": {
+   "1": "Never",
+   "2": "Once",
+   "3": "More than once",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ACEHVSEX": {
+  "name": "ACEHVSEX",
+  "label": "How Often Did Anyone Ever Force You to Have Sex?",
+  "section": "",
+  "question": "How often did anyone at least 5 years older than you or an adult, force you to have sex? Was it -",
+  "values": {
+   "1": "Never",
+   "2": "Once",
+   "3": "More than once",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ACEADSAF": {
+  "name": "ACEADSAF",
+  "label": "Did an adult make you feel safe and protected",
+  "section": "",
+  "question": "For how much of your childhood was there an adult in your household who made you feel safe and protected? Would you say never, a little of the time, some of the time, most of the time, or all of the time?",
+  "values": {
+   "1": "Never",
+   "2": "A little of the time",
+   "3": "Some of the time",
+   "4": "Most of the time",
+   "5": "All of the time",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "ACEADNED": {
+  "name": "ACEADNED",
+  "label": "Did an adult make sure basic needs were met",
+  "section": "",
+  "question": "For how much of your childhood was there an adult in your household who tried hard to make sure your basic needs were met? Would you say never, a little of the time, some of the time, most of the time, or all of the time?",
+  "values": {
+   "1": "Never",
+   "2": "A little of the time",
+   "3": "Some of the time",
+   "4": "Most of the time",
+   "5": "All of the time",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "HADSEX": {
+  "name": "HADSEX",
+  "label": "Have you had sexual intercourse?",
+  "section": "",
+  "question": "In the past 12 months, did you have sexual intercourse?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to next module",
+   "7": "Don't know/Not Sure - Go to next module",
+   "9": "Refused - Go to next module",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE, is greater than 49; or Section 08.16, PREGNANT, is coded 1; or SEXVAR is coded 1;"
+  }
+ },
+ "PFPPRVN4": {
+  "name": "PFPPRVN4",
+  "label": "Did you do anything to keep from getting pregnant?",
+  "section": "",
+  "question": "The last time you had sexual intercourse, did you or your partner do anything to keep you from getting pregnant?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to Module 19.04 NOBCUSE9",
+   "7": "Don't know/Not Sure - Go to next module",
+   "9": "Refused - Go to next module",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE, is greater than 49; or Section 08.16, PREGNANT, is coded 1; or SEXVAR is coded 1; or Module 19.01, HADSEX, is coded 2, 7, 9 or Missing;"
+  }
+ },
+ "TYPCNT10": {
+  "name": "TYPCNT10",
+  "label": "What did you do to keep you from getting pregnant?",
+  "section": "",
+  "question": "The last time you had sexual intercourse, what did you or your partner do to keep you from getting pregnant?",
+  "values": {
+   "1": "Female sterilization (Tubal ligation, Essure, or Adiana) - Go to next module",
+   "2": "Male sterilization (vasectomy) - Go to next module",
+   "3": "Contraceptive implant (Implanon, Nexplanon) - Go to next module",
+   "4": "Intrauterine device or IUD (Mirena, Liletta, Skyla, Kyleena, Levonorgestrel IUD, ParaGard, copper IUD) - Go to next module",
+   "5": "Shots (Depo-Provera) - Go to next module",
+   "6": "Prescription birth control pills, Contraceptive Ring (NuvaRing, ElyRyng, Annovera), Contraceptive patch (Ortho Evra, Xulane, Twirla, Zafemy) - Go to next module",
+   "7": "Over the counter birth control pills (Opill) - Go to next module",
+   "8": "Condoms (male or female) - Go to next module",
+   "9": "Diaphragm, vaginal gel (Phexxi), cervical cap, sponge, foam, jelly, film, or cream - Go to next module",
+   "10": "Had sex at a time when less likely to get pregnant (rhythm method, natural family planning, apps for contraception) - Go to next module",
+   "11": "Withdrawal or pulling out - Go to next module",
+   "12": "Emergency contraception or the morning after pill (such as Plan B or ella) - Go to next module",
+   "13": "Other method - Go to next module",
+   "77": "Don't know/Not sure - Go to next module",
+   "99": "Refused - Go to next module",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE, is greater than 49; or Section 08.16, PREGNANT, is coded 1; or SEXVAR is coded 1; or Module 19.01, HADSEX, is coded 2, 7, 9 or Missing; or Module 19.02, PFPPRVN4, is coded 2, 7, 9, or Missing;"
+  }
+ },
+ "NOBCUSE9": {
+  "name": "NOBCUSE9",
+  "label": "What was main reason for not doing anything to keep you from getting pregnant?",
+  "section": "",
+  "question": "What was your main reason for not doing anything to prevent pregnancy the last time you had sexual intercourse?",
+  "values": {
+   "1": "You didn't think you were going to have sex/no regular partner",
+   "2": "You just didn't think about it",
+   "3": "You wanted a pregnancy",
+   "4": "You didn't care if you got pregnant",
+   "5": "You or your partner didn't want to use birth control (side effects, don't like birth control)",
+   "6": "You had trouble getting or paying for birth control",
+   "8": "Didn't think you or your partner could get pregnant (infertile or too old)",
+   "9": "You were using withdrawal or 'pulling out'",
+   "10": "You had your tubes tied (sterilization)",
+   "11": "Your partner had a vasectomy (sterilization)",
+   "12": "You were breast-feeding or you just had a baby",
+   "14": "Other reasons",
+   "77": "Don't know/Not sure",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE, is greater than 49; or Section 08.16, PREGNANT, is coded 1; or SEXVAR is coded 1; or Module 19.01, HADSEX, is coded 2, 7, 9 or Missing; or Module 19.03, TYPCNT10, is not missing; or Module 19.02, PFPPRVN4, is coded 7, 9, or Missing;"
+  }
+ },
+ "HPVADVC4": {
+  "name": "HPVADVC4",
+  "label": "Have you ever had an H.P.V. vaccination?",
+  "section": "",
+  "question": "Have you ever had an H.P.V. vaccination?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to Next Module",
+   "3": "Doctor refused when asked - Go to Next Module",
+   "7": "Don't know/Not Sure - Go to Next Module",
+   "9": "Refused - Go to Next Module",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE, is greater than 49;"
+  }
+ },
+ "HPVADSHT": {
+  "name": "HPVADSHT",
+  "label": "How many HPV shots did you receive?",
+  "section": "",
+  "question": "How many HPV shots did you receive?",
+  "values": {
+   "1 - 2": "Number of shots",
+   "3": "All shots",
+   "4": "",
+   "77": "Don't know/Not Sure",
+   "99": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE is greater than 49; or Module 20.01, HPVADVC4, is coded 2, 3, 7, 9 or Missing"
+  }
+ },
+ "SHINGLE2": {
+  "name": "SHINGLE2",
+  "label": "Have you ever had the shingles or zoster vaccine?",
+  "section": "",
+  "question": "Have you ever had the shingles or zoster vaccine?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 08.01, AGE, is less than 50;"
+  }
+ },
+ "COVIDVA1": {
+  "name": "COVIDVA1",
+  "label": "Received at least one COVID-19 vaccination",
+  "section": "",
+  "question": "Have you received at least one dose of a COVID-19 vaccination?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to Next Module",
+   "7": "Don't know/Not sure - Go to Next Module",
+   "9": "Refused - Go to Next Module",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "COVIDWHN": {
+  "name": "COVIDWHN",
+  "label": "Month/Year of most recent COVID-19 vaccination",
+  "section": "",
+  "question": "During what month and year did you receive your most recent COVID-19 vaccine?",
+  "values": {
+   "12019": "",
+   "12020": "",
+   "12021": "",
+   "12022": "",
+   "12023": "",
+   "12024": "",
+   "12025": "",
+   "12026": "",
+   "22019": "",
+   "22020": "",
+   "22021": "",
+   "22022": "",
+   "22023": "",
+   "22024": "",
+   "22025": "",
+   "32019": "",
+   "32020": "",
+   "32021": "",
+   "32022": "",
+   "32023": "",
+   "32024": "",
+   "32025": "",
+   "42019": "",
+   "42020": "",
+   "42021": "",
+   "42022": "",
+   "42023": "",
+   "42024": "",
+   "42025": "",
+   "52019": "",
+   "52020": "",
+   "52021": "",
+   "52022": "",
+   "52023": "",
+   "52024": "",
+   "52025": "",
+   "62019": "",
+   "62020": "",
+   "62021": "",
+   "62022": "",
+   "62023": "",
+   "62024": "",
+   "62025": "",
+   "72019": "",
+   "72020": "",
+   "72021": "",
+   "72022": "",
+   "72023": "",
+   "72024": "",
+   "72025": "",
+   "82019": "",
+   "82020": "",
+   "82021": "",
+   "82022": "",
+   "82023": "",
+   "82024": "",
+   "82025": "",
+   "92019": "",
+   "92020": "",
+   "92021": "",
+   "92022": "",
+   "92023": "",
+   "92024": "",
+   "92025": "",
+   "102019": "",
+   "102020": "",
+   "102021": "",
+   "102022": "",
+   "102023": "",
+   "102024": "",
+   "102025": "",
+   "112019": "",
+   "112020": "",
+   "112021": "",
+   "112022": "",
+   "112023": "",
+   "112024": "",
+   "112025": "",
+   "122019": "",
+   "122020": "",
+   "122021": "",
+   "122022": "",
+   "122023": "",
+   "122024": "",
+   "122025": "",
+   "772019": "",
+   "772020 - 77202": "Unknown month and known year",
+   "772021": "",
+   "772022": "",
+   "772023": "",
+   "772024": "",
+   "772025": "",
+   "777777": "Don't know/Not sure",
+   "999999": "Refused",
+   "BLANK": "Not asked or Missing Notes: Module 22.01, COVIDVA1, is coded 2, 7, 9, or Missing"
+  }
+ },
+ "LSATISFY": {
+  "name": "LSATISFY",
+  "label": "Satisfaction with life",
+  "section": "",
+  "question": "In general, how satisfied are you with your life? Are you..",
+  "values": {
+   "1": "Very satisfied",
+   "2": "Satisfied",
+   "3": "Dissatisfied",
+   "4": "Very dissatisfied",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "EMTSUPRT": {
+  "name": "EMTSUPRT",
+  "label": "How often get emotional support needed",
+  "section": "",
+  "question": "How often do you get the social and emotional support you need? ? Is thatâ¦",
+  "values": {
+   "1": "Always",
+   "2": "Usually",
+   "3": "Sometimes",
+   "4": "Rarely",
+   "5": "Never",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "SDLONELY": {
+  "name": "SDLONELY",
+  "label": "How often do you feel lonely?",
+  "section": "",
+  "question": "How often do you feel lonely? Is itâ¦",
+  "values": {
+   "1": "Always",
+   "2": "Usually",
+   "3": "Sometimes",
+   "4": "Rarely",
+   "5": "Never",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "SDHEMPLY": {
+  "name": "SDHEMPLY",
+  "label": "Have you lost employment or had hours reduced?",
+  "section": "",
+  "question": "In the past 12 months have you lost employment or had hours reduced?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "FOODSTMP": {
+  "name": "FOODSTMP",
+  "label": "During the past 12 months have you received food stamps",
+  "section": "",
+  "question": "During the past 12 months, have you received food stamps, also called SNAP, the Supplemental Nutrition Assistance Program on an EBT card?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "SDHFOOD1": {
+  "name": "SDHFOOD1",
+  "label": "How often did the food that you bought not last, and you didn't have money to get more?",
+  "section": "",
+  "question": "During the past 12 months how often did the food that you bought not last, and you didn't have money to get more? Was thatâ¦",
+  "values": {
+   "1": "Always",
+   "2": "Usually",
+   "3": "Sometimes",
+   "4": "Rarely",
+   "5": "Never",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "SDHBILLS": {
+  "name": "SDHBILLS",
+  "label": "Were you not able to pay your bills?",
+  "section": "",
+  "question": "During the last 12 months, was there a time when you were not able to pay your mortgage, rent or utility bills?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "SDHUTILS": {
+  "name": "SDHUTILS",
+  "label": "Were you not able to pay utility bills or threatened to lose service?",
+  "section": "",
+  "question": "During the last 12 months was there a time when an electric, gas, oil, or water company threatened to shut oï¬ services?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "SDHTRNSP": {
+  "name": "SDHTRNSP",
+  "label": "Has a lack of reliable transportation kept you from appointments, meetings, work, or getting things needed",
+  "section": "",
+  "question": "During the past 12 months has a lack of reliable transportation kept you from medical appointments, meetings, work, or from getting things needed for daily living?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "HOWSAFE1": {
+  "name": "HOWSAFE1",
+  "label": "Neighborhood Safe From Crime",
+  "section": "",
+  "question": "How safe from crime do you consider your neighborhood to be? Would you sayâ¦",
+  "values": {
+   "1": "Extremely safe",
+   "2": "Safe",
+   "3": "Unsafe",
+   "4": "Extremely unsafe",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "RCSBORG1": {
+  "name": "RCSBORG1",
+  "label": "Sex of child",
+  "section": "",
+  "question": "Is the child a boy or a girl?",
+  "values": {
+   "1": "Boy",
+   "2": "Girl",
+   "BLANK": "Not asked or Missing Notes: Section 08.14, CHILDREN, is coded 0, 88, 99, or Missing; or CHILDAGE > 215 months"
+  }
+ },
+ "RCSRLTN2": {
+  "name": "RCSRLTN2",
+  "label": "Relationship to child",
+  "section": "",
+  "question": "How are you related to the child? Are you a--",
+  "values": {
+   "1": "Parent (include biologic, step, or adoptive parent)",
+   "2": "Grandparent",
+   "3": "Foster parent or guardian",
+   "4": "Sibling (include biologic, step, and adoptive sibling)",
+   "5": "Other relative",
+   "6": "Not related in any way",
+   "7": "Don't know/Not sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 08.14, CHILDREN, is coded 0, 88, 99, or Missing; or CHILDAGE > 215 months"
+  }
+ },
+ "CASTHDX2": {
+  "name": "CASTHDX2",
+  "label": "Hlth pro ever said child has asthma",
+  "section": "",
+  "question": "Has a doctor, nurse or other health professional EVER said that the child has asthma?",
+  "values": {
+   "1": "Yes",
+   "2": "No - Go to next module",
+   "7": "Don't know/Not Sure - Go to next module",
+   "9": "Refused - Go to next module",
+   "BLANK": "Not asked or Missing Notes: Section 08.14, CHILDREN, is coded 0, 88, 99, or Missing"
+  }
+ },
+ "CASTHNO2": {
+  "name": "CASTHNO2",
+  "label": "Child still have asthma?",
+  "section": "",
+  "question": "Does the child still have asthma?",
+  "values": {
+   "1": "Yes",
+   "2": "No",
+   "7": "Don't know/Not Sure",
+   "9": "Refused",
+   "BLANK": "Not asked or Missing Notes: Section 08.14, CHILDREN, is coded 0, 88, 99, or Missing; or Module 25.01, CASTHDX2, is coded 2, 7, 9, or Missing"
+  }
+ },
+ "_METSTAT": {
+  "name": "_METSTAT",
+  "label": "Metropolitan Status",
+  "section": "",
+  "question": "Metropolitan Status",
+  "values": {
+   "1": "Metropolitan counties (_URBNRRL = 1,2,3,4)",
+   "2": "Nonmetropolitan counties (_URBNRRL = 5,6)",
+   "BLANK": "Not defined or Missing"
+  }
+ },
+ "_URBSTAT": {
+  "name": "_URBSTAT",
+  "label": "Urban/Rural Status",
+  "section": "",
+  "question": "Urban/Rural Status",
+  "values": {
+   "1": "Urban counties (_URBNRRL = 1,2,3,4,5)",
+   "2": "Rural counties (_URBNRRL = 6)",
+   "BLANK": "Not defined or Missing"
+  }
+ },
+ "MSCODE": {
+  "name": "MSCODE",
+  "label": "Metropolitan Status Code",
+  "section": "",
+  "question": "Metropolitan Status Code",
+  "values": {
+   "1": "In the center city of an MSA",
+   "3": "Inside a suburban county of the MSA",
+   "5": "Not in an MSA",
+   "BLANK": "GU, PR, VI, or cell phone"
+  }
+ },
+ "_STSTR": {
+  "name": "_STSTR",
+  "label": "Sample Design Stratification Variable",
+  "section": "",
+  "question": "Sample Design Stratification Variable (Prior to 2011: _STSTR is a five digit number that combines the values for _STATE (first two characters), _GEOSTR (third and fourth character), and _DENSTR2 (final character).)",
+  "values": {
+   "HIDDEN": "Data not displayed Notes: Floating Decimal Point. Due to the nature of the data or the size of the table for display, this information is not printed for this report"
+  }
+ },
+ "_STRWT": {
+  "name": "_STRWT",
+  "label": "Stratum weight",
+  "section": "",
+  "question": "Stratum weight (Number of records in a stratum (NRECSTR) divided by the number of records selected (NRECSEL).)",
+  "values": {
+   "HIDDEN": "Data not displayed Notes: Floating Decimal Point. Due to the nature of the data or the size of the table for display, this information is not printed for this report"
+  }
+ },
+ "_RAWRAKE": {
+  "name": "_RAWRAKE",
+  "label": "Raw weighting factor used in raking",
+  "section": "",
+  "question": "Raw weighting factor used in raking (Number of adults in the household (NUMADULT, maximum of 5) divided by the imputed number of phones (_IMPNPH, maximum of 3).)",
+  "values": {
+   "HIDDEN": "Data not displayed Notes: Floating Decimal Point. Due to the nature of the data or the size of the table for display, this information is not printed for this report"
+  }
+ },
+ "_WT2RAKE": {
+  "name": "_WT2RAKE",
+  "label": "Design weight use in raking",
+  "section": "",
+  "question": "Design weight used in raking (Stratum weight (_STRWT) multiplied by the raw weighting factor (_RAWRAKE).)",
+  "values": {
+   "HIDDEN": "Data not displayed Notes: Floating Decimal Point. Due to the nature of the data or the size of the table for display, this information is not printed for this report"
+  }
+ },
+ "_IMPRACE": {
+  "name": "_IMPRACE",
+  "label": "Imputed race/ethnicity value",
+  "section": "",
+  "question": "Imputed race/ethnicity value (This value is the reported race/ethnicity or an imputed race/ethnicity, if the respondent refused to give a race/ethnicity. The value of the imputed race/ethnicity will be the most common race/ethnicity response for that region of the state)",
+  "values": {
+   "1": "White, Non-Hispanic",
+   "2": "Black, Non-Hispanic",
+   "3": "Asian, Non-Hispanic",
+   "4": "American Indian/Alaskan Native, Non-Hispanic",
+   "5": "Hispanic",
+   "6": "Other race, Non-Hispanic"
+  }
+ },
+ "_CHISPNC": {
+  "name": "_CHISPNC",
+  "label": "Child Hispanic, Latino/a, or Spanish origin calculated variable",
+  "section": "",
+  "question": "Child Hispanic, Latino/a, or Spanish origin calculated variable",
+  "values": {
+   "1": "Child of Hispanic, Latino/a, or Spanish origin",
+   "2": "Child not of Hispanic, Latino/a, or Spanish origin",
+   "9": "Don't know/Not Sure/Refused/Missing",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "_CRACE1": {
+  "name": "_CRACE1",
+  "label": "Child Non-Hispanic Race including Multiracial",
+  "section": "",
+  "question": "Child multiracial race categorization",
+  "values": {
+   "1": "White only",
+   "2": "Black or African American only",
+   "3": "American Indian or Alaskan Native only",
+   "4": "Asian Only",
+   "5": "Native Hawaiian or other Pacific Islander only",
+   "6": "Other race only",
+   "7": "Multiracial",
+   "77": "Don't know/Not sure",
+   "99": "Refused",
+   "BLANK": "Missing"
+  }
+ },
+ "CAGEG": {
+  "name": "CAGEG",
+  "label": "Four level child age",
+  "section": "",
+  "question": "Four level child age",
+  "values": {
+   "1": "0 months to < 5 years of age Notes: 0 LE CHILDAGE LT 60",
+   "2": "5 to < 10 years of age Notes: 60 LE CHILDAGE LT 120",
+   "3": "10 to < 15 years of age Notes: 120 LE CHILDAGE LT 180",
+   "4": "15 to < 18 years of age Notes: 180 LE CHILDAGE LT 216",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "_CLLCPWT": {
+  "name": "_CLLCPWT",
+  "label": "Final child weight: Land-line and Cell-Phone data",
+  "section": "",
+  "question": "Final child weight: Land-line and Cell-Phone data (Raking derived weight)",
+  "values": {
+   "HIDDEN": "Data not displayed Notes: Floating Decimal Point. Due to the nature of the data or the size of the table for display, this information is not printed for this report"
+  }
+ },
+ "_DUALUSE": {
+  "name": "_DUALUSE",
+  "label": "Dual Phone Use Categories",
+  "section": "",
+  "question": "Dual Phone Use Categories",
+  "values": {
+   "1": "Landline frame with a cell phone",
+   "2": "Cell phone frame with a landline",
+   "9": "No Dual Phone Use"
+  }
+ },
+ "_DUALCOR": {
+  "name": "_DUALCOR",
+  "label": "Dual Phone Use Correction Factor",
+  "section": "",
+  "question": "Dual phone use correction factor",
+  "values": {
+   "HIDDEN": "Data not displayed Notes: Due to the nature of the data or the size of the table for display, this information is not printed for this report"
+  }
+ },
+ "_LLCPWT2": {
+  "name": "_LLCPWT2",
+  "label": "Truncated design weight used in adult combined land line and cell phone raking",
+  "section": "",
+  "question": "Truncated design weight used in adult combined land line and cell phone raking",
+  "values": {
+   "HIDDEN": "Data not displayed Notes: Floating Decimal Point. Due to the nature of the data or the size of the table for display, this information is not printed for this report"
+  }
+ },
+ "_LLCPWT": {
+  "name": "_LLCPWT",
+  "label": "Final weight: Land-line and cell-phone data",
+  "section": "",
+  "question": "Final weight assigned to each respondent: Land-line and cell-phone data (Raking derived weight)",
+  "values": {
+   "HIDDEN": "Data not displayed"
+  }
+ },
+ "_RFHLTH": {
+  "name": "_RFHLTH",
+  "label": "Adults with good or better health",
+  "section": "",
+  "question": "Adults with good or better health",
+  "values": {
+   "1": "Good or Better Health Notes: GENHLTH = 1 or 2 or 3",
+   "2": "Fair or Poor Health Notes: GENHLTH = 4 or 5",
+   "9": "Don't know/Not Sure Or Refused/Missing Notes: GENHLTH = 7 or 9 or Missing"
+  }
+ },
+ "_PHYS14D": {
+  "name": "_PHYS14D",
+  "label": "Computed Physical Health Status",
+  "section": "",
+  "question": "3 level not good physical health status: 0 days, 1-13 days, 14-30 days",
+  "values": {
+   "1": "Zero days when physical health not good",
+   "2": "1-13 days when physical health not good",
+   "3": "14+ days when physical health not good",
+   "9": "Don't know/Refused/Missing"
+  }
+ },
+ "_MENT14D": {
+  "name": "_MENT14D",
+  "label": "Computed Mental Health Status",
+  "section": "",
+  "question": "3 level not good mental health status: 0 days, 1-13 days, 14-30 days",
+  "values": {
+   "1": "Zero days when mental health not good",
+   "2": "1-13 days when mental health not good",
+   "3": "14+ days when mental health not good",
+   "9": "Don't know/Refused/Missing"
+  }
+ },
+ "_HLTHPL2": {
+  "name": "_HLTHPL2",
+  "label": "Have any health insurance",
+  "section": "",
+  "question": "Adults who had some form of health insurance",
+  "values": {
+   "1": "Have some form of insurance Notes: PRIMINS2=1, 2, 3, 4, 5, 6, 7, 8, 9, 10",
+   "2": "Do not have some form of health insurance Notes: PRIMINS2=88",
+   "9": "Don't know, refused or missing insurance response Notes: PRIMINS2=77, 99, or Missing"
+  }
+ },
+ "_HCVU654": {
+  "name": "_HCVU654",
+  "label": "Respondents aged 18-64 with health insurance",
+  "section": "",
+  "question": "Respondents aged 18-64 who have any form of health insurance",
+  "values": {
+   "1": "Have some form of health insurance Notes: 18 <= AGE <=64 and PRIMINS2=1, 2, 3, 4, 5, 6, 7, 8, 9, 10",
+   "2": "Do not have any form of health insurance Notes: 18 <= AGE <= 64 and PRIMINS2=88",
+   "9": "Don't know/Not Sure, Refused or Missing Notes: 18 <= AGE <= 64 and PRIMINS2=77, 99, or Missing or AGE => 65"
+  }
+ },
+ "_TOTINDA": {
+  "name": "_TOTINDA",
+  "label": "Leisure Time Physical Activity Calculated Variable",
+  "section": "",
+  "question": "Adults who reported doing physical activity or exercise during the past 30 days other than their regular job",
+  "values": {
+   "1": "Had physical activity or exercise Notes: EXERANY2 = 1",
+   "2": "No physical activity or exercise in last 30 days Notes: EXERANY2 = 2",
+   "9": "Don't know/Refused/Missing Notes: EXERANY2 = 7 or 9 or Missing"
+  }
+ },
+ "_RFHYPE6": {
+  "name": "_RFHYPE6",
+  "label": "High Blood Pressure Calculated Variable",
+  "section": "",
+  "question": "Adults who have been told they have high blood pressure by a doctor, nurse, or other health professional",
+  "values": {
+   "1": "No Notes: BPHIGH6 = 2 or 3 or 4",
+   "2": "Yes Notes: BPHIGH6 = 1",
+   "9": "Don't know/Not Sure/Refused/Missing Notes: BPHIGH6 = 7 or 9 or Missing"
+  }
+ },
+ "_CHOLCH3": {
+  "name": "_CHOLCH3",
+  "label": "Cholesterol Checked Calculated Variable",
+  "section": "",
+  "question": "Cholesterol check within past five years",
+  "values": {
+   "1": "Had cholesterol checked in past 5 years Notes: CHOLCHK3 = 2 or 3 or 4 or 5 or 6",
+   "2": "Did not have cholesterol checked in past 5 years Notes: CHOLCHK3 = 8",
+   "3": "Have never had cholesterol checked Notes: CHOLCHK3 = 1",
+   "9": "Don't know/Not Sure Or Refused/Missing Notes: CHOLCHK3 = 7 or 9 or Missing"
+  }
+ },
+ "_RFCHOL3": {
+  "name": "_RFCHOL3",
+  "label": "High Cholesterol Calculated Variable",
+  "section": "",
+  "question": "Adults who have had their cholesterol checked and have been told by a doctor, nurse, or other health professional that it was high",
+  "values": {
+   "1": "No Notes: CHOLCHK3 = 2,3,4,5,6 or 8 and TOLDHI3 = 2",
+   "2": "Yes Notes: CHOLCHK3 = 2,3,4,5,6 or 8 and TOLDHI3 = 1",
+   "9": "Don't know/Not Sure Or Refused/Missing Notes: CHOLCHK3 = 2,3,4,5,6 or 8 and TOLDHI3 = 7 or 9 or Missing",
+   "BLANK": "Missing Notes: CHOLCHK3 = 1 or 7 or 9 or Missing"
+  }
+ },
+ "_MICHD": {
+  "name": "_MICHD",
+  "label": "Ever had CHD or MI",
+  "section": "",
+  "question": "Respondents that have ever reported having coronary heart disease (CHD) or myocardial infarction (MI)",
+  "values": {
+   "1": "Reported having MI or CHD Notes: CVDINFR4=1 OR CVDCRHD4=1",
+   "2": "Did not report having MI or CHD Notes: CVDINFR4=2 AND CVDCRHD4=2",
+   "BLANK": "Not asked or Missing Notes: CVDINFR4=7, 9 or Missing OR CVDCRHD4=7, 9, or Missing"
+  }
+ },
+ "_LTASTH1": {
+  "name": "_LTASTH1",
+  "label": "Lifetime Asthma Calculated Variable",
+  "section": "",
+  "question": "Adults who have ever been told they have asthma",
+  "values": {
+   "1": "No Notes: ASTHMA3 = 2",
+   "2": "Yes Notes: ASTHMA3 = 1",
+   "9": "Don't know/Not Sure Or Refused/Missing Notes: ASTHMA3 = 7 or 9 or Missing"
+  }
+ },
+ "_CASTHM1": {
+  "name": "_CASTHM1",
+  "label": "Current Asthma Calculated Variable",
+  "section": "",
+  "question": "Adults who have been told they currently have asthma",
+  "values": {
+   "1": "No Notes: ASTHMA3 = 2 or ASTHMA3 = 1 and ASTHNOW = 2",
+   "2": "Yes Notes: ASTHMA3 = 1 and ASTHNOW = 1",
+   "9": "Don't know/Not Sure Or Refused/Missing Notes: ASTHMA3 = 7 or 9 or Missing or ASTHNOW = 7 or 9 or Missing"
+  }
+ },
+ "_ASTHMS1": {
+  "name": "_ASTHMS1",
+  "label": "Computed Asthma Status",
+  "section": "",
+  "question": "Computed asthma status",
+  "values": {
+   "1": "Current Notes: ASTHMA3 = 1 and ASTHNOW = 1",
+   "2": "Former Notes: ASTHMA3 = 1 and ASTHNOW = 2",
+   "3": "Never Notes: ASTHMA3 = 2",
+   "9": "Don't know/Not Sure Or Refused/Missing Notes: ASTHMA3 = 7 or 9 or Missing or ASTHNOW = 7 or 9 or Missing"
+  }
+ },
+ "_DRDXAR2": {
+  "name": "_DRDXAR2",
+  "label": "Respondents diagnosed with arthritis",
+  "section": "",
+  "question": "Respondents who have had a doctor diagnose them as having some form of arthritis",
+  "values": {
+   "1": "Diagnosed with arthritis Notes: HAVARTH4=1",
+   "2": "Not diagnosed with arthritis Notes: HAVARTH4=2",
+   "BLANK": "Don't know/Not Sure/Refused/Missing Notes: HAVARTH4=7,9, or missing"
+  }
+ },
+ "_MRACE1": {
+  "name": "_MRACE1",
+  "label": "Calculated non-Hispanic Race including multiracial",
+  "section": "",
+  "question": "Calculated multiracial race categorization",
+  "values": {
+   "1": "White only Notes: MRACASC1 = 10",
+   "2": "Black or African American only Notes: MRACASC1 = 20",
+   "3": "American Indian or Alaskan Native only Notes: MRACASC1 = 30",
+   "4": "Asian Only Notes: MRACASC1 = 40,41,42,43,44,45,46,47",
+   "5": "Native Hawaiian or other Pacific Islander only Notes: MRACASC1 = 50,51,52,53,54",
+   "6": "Other race only Notes: MRACASC1 = 60",
+   "7": "Multiracial Notes: MRACASC1 >= 100",
+   "77": "Don't know/Not sure Notes: MRACASC1 = 77",
+   "99": "Refused Notes: MRACASC1 = 99",
+   "BLANK": "Missing Notes: MRACASC1 = Missing"
+  }
+ },
+ "_HISPANC": {
+  "name": "_HISPANC",
+  "label": "Hispanic, Latino/a, or Spanish origin calculated variable",
+  "section": "",
+  "question": "Hispanic, Latino/a, or Spanish origin calculated variable",
+  "values": {
+   "1": "Hispanic, Latino/a, or Spanish origin",
+   "2": "Not of Hispanic, Latino/a, or Spanish origin",
+   "9": "Don't Know, Refused or Missing"
+  }
+ },
+ "_RACE": {
+  "name": "_RACE",
+  "label": "Computed Race-Ethnicity grouping",
+  "section": "",
+  "question": "Race/ethnicity categories",
+  "values": {
+   "1": "White only, non-Hispanic Notes: _HISPANC = 2 and _MRACE1 = 10",
+   "2": "Black only, non-Hispanic Notes: _HISPANC = 2 and _MRACE1 = 20",
+   "3": "American Indian or Alaskan Native only, Non-Hispanic Notes: _HISPANC = 2 and _MRACE1 = 30",
+   "4": "Asian only, non-Hispanic Notes: _HISPANC = 2 and _MRACE1 = 40,41,42,43,44,45,46,47",
+   "5": "Native Hawaiian or other Pacific Islander only, Non-Hispanic Notes: _HISPANC = 2 and _MRACE1 = 50,51,52,53,54",
+   "6": "Other race only, non-Hispanic Notes: _HISPANC = 2 and _MRACE1 = 60",
+   "7": "Multiracial, non-Hispanic Notes: _HISPANC = 2 and _MRACE1 = 77",
+   "8": "Hispanic Notes: _HISPANC = 1",
+   "9": "Don't know/Not sure/Refused Notes: _HISPANC = 7 or 9 or _MRACE1 = 77 or 99 and _HISPANC = 2",
+   "BLANK": "Missing Notes: _HISPANC = Missing or _MRACE1 = Missing"
+  }
+ },
+ "_RACEG21": {
+  "name": "_RACEG21",
+  "label": "Create Computed Non-Hispanic Whites/All Others Race Categories Race/Ethnic Group Codes Used In Post-Stratification Variable",
+  "section": "",
+  "question": "White non-Hispanic race group",
+  "values": {
+   "1": "Non-Hispanic White Notes: _RACE = 1",
+   "2": "Non-White or Hispanic Notes: _RACE = 2 or 3 or 4 or 5 or 6 or 7 or 8",
+   "9": "Don't know/Not sure/Refused Notes: _RACE = 9",
+   "BLANK": "Missing"
+  }
+ },
+ "_RACEGR3": {
+  "name": "_RACEGR3",
+  "label": "Computed Five level race/ethnicity category.",
+  "section": "",
+  "question": "Five-level race/ethnicity category",
+  "values": {
+   "1": "White only, Non-Hispanic",
+   "2": "Black only, Non-Hispanic",
+   "3": "Other race only, Non-Hispanic",
+   "4": "Multiracial, Non-Hispanic",
+   "5": "Hispanic",
+   "9": "Don't know/Not sure/Refused",
+   "BLANK": "Missing"
+  }
+ },
+ "_RACEPRV": {
+  "name": "_RACEPRV",
+  "label": "Computed race groups used for internet prevalence tables",
+  "section": "",
+  "question": "Computed race groups used for internet prevalence tables",
+  "values": {
+   "1": "White only, non-Hispanic Notes: _RACE=1 or _RACE=9 and _IMPRACE=1",
+   "2": "Black only, non-Hispanic Notes: _RACE=2 or _RACE=9 and _IMPRACE=2",
+   "3": "American Indian or Alaskan Native only, Non-Hispanic Notes: _RACE=3 or _RACE=9 and _IMPRACE=4",
+   "4": "Asian only, non-Hispanic Notes: _RACE=4 or _RACE=9 and _IMPRACE=3",
+   "5": "Native Hawaiian or other Pacific Islander only, Non-Hispanic Notes: _RACE=5",
+   "6": "Other race only, non-Hispanic Notes: _RACE=6 or _RACE=9 and _IMPRACE=6",
+   "7": "Multiracial, non-Hispanic Notes: _RACE=7",
+   "8": "Hispanic Notes: _RACE=8 or _RACE=9 and _IMPRACE==5",
+   "BLANK": "Missing"
+  }
+ },
+ "_SEX": {
+  "name": "_SEX",
+  "label": "Calculated sex variable",
+  "section": "",
+  "question": "Calculated sex variable",
+  "values": {
+   "1": "Male Notes: SEXVAR=1",
+   "2": "Female Notes: SEXVAR=2"
+  }
+ },
+ "_AGEG5YR": {
+  "name": "_AGEG5YR",
+  "label": "Reported age in five-year age categories calculated variable",
+  "section": "",
+  "question": "Fourteen-level age category",
+  "values": {
+   "1": "Age 18 to 24 Notes: 18 <= AGE <= 24",
+   "2": "Age 25 to 29 Notes: 25 <= AGE <= 29",
+   "3": "Age 30 to 34 Notes: 30 <= AGE <= 34",
+   "4": "Age 35 to 39 Notes: 35 <= AGE <= 39",
+   "5": "Age 40 to 44 Notes: 40 <= AGE <= 44",
+   "6": "Age 45 to 49 Notes: 45 <= AGE <= 49",
+   "7": "Age 50 to 54 Notes: 50 <= AGE <= 54",
+   "8": "Age 55 to 59 Notes: 55 <= AGE <= 59",
+   "9": "Age 60 to 64 Notes: 60 <= AGE <= 64",
+   "10": "Age 65 to 69 Notes: 65 <= AGE <= 69",
+   "11": "Age 70 to 74 Notes: 70 <= AGE <= 74",
+   "12": "Age 75 to 79 Notes: 75 <= AGE <= 79",
+   "13": "Age 80 or older Notes: 80 <= AGE <= 99",
+   "14": "Don't know/Refused/Missing Notes: 7 <= AGE <= 9"
+  }
+ },
+ "_AGE65YR": {
+  "name": "_AGE65YR",
+  "label": "Reported age in two age groups calculated variable",
+  "section": "",
+  "question": "Two-level age category",
+  "values": {
+   "1": "Age 18 to 64 Notes: 18 <= AGE <= 64",
+   "2": "Age 65 or older Notes: 65 <= AGE <= 99",
+   "3": "Don't know/Refused/Missing Notes: 7 <= AGE <= 9"
+  }
+ },
+ "_AGE80": {
+  "name": "_AGE80",
+  "label": "Imputed Age value collapsed above 80",
+  "section": "",
+  "question": "Imputed Age value collapsed above 80",
+  "values": {
+   "18 - 24": "Imputed Age 18 to 24",
+   "25 - 29": "Imputed Age 25 to 29",
+   "30 - 34": "Imputed Age 30 to 34",
+   "35 - 39": "Imputed Age 35 to 39",
+   "40 - 44": "Imputed Age 40 to 44",
+   "45 - 49": "Imputed Age 45 to 49",
+   "50 - 54": "Imputed Age 50 to 54",
+   "55 - 59": "Imputed Age 55 to 59",
+   "60 - 64": "Imputed Age 60 to 64",
+   "65 - 69": "Imputed Age 65 to 69",
+   "70 - 74": "Imputed Age 70 to 74",
+   "75 - 79": "Imputed Age 75 to 79",
+   "80 - 99": "Imputed Age 80 or older"
+  }
+ },
+ "_AGE_G": {
+  "name": "_AGE_G",
+  "label": "Imputed age in six groups",
+  "section": "",
+  "question": "Six-level imputed age category",
+  "values": {
+   "1": "Age 18 to 24 Notes: 18 <= _IMPAGE <= 24",
+   "2": "Age 25 to 34 Notes: 25 <= _IMPAGE <= 34",
+   "3": "Age 35 to 44 Notes: 35 <= _IMPAGE <= 44",
+   "4": "Age 45 to 54 Notes: 45 <= _IMPAGE <= 54",
+   "5": "Age 55 to 64 Notes: 55 <= _IMPAGE <= 64",
+   "6": "Age 65 or older Notes: _IMPAGE => 65"
+  }
+ },
+ "HTIN4": {
+  "name": "HTIN4",
+  "label": "Computed Height in Inches",
+  "section": "",
+  "question": "Reported height in inches",
+  "values": {
+   "36 - 95": "Height in inches Notes: 0300 <= HEIGHT3 <= 0711",
+   "BLANK": "Don't know/Refused/Not asked or Missing Notes: HEIGHT3=777, 999, 7777, 9999, or HEIGHT3 < 36 inches or HEIGHT3 > 95 inches, or HEIGHT3=missing, or HEIGHT3=metric value"
+  }
+ },
+ "HTM4": {
+  "name": "HTM4",
+  "label": "Computed Height in Meters",
+  "section": "",
+  "question": "Reported height in meters",
+  "values": {
+   "91 - 244": "Height in meters [2 implied decimal places] Notes: 0300 <= HEIGHT3 <= 0711 or 9091 <= HEIGHT3 <= 9244 (non-metric HEIGHT3 value multiplied by .0254)",
+   "BLANK": "Don't know/Refused/Not asked or Missing Notes: HEIGHT3 = 7777 or 9999 or outside accepted values or HEIGHT3=missing"
+  }
+ },
+ "WTKG3": {
+  "name": "WTKG3",
+  "label": "Computed Weight in Kilograms",
+  "section": "",
+  "question": "Reported weight in kilograms",
+  "values": {
+   "2300 - 29500": "Weight in kilograms [2 implied decimal places] Notes: 0001 <= WEIGHT2 <= 650 or 9023 <= WEIGHT2 <= 9295 (non-metric WEIGHT2 value divided by 2.2046)",
+   "BLANK": "Don't know/Refused/Not asked or Missing Notes: WEIGHT2 = 7777 or 9999 or not in accepted values or WEIGHT2 = Missing"
+  }
+ },
+ "_BMI5": {
+  "name": "_BMI5",
+  "label": "Computed body mass index",
+  "section": "",
+  "question": "Body Mass Index (BMI)",
+  "values": {
+   "1 - 9999": "1 or greater Notes: WTKG3/(HTM4*HTM4) (Has 2 implied decimal places)",
+   "BLANK": "Don't know/Refused/Missing Notes: WTKG3 = 777 or 999 or HTM4 = 777 or 999"
+  }
+ },
+ "_BMI5CAT": {
+  "name": "_BMI5CAT",
+  "label": "Computed body mass index categories",
+  "section": "",
+  "question": "Four-categories of Body Mass Index (BMI)",
+  "values": {
+   "1": "Underweight Notes: _BMI5 < 1850 (_BMI5 has 2 implied decimal places)",
+   "2": "Normal Weight Notes: 1850 <= _BMI5 < 2500",
+   "3": "Overweight Notes: 2500 <= _BMI5 < 3000",
+   "4": "Obese Notes: 3000 <= _BMI5 < 9999",
+   "BLANK": "Don't know/Refused/Missing Notes: _BMI5 = 9999"
+  }
+ },
+ "_RFBMI5": {
+  "name": "_RFBMI5",
+  "label": "Overweight or obese calculated variable",
+  "section": "",
+  "question": "Adults who have a body mass index greater than 25.00 (Overweight or Obese)",
+  "values": {
+   "1": "No Notes: 1200 <= _BMI5 < 2500 (_BMI5 has 2 implied decimal places)",
+   "2": "Yes Notes: 2500 <= _BMI5 < 9999",
+   "9": "Don't know/Refused/Missing Notes: _BMI5 = 9999"
+  }
+ },
+ "_CHLDCNT": {
+  "name": "_CHLDCNT",
+  "label": "Computed number of children in household",
+  "section": "",
+  "question": "Number of children in household",
+  "values": {
+   "1": "No children in household Notes: CHILDREN = 88",
+   "2": "One child in household Notes: CHILDREN = 01",
+   "3": "Two children in household Notes: CHILDREN = 02",
+   "4": "Three children in household Notes: CHILDREN = 03",
+   "5": "Four children in household Notes: CHILDREN = 04",
+   "6": "Five or more children in household Notes: 05 <= CHILDREN < 88",
+   "9": "Don't know/Not sure/Missing Notes: CHILDREN = 99"
+  }
+ },
+ "_EDUCAG": {
+  "name": "_EDUCAG",
+  "label": "Computed level of education completed categories",
+  "section": "",
+  "question": "Level of education completed",
+  "values": {
+   "1": "Did not graduate High School Notes: EDUCA = 1 or 2 or 3",
+   "2": "Graduated High School Notes: EDUCA = 4",
+   "3": "Attended College or Technical School Notes: EDUCA = 5",
+   "4": "Graduated from College or Technical School Notes: EDUCA = 6",
+   "9": "Don't know/Not sure/Missing Notes: EDUCA = 9 or Missing"
+  }
+ },
+ "_INCOMG1": {
+  "name": "_INCOMG1",
+  "label": "Computed income categories",
+  "section": "",
+  "question": "Income categories",
+  "values": {
+   "1": "Less than $15,000 Notes: INCOME3=1,2",
+   "2": "$15,000 to < $25,000 Notes: INCOME3=3,4",
+   "3": "$25,000 to < $35,000 Notes: INCOME3=5",
+   "4": "$35,000 to < $50,000 Notes: INCOME3=6",
+   "5": "$50,000 to < $100,000 Notes: INCOME3=7,8",
+   "6": "$100,000 to < $200,000 Notes: INCOME3=9,10",
+   "7": "$200,000 or more Notes: INCOME3=11",
+   "9": "Don't know/Not sure/Missing Notes: INCOME3=77, 99, or Missing"
+  }
+ },
+ "_SMOKER3": {
+  "name": "_SMOKER3",
+  "label": "Computed Smoking Status",
+  "section": "",
+  "question": "Four-level smoker status: Everyday smoker, Someday smoker, Former smoker, Non-smoker",
+  "values": {
+   "1": "Current smoker - now smokes every day Notes: SMOKE100 = 1 and SMOKEDAY = 1",
+   "2": "Current smoker - now smokes some days Notes: SMOKE100 = 1 and SMOKEDAY = 2",
+   "3": "Former smoker Notes: SMOKE100 = 1 and SMOKEDAY = 3",
+   "4": "Never smoked Notes: SMOKE100 = 2",
+   "9": "Don't know/Refused/Missing Notes: SMOKE100 = 1 and SMOKEDAY = 9 or SMOKE100 = 7 or 9 or Missing"
+  }
+ },
+ "_RFSMOK3": {
+  "name": "_RFSMOK3",
+  "label": "Current Smoking Calculated Variable",
+  "section": "",
+  "question": "Adults who are current smokers",
+  "values": {
+   "1": "No Notes: _SMOKER3 = 3 or 4",
+   "2": "Yes Notes: _SMOKER3 = 1 or 2",
+   "9": "Don't know/Refused/Missing Notes: _SMOKER3 = 9"
+  }
+ },
+ "_CURECI3": {
+  "name": "_CURECI3",
+  "label": "Current E-cigarette User Calculated Variable",
+  "section": "",
+  "question": "Adults who are current e-cigarette users",
+  "values": {
+   "1": "Not currently using E-cigarettes Notes: ECIGNOW3=1, 4",
+   "2": "Current E-cigarette user Notes: ECIGNOW3=2,3",
+   "9": "Don't know/Refused/Missing Notes: ECIGNOW3=7,9, or Missing"
+  }
+ },
+ "DRNKANY6": {
+  "name": "DRNKANY6",
+  "label": "Drink any alcoholic beverages in past 30 days",
+  "section": "",
+  "question": "Adults who reported having had at least one drink of alcohol in the past 30 days.",
+  "values": {
+   "1": "Yes Notes: 1 <= ALCDAY4 <= 231",
+   "2": "No Notes: ALCDAY4=888",
+   "7": "Don't know/Not Sure Notes: ALCDAY4=777",
+   "9": "Refused/Missing Notes: ALCDAY4=999, Missing"
+  }
+ },
+ "DROCDY4_": {
+  "name": "DROCDY4_",
+  "label": "Computed drink-occasions-per-day",
+  "section": "",
+  "question": "Drink-occasions-per-day",
+  "values": {
+   "0": "No Drink-Occasions per day Notes: ALCDAY4 = 888",
+   "1 - 899": "Drink-Occasions per day Notes: ALCDAY4 <= 231",
+   "900": "Don't know/Not Sure Or Refused/Missing Notes: ALCDAY4 = 777 or 999 or Missing"
+  }
+ },
+ "_RFBING6": {
+  "name": "_RFBING6",
+  "label": "Binge Drinking Calculated Variable",
+  "section": "",
+  "question": "Binge drinkers (males having five or more drinks on one occasion, females having four or more drinks on one occasion)",
+  "values": {
+   "1": "No Notes: ALCDAY4<231 and DRNK3GE5=88; or ALCDAY4=888",
+   "2": "Yes Notes: ALCDAY4<231 and 1<=DRNK3GE5<=76",
+   "9": "Don't know/Refused/Missing Notes: DRNK3GE5=77, 99, missing; or ALCDAY4=777, 999, missing"
+  }
+ },
+ "_DRNKWK3": {
+  "name": "_DRNKWK3",
+  "label": "Computed number of drinks of alcohol beverages per week",
+  "section": "",
+  "question": "Calculated total number of alcoholic beverages consumed per week",
+  "values": {
+   "0": "Did not drink Notes: DROCDY4_=0 or AVEDRNK4=88",
+   "1 - 98999": "Number of drinks per week Notes: 0 < DROCDY4_ < 990",
+   "99900": "Don't know/Not sure/Refused/Missing Notes: AVEDRNK4=.,77,99 or DROCDY4_=900"
+  }
+ },
+ "_RFDRHV9": {
+  "name": "_RFDRHV9",
+  "label": "Heavy Alcohol Consumption Calculated Variable",
+  "section": "",
+  "question": "Heavy drinkers (adult men having more than 14 drinks per week and adult women having more than 7 drinks per week)",
+  "values": {
+   "1": "No Notes: SEXVAR=1 and _DRNKWK3 <= 1400 or SEXVAR=2 and _DRNKWK3 <= 700 or ALCDAY4=888",
+   "2": "Yes Notes: SEXVAR=1 and _DRNKWK3 > 1400 or SEXVAR=2 and _DRNKWK3 > 700",
+   "9": "Don't know/Refused/Missing Notes: ALCDAY5=777, 999, or Missing, or _DRNKWK3=99, or Missing"
+  }
+ },
+ "_FLSHOT7": {
+  "name": "_FLSHOT7",
+  "label": "Flu Shot Calculated Variable",
+  "section": "",
+  "question": "Adults aged 65+ who have had a ï¬u shot within the past year",
+  "values": {
+   "1": "Yes Notes: AGE >=65 and FLUSHOT7 = 1",
+   "2": "No Notes: AGE >=65 and FLUSHOT7 = 2",
+   "9": "Don't know/Not Sure Or Refused/Missing",
+   "BLANK": "Age < 65"
+  }
+ },
+ "_PNEUMO3": {
+  "name": "_PNEUMO3",
+  "label": "Pneumonia Vaccination Calculated Variable",
+  "section": "",
+  "question": "Adults aged 65+ who have ever had a pneumonia vaccination",
+  "values": {
+   "1": "Yes Notes: AGE >= 65 and PNEUVAC4 = 1",
+   "2": "No Notes: AGE >= 65 and PNEUVAC4 = 2",
+   "9": "Don't know/Not Sure Or Refused/Missing Notes: AGE = 7 or 9 or Missing or PNEUVAC4 = 7 or 9 or Missing",
+   "BLANK": "Age < 65 Notes: AGE < 65"
+  }
+ },
+ "FTJUDA2_": {
+  "name": "FTJUDA2_",
+  "label": "Computed Fruit Juice intake in times per day",
+  "section": "",
+  "question": "Fruit juice intake in times per day",
+  "values": {
+   "0 - 9999": "Times per day (two implied decimal places)",
+   "BLANK": "Don't know/Not Sure Or Refused/Missing"
+  }
+ },
+ "FRUTDA2_": {
+  "name": "FRUTDA2_",
+  "label": "Computed Fruit intake in times per day",
+  "section": "",
+  "question": "Fruit intake in times per day",
+  "values": {
+   "0 - 9999": "Times per day (two implied decimal places)",
+   "BLANK": "Don't know/Not Sure Or Refused/Missing"
+  }
+ },
+ "GRENDA1_": {
+  "name": "GRENDA1_",
+  "label": "Computed Dark Green Vegetable intake in times per day",
+  "section": "",
+  "question": "Dark green vegetable intake in times per day",
+  "values": {
+   "0 - 9999": "Times per day (two implied decimal places)",
+   "BLANK": "Don't know/Not Sure Or Refused/Missing"
+  }
+ },
+ "FRNCHDA_": {
+  "name": "FRNCHDA_",
+  "label": "Computed French Fry intake in times per day",
+  "section": "",
+  "question": "French Fry intake in times per day",
+  "values": {
+   "0 - 9999": "Times per day (two implied decimal places)",
+   "BLANK": "Don't know/Not Sure Or Refused/Missing"
+  }
+ },
+ "POTADA1_": {
+  "name": "POTADA1_",
+  "label": "Computed Potato Servings per day",
+  "section": "",
+  "question": "Potato servings per day",
+  "values": {
+   "0 - 9999": "Times per day",
+   "BLANK": "Don't know/Not Sure Or Refused/Missing"
+  }
+ },
+ "VEGEDA2_": {
+  "name": "VEGEDA2_",
+  "label": "Computed Other Vegetable intake in times per day",
+  "section": "",
+  "question": "Other vegetable intake in times per day",
+  "values": {
+   "0 - 9999": "Times per day (two implied decimal places)",
+   "BLANK": "Don't know/Not Sure Or Refused/Missing"
+  }
+ },
+ "_MISFRT1": {
+  "name": "_MISFRT1",
+  "label": "The number of missing fruit responses",
+  "section": "",
+  "question": "The number of missing fruit responses",
+  "values": {
+   "0": "No missing fruit responses",
+   "1 - 2": "Has 1 or 2 missing fruit responses"
+  }
+ },
+ "_MISVEG1": {
+  "name": "_MISVEG1",
+  "label": "The number of missing vegetable responses",
+  "section": "",
+  "question": "The number of missing vegetable responses",
+  "values": {
+   "0": "No missing vegetable responses",
+   "1 - 4": "Has 1, 2, 3, or 4 missing vegetable responses"
+  }
+ },
+ "_FRTRES1": {
+  "name": "_FRTRES1",
+  "label": "Missing any fruit responses",
+  "section": "",
+  "question": "Missing any fruit responses",
+  "values": {
+   "0": "Not Included - Missing Fruit Responses",
+   "1": "Included - Not Missing Fruit Responses"
+  }
+ },
+ "_VEGRES1": {
+  "name": "_VEGRES1",
+  "label": "Missing any vegetable responses",
+  "section": "",
+  "question": "Missing any vegetable responses",
+  "values": {
+   "0": "Not Included - Missing Vegetable Responses",
+   "1": "Included - Not Missing Vegetable Responses"
+  }
+ },
+ "_FRUTSU1": {
+  "name": "_FRUTSU1",
+  "label": "Total fruits consumed per day",
+  "section": "",
+  "question": "Total fruits consumed per day",
+  "values": {
+   "0 - 99998": "Number of Fruits consumed per day (two implied decimal places)",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "_VEGESU1": {
+  "name": "_VEGESU1",
+  "label": "Total vegetables consumed per day",
+  "section": "",
+  "question": "Total vegetables consumed per day",
+  "values": {
+   "0 - 99998": "Number of Vegetables consumed per day (two implied decimal places)",
+   "BLANK": "Not asked or Missing"
+  }
+ },
+ "_FRTLT1A": {
+  "name": "_FRTLT1A",
+  "label": "Consume Fruit 1 or more times per day",
+  "section": "",
+  "question": "Consume Fruit 1 or more times per day",
+  "values": {
+   "1": "Consumed fruit one or more times per day",
+   "2": "Consumed fruit < one time per day",
+   "9": "Don't know, refused or missing values"
+  }
+ },
+ "_VEGLT1A": {
+  "name": "_VEGLT1A",
+  "label": "Consume Vegetables 1 or more times per day",
+  "section": "",
+  "question": "Consume Vegetables 1 or more times per day",
+  "values": {
+   "1": "Consumed vegetables one or more times per day",
+   "2": "Consumed vegetables < one time per day",
+   "9": "Don't know, refused or missing values"
+  }
+ },
+ "_FRT16A": {
+  "name": "_FRT16A",
+  "label": "Reported consuming Fruit >16 per day",
+  "section": "",
+  "question": "Reported consuming Fruit >16 per day",
+  "values": {
+   "0": "Not Included - Values are too high",
+   "1": "Included - Values are in accepted range"
+  }
+ },
+ "_VEG23A": {
+  "name": "_VEG23A",
+  "label": "Reported consuming Vegetables >23 per day",
+  "section": "",
+  "question": "Reported consuming Vegetables >23 per day",
+  "values": {
+   "0": "Not Included - Values are too high",
+   "1": "Included - Values are in accepted range"
+  }
+ },
+ "_FRUITE1": {
+  "name": "_FRUITE1",
+  "label": "Fruit Exclusion from analyses",
+  "section": "",
+  "question": "Fruit Exclusion from analyses",
+  "values": {
+   "0": "No missing values and in accepted range",
+   "1": "Missing Fruit responses",
+   "2": "Fruit values out of range"
+  }
+ },
+ "_VEGETE1": {
+  "name": "_VEGETE1",
+  "label": "Vegetable Exclusion from analyses",
+  "section": "",
+  "question": "Vegetable Exclusion from analyses",
+  "values": {
+   "0": "No missing values and in accepted range",
+   "1": "Missing Vegetable responses",
+   "2": "Vegetable values out of range"
+  }
+ },
+ "_AIDTST4": {
+  "name": "_AIDTST4",
+  "label": "Ever been tested for HIV calculated variable",
+  "section": "",
+  "question": "Adults who have ever been tested for HIV",
+  "values": {
+   "1": "Yes Notes: HIVTST7 = 1",
+   "2": "No Notes: HIVTST7 = 2",
+   "9": "Don't know/Not Sure/Refused Notes: HIVTST7 = 7 or 9",
+   "BLANK": "Not asked or missing Notes: HIVTST7 = Missing"
+  }
+ }
+}
