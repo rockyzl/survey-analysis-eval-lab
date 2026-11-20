@@ -37,3 +37,12 @@ def test_template_path_costs_nothing(monkeypatch):
     monkeypatch.setattr(pipeline, "llm_spec", boom)
     o = pipeline.route("binge drinking rate wisconsin adults", "TEMPLATE")
     assert o.cost == 0 and o.path == ["template"]
+
+
+def test_live_calls_disabled_by_default(monkeypatch):
+    monkeypatch.delenv("SURVEYLAB_LLM_ENABLED", raising=False)
+    c = llm.AzureLLM("gpt-4.1")
+    with pytest.raises(llm.LLMDisabled):
+        c.complete([{"role": "user", "content": "never-cached question 0f3a"}])
+    assert c._client is None
+    assert not llm.AzureLLM.available()

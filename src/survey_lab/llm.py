@@ -1,4 +1,11 @@
-"""Azure OpenAI backend (keyless: short-lived Azure CLI token for an explicitly named subscription).
+"""Pluggable Azure OpenAI backend (keyless: short-lived Azure CLI token for an explicitly named subscription).
+
+Configuration comes ONLY from environment variables (nothing is hard-coded and no .env file is read):
+  SURVEYLAB_AZURE_ENDPOINT        Azure OpenAI endpoint hosting the gpt-4o / gpt-4.1 deployments
+  SURVEYLAB_AZURE_SUBSCRIPTION    subscription id passed explicitly to `az account get-access-token`
+  SURVEYLAB_AZURE_ENDPOINT_GPT52  optional endpoint hosting a gpt-5.2 deployment
+  SURVEYLAB_LLM_ENABLED=1         required for any live API call; without it only cached responses are replayed
+Deployment names are assumed to equal the model names (gpt-4o, gpt-4.1, gpt-5.2).
 
 Every call is cached in results/llm_cache.jsonl (gitignored) keyed by sha256(deployment, messages), so reruns are
 free and deterministic. Token usage (incl. cached prompt tokens when the API reports them), latency and USD cost
@@ -27,13 +34,12 @@ _token = {"value": None, "expires": 0.0}
 _cache_mem: dict[str, dict] | None = None
 
 
-def _load_env() -> None:
-    env = ROOT / ".env"
-    if env.exists():
-        for line in env.read_text().splitlines():
-            if "=" in line and not line.lstrip().startswith("#"):
-                k, v = line.split("=", 1)
-                os.environ.setdefault(k.strip(), v.strip())
+class LLMDisabled(RuntimeError):
+    pass
+
+
+def live_enabled() -> bool:
+    return os.environ.get("SURVEYLAB_LLM_ENABLED") == "1"
 
 
 def _access_token() -> str:
@@ -84,28 +90,36 @@ class Call:
 
 class AzureLLM:
     def __init__(self, model: str):
-        from openai import AzureOpenAI
-        _load_env()
         self.model = model
-        if model == "gpt-5.2":
-            endpoint, api = os.environ["SURVEYLAB_AZURE_ENDPOINT_GPT52"], API_VERSION_GPT52
-        else:
-            endpoint, api = os.environ["SURVEYLAB_AZURE_ENDPOINT"], API_VERSION
-        self.client = AzureOpenAI(azure_endpoint=endpoint, azure_ad_token_provider=_access_token,
-                                  api_version=api, timeout=90, max_retries=0)
+        self._client = None   # created lazily, only for a live call
+
+    @property
+    def client(self):
+        if self._client is None:
+            if not live_enabled():
+                raise LLMDisabled("live LLM calls are disabled (set SURVEYLAB_LLM_ENABLED=1 and the endpoint env vars)")
+            from openai import AzureOpenAI
+            var = "SURVEYLAB_AZURE_ENDPOINT_GPT52" if self.model == "gpt-5.2" else "SURVEYLAB_AZURE_ENDPOINT"
+            endpoint = os.environ.get(var)
+            if not endpoint or not os.environ.get("SURVEYLAB_AZURE_SUBSCRIPTION"):
+                raise LLMDisabled(f"{var} and SURVEYLAB_AZURE_SUBSCRIPTION must be set for live calls")
+            api = API_VERSION_GPT52 if self.model == "gpt-5.2" else API_VERSION
+            self._client = AzureOpenAI(azure_endpoint=endpoint, azure_ad_token_provider=_access_token,
+                                       api_version=api, timeout=90, max_retries=0)
+        return self._client
 
     @staticmethod
     def available() -> bool:
-        _load_env()
-        return bool(os.environ.get("SURVEYLAB_AZURE_ENDPOINT") and os.environ.get("SURVEYLAB_AZURE_SUBSCRIPTION"))
+        return live_enabled() and bool(os.environ.get("SURVEYLAB_AZURE_ENDPOINT")
+                                       and os.environ.get("SURVEYLAB_AZURE_SUBSCRIPTION"))
 
     def complete(self, messages: list[dict], offline: bool = False) -> Call:
         key = hashlib.sha256(json.dumps([self.model, messages], sort_keys=True).encode()).hexdigest()
         c = _cache().get(key)
         if c is not None:
             return Call(**{**c, "from_cache": True})
-        if offline:
-            raise RuntimeError("cache miss in offline mode")
+        if offline or not live_enabled():
+            raise LLMDisabled("cache miss and live LLM calls are disabled")
         t0 = time.monotonic()
         kw = dict(model=self.model, messages=messages, response_format={"type": "json_object"})
         if self.model == "gpt-5.2":

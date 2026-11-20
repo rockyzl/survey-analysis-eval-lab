@@ -182,3 +182,21 @@ by any LLM policy at this point.
   matcher and prompts were tuned only on dev results, but the author had seen the test question wording while
   writing the question file.
 - The frozen commit hash is recorded in `results/test_summary.json` (`commit`, `code_dirty`).
+
+### A3 (2026-11-20): live LLM calls stopped mid-way through the held-out run
+
+During the single held-out run, live LLM calls were stopped. The Azure OpenAI endpoint being used turned out
+not to be suitable for this project, and no further calls may be made until a suitable account is chosen.
+
+- **Completed on the held-out split.** EXPERT, TEMPLATE and GPT4O (all 166 items), plus GPT41 on the first 60
+  items. A separate exploratory run made 13 gpt-5.2 calls.
+- **Not completed.** GPT41 (full), ROUTER, ROUTER_T41 and GPT52. The primary non-inferiority decision is therefore
+  **not made**.
+- **Status of the existing LLM responses.** They stay cached but are **provisional**. They must be regenerated on
+  the replacement account before any result is used.
+- **Re-run rule.** When the evaluation is re-run on the replacement account, the frozen prompt v3, the matcher
+  and the router are used unchanged. All LLM policies are run once on the held-out split, without reusing the
+  provisional responses: the cache keys include the deployment, so delete the cache or point it elsewhere.
+  Any further change needs a new addendum.
+- **Provider configuration.** The provider now reads its configuration only from environment variables and
+  requires `SURVEYLAB_LLM_ENABLED=1` for live calls.

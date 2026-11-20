@@ -1,0 +1,27 @@
+{
+ "total_usd": 2.5392,
+ "by_model": {
+  "gpt-4o": {
+   "calls": 329,
+   "prompt_tokens": 1013044,
+   "cached_tokens": 950528,
+   "completion_tokens": 33877,
+   "usd": 1.6832199999999988
+  },
+  "gpt-4.1": {
+   "calls": 295,
+   "prompt_tokens": 910671,
+   "cached_tokens": 828800,
+   "completion_tokens": 30282,
+   "usd": 0.8203979999999998
+  },
+  "gpt-5.2": {
+   "calls": 13,
+   "prompt_tokens": 40732,
+   "cached_tokens": 32384,
+   "completion_tokens": 1095,
+   "usd": 0.0356062
+  }
+ },
+ "note": "Sum over unique cached API calls (each billed once at list price, docs/pricing.json). Rate-limited (429) attempts are not billed and not cached."
+}

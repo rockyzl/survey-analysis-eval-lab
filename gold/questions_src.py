@@ -235,7 +235,7 @@ Q = [
     ("a060", "In Nevada and Arizona, what share of adults are obese?", "ABSTAIN:geography_unavailable"),
 ]
 
-if __name__ == "__main__":
+def build(Q, out_name="questions.jsonl", split_rule=True):
     import hashlib
     import json
     import sys
@@ -250,7 +250,7 @@ if __name__ == "__main__":
     out = []
     problems = []
     for qid, text, gold in Q:
-        split = "dev" if int(hashlib.sha256(qid.encode()).hexdigest()[:8], 16) % 10 < 3 else "test"
+        split = ("dev" if int(hashlib.sha256(qid.encode()).hexdigest()[:8], 16) % 10 < 3 else "test") if split_rule else "stress"
         rec = {"id": qid, "question": text, "split": split}
         if gold.startswith("ABSTAIN:"):
             rec.update(gold={"answerable": False, "abstain_reason": gold.split(":", 1)[1]}, category="abstain")
@@ -275,8 +275,12 @@ if __name__ == "__main__":
         for p in problems:
             print("PROBLEM", p)
         raise SystemExit(1)
-    with open(root / "gold" / "questions.jsonl", "w") as f:
+    with open(root / "gold" / out_name, "w") as f:
         for rec in out:
             f.write(json.dumps(rec) + "\n")
     from collections import Counter
     print(len(out), Counter((r["split"], r["category"]) for r in out))
+
+
+if __name__ == "__main__":
+    build(Q)

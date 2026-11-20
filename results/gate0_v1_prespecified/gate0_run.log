@@ -1,4 +1,3 @@
-warning: `VIRTUAL_ENV=<other-venv>` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
 _RFHLTH 2 s
 GENHLTH 5 s
 _PHYS14D 7 s
@@ -54,7 +53,7 @@ INCOME1 105 s
 RACE8 111 s
 SEX 112 s
 AGE 117 s
-<repo>/scripts/gate0.py:69: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+scripts/gate0.py:69: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
   cells["supp_agree"] = cells.supp.fillna(True) == cells.cdc_suppressed
 {
  "G0_primary": {
