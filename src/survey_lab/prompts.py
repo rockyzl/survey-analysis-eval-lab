@@ -7,11 +7,17 @@ from functools import lru_cache
 from . import catalog
 from .spec import ABSTAIN_REASONS
 
-PROMPT_VERSION = "v1"
+PROMPT_VERSION = "v3"
+# v1 -> v2 (dev-driven, 2026-11-20): rule 8 ('how many ... percent' is a prevalence question) and rule 9
+# (demographic distribution indicators answer 'what share of adults are X'). See docs/protocol.md addendum A2.
+# v2 -> v3: v2 made gpt-4o call single-subgroup questions 'multiple_subgroups'; rule 9 reworded and rule 10
+# (geography is never a subgroup) added.
 
 
 @lru_cache(maxsize=4)
 def system_prompt(version: str = PROMPT_VERSION) -> str:
+    if version not in ("v1", "v2", "v3"):
+        raise ValueError(version)
     inds, subs = catalog.load()
     lines = ["INDICATOR CATALOG (indicator id: topic -> allowed response values):"]
     for i in inds.values():
@@ -62,8 +68,27 @@ Rules:
    obesity -> _BMI5CAT Obese; physical inactivity -> _TOTINDA No; uninsured adults -> _HLTHPL2; uninsured
    adults aged 18-64 -> _HCVU654; high blood pressure -> _RFHYPE6 Yes; diabetes -> DIABETE4 Yes).
 7. Set "confidence" to "low" if you are unsure which indicator, response, subgroup or geography is meant.
+8. "How many adults ... (percent/percentage/share/proportion)" asks for a prevalence, not a count. Abstain with
+   "unsupported_statistic" only when the user wants a number of people, a count of respondents or an average.
+9. Demographic indicators (EDUCA, INCOME1, RACE8, SEX, AGE, MARITAL, EMPLOY1, VETERAN3, _CHLDCNT) are used
+   only when the question asks what share of ALL adults are in that group (e.g. "what share have a college
+   degree" -> EDUCA College+; "served in the armed forces" -> VETERAN3 Yes). When the group restricts the
+   population of another measure ("among college graduates, what share smoke"), use the subgroup instead.
+10. The geography is never a subgroup. One geography plus one characteristic (e.g. "college graduates in
+   Michigan", "adults aged 55-64 in Arizona", "adults earning $100,000-$199,999 in Massachusetts") is exactly
+   ONE subgroup and is answerable.
 """
+    if version == "v1":
+        rules = rules[: rules.index("8. ")]
+    elif version == "v2":
+        rules = rules[: rules.index("9. ")] + V2_RULE9
     return catalog_text + "\n" + rules
+
+
+V2_RULE9 = """9. Demographic indicators (EDUCA, INCOME1, RACE8, SEX, AGE, MARITAL, EMPLOY1, VETERAN3, _CHLDCNT) answer
+   "what share of adults are/have X" (e.g. college degree -> EDUCA College+; served in the armed forces ->
+   VETERAN3 Yes). They are indicators here, not subgroups.
+"""
 
 
 def messages(question: str, version: str = PROMPT_VERSION) -> list[dict]:

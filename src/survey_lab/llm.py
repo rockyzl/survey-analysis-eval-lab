@@ -92,7 +92,7 @@ class AzureLLM:
         else:
             endpoint, api = os.environ["SURVEYLAB_AZURE_ENDPOINT"], API_VERSION
         self.client = AzureOpenAI(azure_endpoint=endpoint, azure_ad_token_provider=_access_token,
-                                  api_version=api, timeout=90, max_retries=2)
+                                  api_version=api, timeout=90, max_retries=0)
 
     @staticmethod
     def available() -> bool:
@@ -114,8 +114,16 @@ class AzureLLM:
         else:
             kw.update(temperature=0, max_tokens=400)
         err = None
+        from openai import RateLimitError
         try:
-            r = self.client.chat.completions.create(**kw)
+            for attempt in range(8):   # 429s are retried with backoff and never cached as answers
+                try:
+                    r = self.client.chat.completions.create(**kw)
+                    break
+                except RateLimitError:
+                    if attempt == 7:
+                        raise
+                    time.sleep(min(60, 8 * (attempt + 1)))
             content = r.choices[0].message.content or ""
             pt, ct = r.usage.prompt_tokens, r.usage.completion_tokens
             det = getattr(r.usage, "prompt_tokens_details", None)

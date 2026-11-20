@@ -47,7 +47,7 @@ for pol in args.policies.split(","):
         rec["score"] = evaluate.score(item, rec)
         return rec
 
-    workers = 1 if pol in ("EXPERT", "TEMPLATE", "GPT52") else args.workers
+    workers = 1 if pol in ("EXPERT", "TEMPLATE", "GPT52") else (2 if pol in ("GPT41", "ROUTER") else args.workers)
     with ThreadPoolExecutor(workers) as ex:
         recs = list(ex.map(one, items))
     all_recs[pol] = recs

@@ -12,7 +12,7 @@ from . import answer, executor, prompts, templates
 from .llm import AzureLLM, Call
 from .spec import GuardError, Spec, abstain, validate
 
-POLICIES = ("TEMPLATE", "GPT4O", "GPT41", "ROUTER", "GPT52")
+POLICIES = ("TEMPLATE", "GPT4O", "GPT41", "ROUTER", "ROUTER_T41", "GPT52")
 MODEL_OF = {"GPT4O": "gpt-4o", "GPT41": "gpt-4.1", "GPT52": "gpt-5.2"}
 _clients: dict[str, AzureLLM] = {}
 
@@ -56,13 +56,13 @@ def route(question: str, policy: str, offline: bool = False) -> Outcome:
     errors: list[str] = []
     path: list[str] = []
     spec: Spec | None = None
-    if policy in ("TEMPLATE", "ROUTER"):
+    if policy in ("TEMPLATE", "ROUTER", "ROUTER_T41"):
         spec = templates.match(question)
         path.append("template")
         if spec is None and policy == "TEMPLATE":
             spec = abstain("ambiguous", "no confident template match")
     if spec is None:
-        first = "gpt-4o" if policy == "ROUTER" else MODEL_OF[policy]
+        first = "gpt-4o" if policy == "ROUTER" else ("gpt-4.1" if policy == "ROUTER_T41" else MODEL_OF[policy])
         s, call, err = llm_spec(question, first, offline)
         calls.append(call); path.append(first)
         if err:

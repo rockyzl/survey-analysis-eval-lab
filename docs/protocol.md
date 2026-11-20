@@ -144,3 +144,41 @@ how CDC computes P&T:
 Run 2 reproduced 100.0% of G0_primary, 100.0% of G0_breakout and 99.4% of G0_median. Both runs are reported.
 The tolerance, the cell sets and the pass criteria are unchanged. The executor used by every policy applies the
 corrected conventions.
+
+### A2 (2026-11-20): dev-phase changes, frozen before the held-out run
+
+These are the changes made while iterating on the dev split (54 items). The held-out split had not been run
+by any LLM policy at this point.
+
+- **Prompt revisions (2 of the 3 allowed).** The prompt went from v1 to v3.
+  - Dev outcome-correct went from v1 → v2 → v3 as follows:
+
+    | Policy | v1 | v2 | v3 |
+    |---|---|---|---|
+    | gpt-4o | 0.926 | 0.889 | 0.981 |
+    | gpt-4.1 | 0.796 | 1.000 | 1.000 |
+    | ROUTER | 0.963 | 0.944 | 1.000 |
+
+  - The v1 gpt-4.1 figure is depressed by HTTP 429 rate-limit errors, which v1 counted as abstentions (see
+    below).
+  - **v2** added rule 8 ("how many … percent" is a prevalence question) and rule 9 (demographic indicators).
+  - v2's rule 9 made gpt-4o label single-subgroup questions as `multiple_subgroups`. **v3** reworded rule 9 and
+    added rule 10 (the geography is never a subgroup).
+  - All three prompt versions stay reproducible (`prompts.system_prompt(version)`).
+- **Rate limits.** HTTP 429 responses are now retried with backoff and are never cached. gpt-4.1 / ROUTER run
+  with 2 parallel workers.
+- **Template matcher.** The matcher was tightened on dev so it defers whenever there is restriction wording it
+  cannot fully parse, such as income ranges or "some college". On dev it answers 20/54 items, all correctly.
+- **Exploratory policy added (not part of the primary comparison).** `ROUTER_T41` = TEMPLATE, falling back to
+  gpt-4.1.
+  - **Reason.** On dev, the measured prompt caching made gpt-4.1 cheaper per call than gpt-4o.
+    - gpt-4o: 165,120 of 169,223 prompt tokens were reported as cached, billed at 50% of the input price.
+    - gpt-4.1: 149,760 of 169,223 cached, billed at 25% of the input price, and gpt-4.1's list price is lower.
+    - So the prespecified "cheap model first" premise of ROUTER does not hold.
+  - ROUTER stays exactly as prespecified and remains the primary comparison.
+- **Unchanged.** The primary endpoint, the non-inferiority margin (7.5 pp), the method, the split rule and the
+  question set.
+- **Disclosure.** The same agent wrote the questions, the gold specs, the template matcher and the prompts. The
+  matcher and prompts were tuned only on dev results, but the author had seen the test question wording while
+  writing the question file.
+- The frozen commit hash is recorded in `results/test_summary.json` (`commit`, `code_dirty`).
