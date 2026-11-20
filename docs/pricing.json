@@ -1,10 +1,21 @@
 {
-  "source": "Azure Retail Prices API (https://prices.azure.com/api/retail/prices), productName contains 'OpenAI', armRegionName 'eastus2', Global deployment meters, retrieved 2026-11-20. Raw response saved (gitignored) at data/raw/azure_retail_prices_eastus2_2026-11-20.json.",
   "unit": "USD per 1M tokens",
-  "assumption": "GlobalStandard pay-as-you-go list prices; the deployments are GlobalStandard. Any negotiated or credit-based pricing on the subscription is ignored.",
-  "models": {
-    "gpt-4o": {"meters": ["gpt 4o 1120 Inp glbl", "gpt 4o 1120 cached Inp glbl", "gpt 4o 1120 Outp glbl"], "input": 2.50, "cached_input": 1.25, "output": 10.00},
-    "gpt-4.1": {"meters": ["gpt 4.1 Inp glbl", "gpt 4.1 cached Inp glbl", "gpt 4.1 Outp glbl"], "input": 2.00, "cached_input": 0.50, "output": 8.00},
-    "gpt-5.2": {"meters": ["GPT 5.2 inp Gl", "GPT 5.2 cd inp Gl", "GPT 5.2 opt Gl"], "input": 1.75, "cached_input": 0.175, "output": 14.00}
+  "openai": {
+    "source": "OpenAI API pricing page, Standard tier, text tokens (https://developers.openai.com/api/docs/pricing; redirected from https://platform.openai.com/docs/pricing), retrieved 2026-11-20. The page lists base model names (gpt-4o, gpt-4.1, gpt-4.1-mini), not snapshot names; the pinned snapshots are assumed to bill at the base-model price. The page shows no revision date.",
+    "assumption": "Standard (non-Batch, non-Flex, non-Priority) list prices; any account credits or discounts are ignored.",
+    "models": {
+      "gpt-4o": {"snapshot": "gpt-4o-2024-11-20", "input": 2.50, "cached_input": 1.25, "output": 10.00},
+      "gpt-4.1": {"snapshot": "gpt-4.1-2025-04-14", "input": 2.00, "cached_input": 0.50, "output": 8.00},
+      "gpt-4.1-mini": {"snapshot": "gpt-4.1-mini-2025-04-14", "input": 0.40, "cached_input": 0.10, "output": 1.60}
+    }
+  },
+  "azure": {
+    "source": "Azure Retail Prices API (https://prices.azure.com/api/retail/prices), productName contains 'OpenAI', armRegionName 'eastus2', Global deployment meters, retrieved 2026-11-20. Used only for the superseded provisional Azure responses (protocol addendum A3).",
+    "assumption": "GlobalStandard pay-as-you-go list prices.",
+    "models": {
+      "gpt-4o": {"meters": ["gpt 4o 1120 Inp glbl", "gpt 4o 1120 cached Inp glbl", "gpt 4o 1120 Outp glbl"], "input": 2.50, "cached_input": 1.25, "output": 10.00},
+      "gpt-4.1": {"meters": ["gpt 4.1 Inp glbl", "gpt 4.1 cached Inp glbl", "gpt 4.1 Outp glbl"], "input": 2.00, "cached_input": 0.50, "output": 8.00},
+      "gpt-5.2": {"meters": ["GPT 5.2 inp Gl", "GPT 5.2 cd inp Gl", "GPT 5.2 opt Gl"], "input": 1.75, "cached_input": 0.175, "output": 14.00}
+    }
   }
 }

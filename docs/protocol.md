@@ -200,3 +200,48 @@ not to be suitable for this project, and no further calls may be made until a su
   Any further change needs a new addendum.
 - **Provider configuration.** The provider now reads its configuration only from environment variables and
   requires `SURVEYLAB_LLM_ENABLED=1` for live calls.
+
+### A4 (2026-11-20): provider change from Azure OpenAI to the OpenAI API. Written and committed before any OpenAI evaluation call.
+
+- **Provider.** The evaluation now uses the official OpenAI API, with the key read from `OPENAI_API_KEY`. Live
+  calls still require `SURVEYLAB_LLM_ENABLED=1`.
+- **Same model versions as before, pinned as snapshots.**
+  - `gpt-4o` → `gpt-4o-2024-11-20`
+  - `gpt-4.1` → `gpt-4.1-2025-04-14`
+
+  Each logged call records the model string returned by the API.
+- **Unchanged.** Everything frozen at `cd68f2b` (addendum A2) stays as it was:
+  - prompt v3, the template matcher, and the ROUTER / ROUTER_T41 rules;
+  - temperature 0, JSON output and max 400 tokens;
+  - metrics, the primary endpoint, the 7.5 pp margin and Newcombe method 10;
+  - the question set and the split.
+- **Superseded results.** All provisional Azure LLM responses and results are superseded. They are kept aside for
+  comparison only, never reused, and never part of any decision:
+  - `results/azure_provisional/`
+  - the cache `results/azure_provisional/llm_cache_azure.jsonl`, which is gitignored.
+
+  The new cache key includes provider and snapshot, so no Azure response can be replayed by accident.
+- **Policies.** `GPT52` is dropped. It was optional and exploratory, and was never part of the primary comparison.
+  The prespecified held-out policies are:
+  - EXPERT, TEMPLATE, GPT4O, GPT41 and ROUTER (primary);
+  - ROUTER_T41 (exploratory, from A2).
+
+  Each runs once on all 166 held-out items. The non-inferiority decision is ROUTER vs EXPERT, exactly as in §8.
+  The stress set (39 items) is then run for all LLM policies and reported separately.
+- **Post-hoc exploratory arm, NOT prespecified and NOT part of any decision.** `ROUTER_MINI` = TEMPLATE →
+  `gpt-4.1-mini-2025-04-14`, escalating to gpt-4.1 on a guard rejection or `confidence: "low"`, the same
+  escalation rule as ROUTER.
+  - **Motivation.** The prespecified "cheap model first" premise failed: gpt-4.1 is cheaper per call than gpt-4o.
+  - It was designed after the provisional results, so it is labeled post-hoc everywhere it is reported.
+- **Prices.** OpenAI Standard-tier list prices from https://developers.openai.com/api/docs/pricing, retrieved
+  2026-11-20, are in `docs/pricing.json`. Per 1M tokens (input / cached input / output):
+
+  | Model | Input | Cached input | Output |
+  |---|---|---|---|
+  | gpt-4o | $2.50 | $1.25 | $10.00 |
+  | gpt-4.1 | $2.00 | $0.50 | $8.00 |
+  | gpt-4.1-mini | $0.40 | $0.10 | $1.60 |
+- **Spend cap.** USD 8 on this key. The client refuses live calls once logged spend reaches the cap
+  (`SURVEYLAB_SPEND_CAP_USD`).
+- **No dev re-run.** Dev is not re-run on the new provider, except a 3-question connectivity smoke check that is
+  not scored. The frozen prompt is used as-is.

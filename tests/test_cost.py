@@ -9,8 +9,11 @@ from survey_lab.paths import ROOT
 
 def test_price_table_documented():
     p = json.loads((ROOT / "docs" / "pricing.json").read_text())
-    assert "Azure Retail Prices API" in p["source"] and "2026-11-20" in p["source"]
-    assert p["models"]["gpt-4.1"] == {**p["models"]["gpt-4.1"], "input": 2.0, "cached_input": 0.5, "output": 8.0}
+    assert "developers.openai.com/api/docs/pricing" in p["openai"]["source"] and "2026-11-20" in p["openai"]["source"]
+    m = p["openai"]["models"]
+    assert (m["gpt-4.1"]["input"], m["gpt-4.1"]["cached_input"], m["gpt-4.1"]["output"]) == (2.0, 0.5, 8.0)
+    assert m["gpt-4o"]["snapshot"] == "gpt-4o-2024-11-20" and m["gpt-4.1"]["snapshot"] == "gpt-4.1-2025-04-14"
+    assert "Azure Retail Prices API" in p["azure"]["source"]
 
 
 def test_cost_formula_with_and_without_cache():
@@ -21,6 +24,8 @@ def test_cost_formula_with_and_without_cache():
     assert llm.cost_usd("gpt-4o", 1000, 50, 0) == pytest.approx((1000 * 2.5 + 50 * 10.0) / 1e6)
     # cached can never exceed prompt tokens
     assert llm.cost_usd("gpt-4o", 100, 0, 500) == pytest.approx(100 * 1.25 / 1e6)
+    assert llm.cost_usd("gpt-4.1-mini", 3000, 100, 2048, "openai") == pytest.approx(
+        ((3000 - 2048) * 0.40 + 2048 * 0.10 + 100 * 1.60) / 1e6)
 
 
 def test_outcome_cost_sums_calls():
@@ -39,10 +44,28 @@ def test_template_path_costs_nothing(monkeypatch):
     assert o.cost == 0 and o.path == ["template"]
 
 
+def test_snapshots_pinned_and_cache_key_includes_provider(monkeypatch):
+    monkeypatch.setenv("SURVEYLAB_LLM_PROVIDER", "openai")
+    a = llm.LLM("gpt-4o")
+    assert a.snapshot == "gpt-4o-2024-11-20" and llm.LLM("gpt-4.1").snapshot == "gpt-4.1-2025-04-14"
+    m = [{"role": "user", "content": "x"}]
+    monkeypatch.setenv("SURVEYLAB_LLM_PROVIDER", "azure")
+    assert llm.LLM("gpt-4o").cache_key(m) != a.cache_key(m)   # provisional Azure responses are never reused
+
+
+def test_spend_cap_blocks_live_calls(monkeypatch):
+    monkeypatch.setenv("SURVEYLAB_LLM_PROVIDER", "openai")
+    monkeypatch.setenv("SURVEYLAB_LLM_ENABLED", "1")
+    monkeypatch.setenv("SURVEYLAB_SPEND_CAP_USD", "0")
+    c = llm.LLM("gpt-4.1")
+    with pytest.raises(llm.SpendCapReached):
+        c.complete([{"role": "user", "content": "never-cached question 7b1c"}])
+    assert c._client is None
+
+
 def test_live_calls_disabled_by_default(monkeypatch):
     monkeypatch.delenv("SURVEYLAB_LLM_ENABLED", raising=False)
-    c = llm.AzureLLM("gpt-4.1")
+    c = llm.LLM("gpt-4.1")
     with pytest.raises(llm.LLMDisabled):
         c.complete([{"role": "user", "content": "never-cached question 0f3a"}])
     assert c._client is None
-    assert not llm.AzureLLM.available()

@@ -6,3 +6,4 @@ data/raw/
 data/processed/
 results/llm_cache.jsonl
 .env
+results/azure_provisional/llm_cache_azure.jsonl

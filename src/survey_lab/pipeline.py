@@ -9,12 +9,15 @@ import time
 from dataclasses import dataclass, field
 
 from . import answer, executor, prompts, templates
-from .llm import AzureLLM, Call
+from .llm import LLM, Call
 from .spec import GuardError, Spec, abstain, validate
 
-POLICIES = ("TEMPLATE", "GPT4O", "GPT41", "ROUTER", "ROUTER_T41", "GPT52")
-MODEL_OF = {"GPT4O": "gpt-4o", "GPT41": "gpt-4.1", "GPT52": "gpt-5.2"}
-_clients: dict[str, AzureLLM] = {}
+# ROUTER_MINI is a post-hoc exploratory arm (protocol addendum A4); GPT52 was dropped in A4.
+POLICIES = ("TEMPLATE", "GPT4O", "GPT41", "ROUTER", "ROUTER_T41", "ROUTER_MINI")
+MODEL_OF = {"GPT4O": "gpt-4o", "GPT41": "gpt-4.1"}
+FIRST_TIER = {"ROUTER": "gpt-4o", "ROUTER_T41": "gpt-4.1", "ROUTER_MINI": "gpt-4.1-mini"}
+ESCALATING = ("ROUTER", "ROUTER_MINI")   # escalate to gpt-4.1 on guard rejection or confidence 'low'
+_clients: dict[str, LLM] = {}
 
 
 @dataclass
@@ -34,9 +37,9 @@ class Outcome:
         return sum(c.cost for c in self.calls)
 
 
-def _client(model: str) -> AzureLLM:
+def _client(model: str) -> LLM:
     if model not in _clients:
-        _clients[model] = AzureLLM(model)
+        _clients[model] = LLM(model)
     return _clients[model]
 
 
@@ -56,19 +59,21 @@ def route(question: str, policy: str, offline: bool = False) -> Outcome:
     errors: list[str] = []
     path: list[str] = []
     spec: Spec | None = None
-    if policy in ("TEMPLATE", "ROUTER", "ROUTER_T41"):
+    if policy not in ("TEMPLATE",) + tuple(MODEL_OF) + tuple(FIRST_TIER):
+        raise ValueError(f"unknown policy {policy!r}")
+    if policy in ("TEMPLATE",) + tuple(FIRST_TIER):
         spec = templates.match(question)
         path.append("template")
         if spec is None and policy == "TEMPLATE":
             spec = abstain("ambiguous", "no confident template match")
     if spec is None:
-        first = "gpt-4o" if policy == "ROUTER" else ("gpt-4.1" if policy == "ROUTER_T41" else MODEL_OF[policy])
+        first = FIRST_TIER.get(policy) or MODEL_OF[policy]
         s, call, err = llm_spec(question, first, offline)
         calls.append(call); path.append(first)
         if err:
             errors.append(f"{first}: {err}")
         spec = s
-        if policy == "ROUTER" and (spec is None or spec.confidence == "low"):
+        if policy in ESCALATING and (spec is None or spec.confidence == "low"):
             s2, call2, err2 = llm_spec(question, "gpt-4.1", offline)
             calls.append(call2); path.append("gpt-4.1")
             if err2:
@@ -118,7 +123,8 @@ def to_record(o: Outcome) -> dict:
             "answer": o.answer, "ungrounded": o.ungrounded, "seconds": o.seconds, "cost_usd": round(o.cost, 6),
             "calls": [{"model": c.model, "prompt_tokens": c.prompt_tokens, "completion_tokens": c.completion_tokens,
                        "cached_tokens": c.cached_tokens, "seconds": c.seconds, "cost_usd": round(c.cost, 6),
-                       "from_cache": c.from_cache, "error": c.error, "raw": c.content[:600]} for c in o.calls],
+                       "from_cache": c.from_cache, "error": c.error, "provider": c.provider,
+                       "served_model": c.served_model, "raw": c.content[:600]} for c in o.calls],
             "trace": None if r is None else r.trace}
 
 

@@ -34,7 +34,8 @@ commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT, captu
 dirty = bool(subprocess.run(["git", "status", "--porcelain", "src", "gold", "catalog"], cwd=ROOT,
                             capture_output=True, text=True).stdout.strip())
 outdir = ROOT / "results" / "runs"; outdir.mkdir(parents=True, exist_ok=True)
-summary = {"split": args.split, "n_items": len(items), "commit": commit, "code_dirty": dirty,
+from survey_lab import llm  # noqa: E402
+summary = {"split": args.split, "provider": llm.provider(), "snapshots": llm.MODEL_SNAPSHOT, "n_items": len(items), "commit": commit, "code_dirty": dirty,
            "prompt_version": prompts.PROMPT_VERSION, "run_at": time.strftime("%Y-%m-%dT%H:%M:%S"), "policies": {}}
 all_recs = {}
 for pol in args.policies.split(","):
@@ -43,11 +44,12 @@ for pol in args.policies.split(","):
     def one(item, pol=pol):
         o = pipeline.expert(item["gold"]) if pol == "EXPERT" else pipeline.route(item["question"], pol, args.offline)
         rec = pipeline.to_record(o)
+        rec["question"] = item["question"]
         rec["id"] = item["id"]
         rec["score"] = evaluate.score(item, rec)
         return rec
 
-    workers = 1 if pol in ("EXPERT", "TEMPLATE", "GPT52") else (2 if pol in ("GPT41", "ROUTER") else args.workers)
+    workers = 1 if pol in ("EXPERT", "TEMPLATE") else args.workers
     with ThreadPoolExecutor(workers) as ex:
         recs = list(ex.map(one, items))
     all_recs[pol] = recs
