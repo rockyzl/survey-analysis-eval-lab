@@ -1,0 +1,98 @@
+warning: `VIRTUAL_ENV=<other-venv>` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+_RFHLTH 2 s
+GENHLTH 5 s
+_PHYS14D 7 s
+_MENT14D 10 s
+_HLTHPL2 11 s
+_HCVU654 12 s
+PERSDOC3 14 s
+MEDCOST1 16 s
+CHECKUP1 22 s
+_TOTINDA 24 s
+_RFHYPE6 25 s
+_CHOLCH3 27 s
+_RFCHOL3 28 s
+CVDINFR4 29 s
+CVDCRHD4 31 s
+CVDSTRK3 32 s
+_MICHD 34 s
+_LTASTH1 35 s
+_CASTHM1 36 s
+CHCSCNC1 38 s
+CHCOCNC1 39 s
+CHCCOPD3 40 s
+ADDEPEV3 42 s
+CHCKDNY2 43 s
+_DRDXAR2 45 s
+DIABETE4 47 s
+_BMI5CAT 50 s
+_SMOKER3 52 s
+_RFSMOK3 54 s
+USENOW3 59 s
+ECIGNOW3 61 s
+_CURECI3 63 s
+DRNKANY6 64 s
+_RFBING6 66 s
+_RFDRHV9 67 s
+_FLSHOT7 68 s
+_PNEUMO3 68 s
+HIVTST7 70 s
+_FRTLT1A 71 s
+_VEGLT1A 72 s
+DEAF 74 s
+BLIND 75 s
+DECIDE 76 s
+DIFFWALK 78 s
+DIFFDRES 79 s
+DIFFALON 81 s
+VETERAN3 82 s
+_CHLDCNT 86 s
+MARITAL 93 s
+EMPLOY1 98 s
+EDUCA 101 s
+INCOME1 105 s
+RACE8 111 s
+SEX 112 s
+AGE 117 s
+<repo>/scripts/gate0.py:69: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  cells["supp_agree"] = cells.supp.fillna(True) == cells.cdc_suppressed
+{
+ "G0_primary": {
+  "cells_compared": 7897,
+  "reproduced": 7715,
+  "rate": 0.977,
+  "point_ok_rate": 0.9797,
+  "ci_ok_rate": 0.977,
+  "sample_size_exact_rate": 0.9757,
+  "max_abs_point_diff_pp": 1.4775,
+  "max_abs_ci_diff_pp": 1.4925,
+  "cdc_unpublished_cells": 103,
+  "suppression_agreement_rate_all_cells": 0.9988,
+  "missing_my_estimate": 0,
+  "passed": true
+ },
+ "G0_breakout": {
+  "cells_compared": 157897,
+  "reproduced": 142384,
+  "rate": 0.9018,
+  "point_ok_rate": 0.9245,
+  "ci_ok_rate": 0.9018,
+  "sample_size_exact_rate": 0.8923,
+  "max_abs_point_diff_pp": 13.3809,
+  "max_abs_ci_diff_pp": 18.9521,
+  "cdc_unpublished_cells": 48953,
+  "suppression_agreement_rate_all_cells": 0.9882,
+  "missing_my_estimate": 0,
+  "passed": false
+ },
+ "G0_median": {
+  "cells_compared": 320,
+  "reproduced": 310,
+  "rate": 0.9688,
+  "max_abs_point_diff_pp": 0.9942,
+  "passed": true
+ },
+ "flagged_indicators_primary_lt_95pct": {
+  "RACE8": 0.4631
+ }
+}

@@ -59,6 +59,7 @@ class SubgroupValue:
     label: str
     variable: str
     codes: tuple[int, ...]
+    universe: tuple[int, ...]   # non-missing codes of the break-out variable (records outside are dropped)
 
 
 @lru_cache(maxsize=1)
@@ -72,11 +73,13 @@ def load() -> tuple[dict[str, Indicator], dict[str, dict[str, SubgroupValue]]]:
     subs: dict[str, dict[str, SubgroupValue]] = {}
     for cat, s in raw["subgroups"].items():
         subs[cat] = {}
+        base_universe = tuple(sorted({c for v in s["values"].values() if not isinstance(v, dict) for c in v}))
         for lab, val in s["values"].items():
             if isinstance(val, dict):
-                subs[cat][lab] = SubgroupValue(cat, lab, val["variable"], tuple(val["codes"]))
+                lo, hi = (int(x) for x in val["universe_codes"].split("-"))
+                subs[cat][lab] = SubgroupValue(cat, lab, val["variable"], tuple(val["codes"]), tuple(range(lo, hi + 1)))
             else:
-                subs[cat][lab] = SubgroupValue(cat, lab, s["variable"], tuple(val))
+                subs[cat][lab] = SubgroupValue(cat, lab, s["variable"], tuple(val), base_universe)
     return inds, subs
 
 

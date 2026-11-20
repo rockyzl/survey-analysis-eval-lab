@@ -127,4 +127,20 @@ are recorded in `docs/pricing.json`.
 
 ## Addenda
 
-(none yet)
+### A1 (2026-11-20): Gate 0 convention fixes, made after Gate 0 run 1 and before any LLM call
+
+Gate 0 run 1 used the prespecified conventions, and its output is archived in
+`results/gate0_v1_prespecified/`. G0_primary passed at 97.7% and G0_median at 96.9%. **G0_breakout failed
+(90.2% < 95%).** The investigation is in `docs/gate0-investigation.md`. Four conventions were changed to match
+how CDC computes P&T:
+
+1. **Race variable.** Race now uses `_RACEPRV` instead of `_RACE`. This is a catalog fix.
+2. **CI truncation.** Wald CIs are truncated to [0, 100].
+3. **Missing break-out values.** Records missing the break-out variable are dropped before domain estimation,
+   following CDC's SAS-style listwise exclusion.
+4. **Medians and suppression.** US/UW medians use all jurisdiction estimates, including suppressed ones. A
+   numerator of 0 counts as "not published" in the suppression sub-check.
+
+Run 2 reproduced 100.0% of G0_primary, 100.0% of G0_breakout and 99.4% of G0_median. Both runs are reported.
+The tolerance, the cell sets and the pass criteria are unchanged. The executor used by every policy applies the
+corrected conventions.

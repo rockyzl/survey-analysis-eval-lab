@@ -6,7 +6,12 @@ Variance (with-replacement PSUs, as in SUDAAN/SAS SURVEYMEANS default):
     V(p_d) = sum_h n_h/(n_h - 1) * sum_j (z_hj - zbar_h)^2, z_hj = PSU totals of z, zbar_h = mean over the
     n_h PSUs of stratum h in the FULL sample (domain estimation keeps out-of-domain PSUs as zeros).
 Single-PSU strata (n_h = 1) contribute zero variance (SAS default; documented in docs/methods.md).
-CI: Wald, p +/- 1.96 SE (matches CDC P&T published limits; see Gate 0).
+CI: Wald, p +/- 1.96 SE, truncated to [0, 1] (matches CDC P&T published limits; see Gate 0 addendum).
+
+CDC P&T convention found in Gate 0 (docs/gate0-investigation.md): records with a missing value on the
+response variable OR on the break-out variable are dropped before estimation (SAS-style listwise exclusion of
+table variables); the remaining records keep the full stratum/PSU structure. Callers implement this by
+passing only the kept records (see analysis_keep()).
 """
 from __future__ import annotations
 
@@ -17,7 +22,7 @@ Z95 = 1.959963984540054
 
 
 def domain_proportions(y: np.ndarray, valid: np.ndarray, domain: np.ndarray, w: np.ndarray,
-                       stratum: np.ndarray, psu: np.ndarray, lonely: str = "zero") -> pd.DataFrame:
+                       stratum: np.ndarray, psu: np.ndarray, lonely: str = "zero", clip: bool = True) -> pd.DataFrame:
     """Estimate P(y=1) in every domain value (domain < 0 = not in any domain).
 
     y: 0/1 outcome (ignored where valid is False). valid: in the denominator (non-missing response).
@@ -56,12 +61,20 @@ def domain_proportions(y: np.ndarray, valid: np.ndarray, domain: np.ndarray, w: 
     agg["se"] = np.sqrt(var.reindex(agg.index).fillna(0.0).clip(lower=0))
     agg["ci_low"] = agg.p - Z95 * agg.se
     agg["ci_high"] = agg.p + Z95 * agg.se
+    if clip:
+        agg["ci_low"] = agg.ci_low.clip(lower=0.0)
+        agg["ci_high"] = agg.ci_high.clip(upper=1.0)
     agg["n_yes"] = agg.n_yes.astype(int)
     return agg[["p", "se", "ci_low", "ci_high", "n_yes", "n"]].rename(columns={"n": "n_denom"})
 
 
-def suppressed(p: float, se: float, n_denom: int) -> bool:
-    """CDC P&T rule: not reported if unweighted denominator < 50 or RSE > 0.3."""
+def suppressed(p: float, se: float, n_denom: int, n_yes: int | None = None) -> bool:
+    """CDC P&T rule: not reported if unweighted denominator < 50 or RSE > 0.3.
+
+    Gate 0 finding (addendum A1): CDC also publishes no value when the numerator count is 0; pass n_yes to apply it.
+    """
     if n_denom < 50:
+        return True
+    if n_yes is not None and n_yes == 0:
         return True
     return p > 0 and (se / p) > 0.3
