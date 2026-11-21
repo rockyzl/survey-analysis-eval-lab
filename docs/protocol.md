@@ -271,3 +271,14 @@ nothing was cached, and the logged spend is $0.00.**
 - **Post-hoc analysis, labeled as such in `results/noninferiority.json`.** A sensitivity analysis relabels q101
   as answerable. It does not change the primary decision.
 - **Spend.** $1.80 at list price, under the USD 8 cap.
+
+### Editorial note (added at publication; no design, data or analysis change)
+
+- In A3, "not suitable", "a suitable account" and "the replacement account" refer only to the decision to stop using
+  the Azure OpenAI deployment and to move the evaluation to the OpenAI API (A4). All Azure responses are superseded
+  and kept only for comparison.
+- The Azure deployments' exact model snapshots were not logged; "same model versions" in A4 means the same model
+  families (gpt-4o, gpt-4.1). Only the OpenAI run has logged snapshots.
+- Commit hashes cited in A2–A6 predate a pre-publication history rewrite; see the mapping in README. Mapping:
+  `ee64945` → `d07db7e`, `cd68f2b` → `74b3e9a`, `c6e13c6` → `56c889a`, `570cead` → `570cead`. The full table is in
+  `docs/commit-map.md`.

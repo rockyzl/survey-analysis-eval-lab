@@ -1,6 +1,6 @@
 {
  "split": "test",
- "note": "LLM-backed rows come from a provisional endpoint and must be re-run before use; see README 'Status of LLM results'.",
+ "note": "Superseded provisional results from an Azure OpenAI deployment, kept for comparison only; see docs/protocol.md addenda A3/A4.",
  "runs": {
   "EXPERT": {
    "n": 166,

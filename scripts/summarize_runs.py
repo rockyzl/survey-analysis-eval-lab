@@ -13,8 +13,8 @@ from survey_lab import evaluate  # noqa: E402
 split = sys.argv[1]
 qfile = ROOT / "gold" / ("stress_questions.jsonl" if split == "stress" else "questions.jsonl")
 items = {json.loads(l)["id"]: json.loads(l) for l in qfile.read_text().splitlines() if l.strip()}
-out = {"split": split, "note": "LLM-backed rows come from a provisional endpoint and must be re-run before use; "
-       "see README 'Status of LLM results'.", "runs": {}}
+out = {"split": split, "note": "Superseded provisional results from an Azure OpenAI deployment, kept for comparison only; "
+       "see docs/protocol.md addenda A3/A4.", "runs": {}}
 for f in sorted((ROOT / "results" / "runs").glob(f"{split}_*.jsonl")):
     recs = [json.loads(l) for l in f.read_text().splitlines() if l.strip()]
     its = [items[r["id"]] for r in recs]

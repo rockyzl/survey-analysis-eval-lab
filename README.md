@@ -42,12 +42,18 @@ spec ─► guard (catalog allow-list; unknown keys, variables, years, geographi
 | Addendum | What it records |
 |---|---|
 | A1 | Gate 0 convention fixes |
-| A2 | Dev-phase prompt and matcher changes, frozen at `cd68f2b` |
-| A3 | Live calls stopped mid held-out run; Azure results marked provisional |
-| A4 | Provider switched to the OpenAI API with the same model snapshots, written before any OpenAI call |
+| A2 | Dev-phase prompt and matcher changes, frozen at `74b3e9a` |
+| A3 | Live calls stopped mid held-out run; Azure OpenAI results marked provisional, later superseded |
+| A4 | Provider switched to the OpenAI API with pinned model snapshots, written before any OpenAI call |
 | A5 | First OpenAI attempt blocked by zero credits |
+| A6 | A4 executed once credits were added: held-out and stress runs, primary decision recorded |
 
-The held-out and stress runs below ran once, at commit `c6e13c6` (`code_dirty: false`), on the OpenAI API:
+**Commit hashes.** Before publication, the history was rewritten to remove local file-system paths from logs (and
+to rephrase some wording). Hashes recorded in `results/*.json`, `results/tables.md` and protocol addenda A2–A6 refer to the
+pre-rewrite history. Mapping: `ee64945` → `d07db7e`, `cd68f2b` → `74b3e9a`, `c6e13c6` → `56c889a`, `570cead` →
+`570cead`. Commit order and dates are unchanged. The full table is in `docs/commit-map.md`.
+
+The held-out and stress runs below ran once, at commit `56c889a` (`code_dirty: false`), on the OpenAI API:
 
 | Model | Snapshot |
 |---|---|
@@ -136,8 +142,8 @@ Numbers come from `results/stress_summary.json` and `results/stress_exploratory_
 | GPT4O | 89.7% [76.4, 95.9] | 0.83 / 0.94 | $0.202 |
 | GPT41 | 92.3% [79.7, 97.3] | 0.93 / 0.88 | $0.117 |
 | ROUTER | 71.8% [56.2, 83.5] | 0.79 / 0.69 | $0.119 |
-| ROUTER_T41 | 74.4% [58.9, 85.4] | 0.91 / 0.63 | $0.066 |
-| ROUTER_MINI (post-hoc) | 76.9% | 1.00 / 0.63 | $0.020 |
+| ROUTER_T41 | 74.4% [58.9, 85.4] | 0.91 / 0.63 | $0.065 |
+| ROUTER_MINI (post-hoc) | 76.9% [61.7, 87.4] | 1.00 / 0.63 | $0.020 |
 
 On adversarial wording, the template front end is the weakest link. When it is confidently wrong, the router
 inherits the error.
@@ -190,8 +196,8 @@ Total spend on the OpenAI key was **$1.80** at list price, over 538 unique API c
 
 - **Cap.** The USD 8 cap was enforced in the client.
 - **Prices.** OpenAI Standard-tier list prices, retrieved 2026-11-20, are in `docs/pricing.json`.
-- **Not counted.** The superseded provisional Azure calls (637 calls, about $2.54 at Azure list price) were a
-  separate, superseded run and are not part of this total.
+- **Not counted.** The earlier provisional runs on an Azure OpenAI deployment (`results/azure_provisional/`) were
+  superseded by the OpenAI API run and are not part of this total.
 
 ## Limitations and what was NOT done
 
@@ -200,8 +206,8 @@ Total spend on the OpenAI key was **$1.80** at list price, over 538 unique API c
   seen the test wording. The sample is small: 166 held-out items and 39 stress items.
 - **EXPERT is near-perfect by construction.** It executes the gold spec. The comparison tests NL interpretation
   and abstention, not arithmetic; Gate 0 tests the arithmetic.
-- **Dev was not re-run on the OpenAI provider.** The prompt was tuned on the superseded Azure deployments of the
-  same model versions.
+- **Dev was not re-run on the OpenAI provider.** The prompt was tuned on dev against the earlier Azure OpenAI
+  deployments of gpt-4o and gpt-4.1, whose exact snapshots were not logged.
 - **Crude prevalence only.** No age adjustment, means, counts, trends, multi-subgroup or sub-state estimates.
 - **One survey year (2025).** California, Mississippi and Nevada contributed no 2025 data. National values follow
   CDC's state-median convention, and no pooled national estimate is validated.

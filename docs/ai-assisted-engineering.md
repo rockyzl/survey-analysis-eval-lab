@@ -38,9 +38,8 @@ Every number in the README comes from a file under `results/` that a script in `
 | 14 | Newcombe CI: continuity correction of phi initially applied symmetrically | checked against Newcombe (1998) example (a), CI 0.0569–0.3404 | correction applied only when ad > bc; unit test |
 | 15 | Wilson upper bound compared with `==` 1.0 (floating point) | failing unit test | `pytest.approx` |
 | 16 | Toy test fixture too small, so the estimate was correctly suppressed (n < 50) and the test failed | failing unit test | larger fixture |
-| 18 | Live LLM calls were stopped mid-way through the held-out run to change provider, away from the Azure OpenAI deployment used until then | coordinator decision during the held-out run | live calls stopped; provider made env-only and opt-in; LLM results marked provisional (addendum A3) |
 | 17 | A gold label is debatable: q101 "flu vaccination among women 65+". Gold says `multiple_subgroups`, but 65+ is the flu-shot indicator's own universe, so only one subgroup is involved | held-out results review (TEMPLATE answered it) | gold not edited; sensitivity analysis reported (see README) |
-
+| 18 | Live LLM calls were stopped mid-way through the held-out run to change provider, away from the Azure OpenAI deployment used until then | coordinator decision during the held-out run | live calls stopped; provider made env-only and opt-in; LLM results marked provisional (addendum A3) |
 | 19 | The first OpenAI attempt hit an account with no credits; the retry loop treated `insufficient_quota` as a rate limit and kept retrying | direct probe of the API error body | quota errors now raise `QuotaExhausted` immediately (A5) |
 | 20 | README draft overstated two figures: the count of grounded LLM answers (said 1,284, actual 791) and the cached-token share (said 77–90%) | recomputed from the run files before committing | corrected |
 | 21 | The first q101 sensitivity analysis scored EXPERT as wrong on the relabelled item | reviewing the sensitivity output | EXPERT executes the relabelled gold spec and is scored correct |
@@ -48,6 +47,6 @@ Every number in the README comes from a file under `results/` that a script in `
 ## Things the agent did not do
 
 - It did not create, modify or delete any Azure resource.
-- It never used an API key. Auth was a CLI token with the subscription passed explicitly. Before the provider switch, it made 637 LLM calls (gpt-4o 329, gpt-4.1 295, gpt-5.2 13; about $2.54 at list price) on an Azure OpenAI deployment. Those responses were superseded by the OpenAI API run (addenda A3/A4) and are kept only for comparison. The final evaluation used the OpenAI API: 538 calls, $1.80.
+- Azure calls used a short-lived Azure CLI token for an explicitly named subscription, not an API key. The final OpenAI run read `OPENAI_API_KEY` from the environment; no key is stored in the repository. Earlier provisional runs on an Azure OpenAI deployment (637 calls) were superseded by the OpenAI API run (addenda A3/A4) and are kept only for comparison. The final evaluation used the OpenAI API: 538 calls, $1.80.
 - It installed no system software. Python dependencies only, via `uv`.
-- It created no GitHub remote and pushed nothing.
+- It did not create a GitHub remote during development; the author published the repository.
