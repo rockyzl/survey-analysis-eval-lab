@@ -1,0 +1,8 @@
+EXPERT    correct=1.000 spec=1.000 absP=1.0 absR=1.0 cost=$0.0000 p50=0.06s (9s wall)
+TEMPLATE  correct=0.620 spec=0.620 absP=0.4230769230769231 absR=0.9361702127659575 cost=$0.0000 p50=0.00s (0s wall)
+GPT4O     correct=0.958 spec=0.952 absP=0.8846153846153846 absR=0.9787234042553191 cost=$0.8953 p50=0.94s (43s wall)
+GPT41     correct=0.976 spec=0.976 absP=0.9574468085106383 absR=0.9574468085106383 cost=$0.5145 p50=0.85s (40s wall)
+ROUTER    correct=0.952 spec=0.952 absP=0.8979591836734694 absR=0.9361702127659575 cost=$0.5629 p50=0.85s (0s wall)
+ROUTER_T41 correct=0.970 spec=0.970 absP=0.9772727272727273 absR=0.9148936170212766 cost=$0.3246 p50=0.79s (0s wall)
+wrote test_summary.json
+exit 0

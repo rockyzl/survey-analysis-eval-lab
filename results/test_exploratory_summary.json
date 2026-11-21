@@ -1,0 +1,92 @@
+{
+ "split": "test",
+ "provider": "openai",
+ "snapshots": {
+  "gpt-4o": "gpt-4o-2024-11-20",
+  "gpt-4.1": "gpt-4.1-2025-04-14",
+  "gpt-4.1-mini": "gpt-4.1-mini-2025-04-14"
+ },
+ "n_items": 166,
+ "commit": "c6e13c6",
+ "code_dirty": false,
+ "prompt_version": "v3",
+ "run_at": "2026-11-20T19:12:00",
+ "policies": {
+  "EXPERT": {
+   "n": 166,
+   "n_answerable": 119,
+   "n_should_abstain": 47,
+   "outcome_correct": 1.0,
+   "outcome_correct_ci": [
+    0.9773820900540565,
+    0.9999999999999999
+   ],
+   "spec_exact_match": 1.0,
+   "numeric_agreement_answerable": 1.0,
+   "abstention_precision": 1.0,
+   "abstention_recall": 1.0,
+   "false_abstentions": 0,
+   "missed_abstentions": 0,
+   "cost_total_usd": 0.0,
+   "cost_per_question_usd": 0.0,
+   "latency_median_s": 0.065,
+   "latency_p95_s": 0.143,
+   "llm_calls": 0,
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "cached_tokens_reported": 0,
+   "calls_reporting_cached_field": 0,
+   "api_errors": 0,
+   "guard_rejections": 0,
+   "ungrounded_answers": 0,
+   "paths": {
+    "expert": 166
+   }
+  },
+  "ROUTER_MINI": {
+   "n": 166,
+   "n_answerable": 119,
+   "n_should_abstain": 47,
+   "outcome_correct": 0.9397590361445783,
+   "outcome_correct_ci": [
+    0.8926726493530818,
+    0.9669525623812089
+   ],
+   "spec_exact_match": 0.9397590361445783,
+   "numeric_agreement_answerable": 0.9747899159663865,
+   "abstention_precision": 0.9523809523809523,
+   "abstention_recall": 0.851063829787234,
+   "false_abstentions": 2,
+   "missed_abstentions": 7,
+   "cost_total_usd": 0.07686200000000001,
+   "cost_per_question_usd": 0.00046302409638554227,
+   "latency_median_s": 1.006,
+   "latency_p95_s": 1.75,
+   "llm_calls": 108,
+   "prompt_tokens": 338454,
+   "completion_tokens": 10020,
+   "cached_tokens_reported": 300288,
+   "calls_reporting_cached_field": 108,
+   "api_errors": 0,
+   "guard_rejections": 4,
+   "ungrounded_answers": 0,
+   "paths": {
+    "template": 62,
+    "template>gpt-4.1-mini": 100,
+    "template>gpt-4.1-mini>gpt-4.1": 4
+   }
+  }
+ },
+ "paired_vs_expert": {
+  "ROUTER_MINI": {
+   "n": 166,
+   "p_a": 0.9397590361445783,
+   "p_b": 1.0,
+   "diff": -0.06024096385542166,
+   "ci_low": -0.10732735064691823,
+   "ci_high": -0.024870669546423876,
+   "discordant_a_only": 0,
+   "discordant_b_only": 10
+  }
+ }
+}

@@ -1,0 +1,4 @@
+EXPERT    correct=1.000 spec=1.000 absP=1.0 absR=1.0 cost=$0.0000 p50=0.07s (12s wall)
+ROUTER_MINI correct=0.940 spec=0.940 absP=0.9523809523809523 absR=0.851063829787234 cost=$0.0769 p50=1.01s (35s wall)
+wrote test_exploratory_summary.json
+exit 0

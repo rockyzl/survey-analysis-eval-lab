@@ -2,21 +2,16 @@
 
 This is a public-health-survey AI evaluation prototype. Users ask plain-English questions about the **CDC BRFSS
 2025** survey. The tool answers with **survey-weighted** crude prevalence and design-based 95% CIs, and shows the
-exact computation it ran. It is judged against **values CDC itself published** (BRFSS Prevalence & Trends,
+exact computation it ran. Answers are scored against **values CDC itself published** (BRFSS Prevalence & Trends,
 data.cdc.gov `dttw-5yxu`).
 
-> **Update (addenda A4/A5).** The LLM provider was switched to the official OpenAI API, with pinned snapshots
-> `gpt-4o-2024-11-20` and `gpt-4.1-2025-04-14`, and the provisional Azure results were moved to
-> `results/azure_provisional/` (comparison only). The OpenAI run is **blocked**: the account has no credits
-> (`insufficient_quota`). No OpenAI call succeeded and the spend is $0.00. The held-out LLM evaluation and the
-> non-inferiority decision are still pending.
->
-> **Status (2026-11-20): LLM evaluation incomplete. All LLM results below are provisional.** Live LLM calls were
-> stopped partway through the held-out run because the Azure OpenAI endpoint used turned out not to be suitable
-> for this project. The cached responses (`results/llm_cache.jsonl`, gitignored) came from that **provisional
-> endpoint**. They must be **re-run before any use**. Live calls are now disabled by default
-> (`SURVEYLAB_LLM_ENABLED` unset). The deterministic parts are complete and independent of any LLM: Gate 0, the
-> survey estimator, the catalog, the guard, the template path and the harness.
+**Headline results.**
+
+- **Gate 0 passed.** Deterministic, hand-specified code reproduces 100% of CDC's 7,897 overall and 157,897
+  break-out cells within 0.1 pp. It failed on the first, prespecified attempt.
+- **Primary non-inferiority test failed.** The prespecified router (template → gpt-4o → gpt-4.1) was **not shown
+  non-inferior** to the expert-specified pipeline: −4.8 pp, 95% CI [−9.2, −1.6], margin −7.5 pp.
+- **Secondary comparison passed.** gpt-4.1 alone met the margin: −2.4 pp [−6.0, +0.3].
 
 ## How it works
 
@@ -29,7 +24,8 @@ spec ─► guard (catalog allow-list; unknown keys, variables, years, geographi
 ```
 
 - **The LLM can only choose catalog values.** It picks an indicator id, a response category, a geography and at
-  most one subgroup, or it abstains with a reason code. It never writes code or numbers.
+  most one subgroup, or it abstains with a reason code. It never writes code or numbers. Every scored answer passed the grounding
+  check, including the 791 that involved an LLM call (`ungrounded_answers` = 0 in every summary).
 - **Each answer shows its trace.** The trace lists the variable, the numerator and denominator codes, the
   denominator rule, the subgroup filter, the weight and design variables, and the variance method.
 - **National questions** use CDC's convention: the US value is a median of jurisdiction estimates, not a pooled
@@ -39,18 +35,34 @@ spec ─► guard (catalog allow-list; unknown keys, variables, years, geographi
   - `catalog/indicators.json` is the hand-specified mapping of 55 CDC P&T questions to LLCP variables and codes,
     plus 5 break-out categories.
 
-## Prespecified protocol
+## Prespecified protocol and addenda
 
 `docs/protocol.md` and `protocol.json` were committed (`570cead`) **before** Gate 0 and before any LLM call.
-Later changes are dated addenda:
 
-- **A1:** the Gate 0 convention fixes;
-- **A2:** the dev-phase prompt and matcher changes, frozen at `cd68f2b`;
-- **A3:** the stop of live LLM calls.
+| Addendum | What it records |
+|---|---|
+| A1 | Gate 0 convention fixes |
+| A2 | Dev-phase prompt and matcher changes, frozen at `cd68f2b` |
+| A3 | Live calls stopped mid held-out run; Azure results marked provisional |
+| A4 | Provider switched to the OpenAI API with the same model snapshots, written before any OpenAI call |
+| A5 | First OpenAI attempt blocked by zero credits |
+
+The held-out and stress runs below ran once, at commit `c6e13c6` (`code_dirty: false`), on the OpenAI API:
+
+| Model | Snapshot |
+|---|---|
+| gpt-4o | `gpt-4o-2024-11-20` |
+| gpt-4.1 | `gpt-4.1-2025-04-14` |
+| gpt-4.1-mini (exploratory arm only) | `gpt-4.1-mini-2025-04-14` |
+
+Every logged call records the snapshot the API returned. Earlier provisional Azure results are superseded and
+kept only in `results/azure_provisional/`.
 
 ## Results
 
-### Gate 0: deterministic code vs CDC published values (complete)
+All tables are generated into `results/tables.md` by `scripts/make_tables.py`.
+
+### Gate 0: deterministic code vs CDC published values
 
 Tolerance is |Δ| ≤ 0.1 pp on the point estimate and on both CI limits. Numbers come from
 `results/gate0_summary.json` and `results/gate0_v1_prespecified/gate0_summary.json`.
@@ -66,84 +78,136 @@ Tolerance is |Δ| ≤ 0.1 pp on the point estimate and on both CI limits. Number
 - **What run 1 exposed.** Run 1 surfaced four CDC conventions (`docs/gate0-investigation.md`):
   1. race comes from `_RACEPRV`, not `_RACE`;
   2. CIs are truncated to [0, 100];
-  3. records missing the break-out variable are **dropped before** domain estimation, SAS-style, which changes
-     the per-stratum PSU counts and hence the variance;
+  3. records missing the break-out variable are **dropped before** domain estimation, which changes the
+     per-stratum PSU counts and hence the variance;
   4. the medians include suppressed jurisdictions.
 - **Still unexplained (not tuned away).** Two NHPI median cells, and 135 of about 215k suppression decisions at
   the RSE ≈ 0.3 boundary.
 
-### Held-out test split (166 items: 119 answerable, 47 should-abstain)
+### Held-out test split: 166 items (119 answerable, 47 should-abstain), run once
 
-The primary prespecified comparison has **not been run**. ROUTER, GPT41 and ROUTER_T41 on the full test split
-were not completed before live calls were stopped. The rows below are what exists. Numbers come from
-`results/azure_provisional/test_partial_summary.json`.
+Numbers come from `results/test_summary.json` and `results/test_exploratory_summary.json`.
 
-| Policy | Status | Outcome correct [95% CI] | Numeric agreement (answerable) | Abstain precision / recall | Cost total (per q) | Latency p50 / p95 |
-|---|---|---|---|---|---|---|
-| EXPERT (gold spec → executor) | final | 100.0% [97.7, 100] | 100.0% | 1.00 / 1.00 | $0 | 0.06 / 0.12 s |
-| TEMPLATE (no LLM) | final | 62.0% [54.5, 69.1] | 49.6% (answers 62 items; 59 of those correct) | 0.42 / 0.94 | $0 | <0.01 s |
-| GPT4O | **provisional endpoint** | 97.0% [93.1, 98.7] | 96.6% | 0.92 / 0.98 | $0.84 ($0.0050) | 1.69 / 2.71 s |
-| GPT41 (first 60 test items only, all answerable) | **provisional endpoint, partial** | 100% (60/60) | 100% | n/a | $0.16 ($0.0026) | 1.29 / 10.75 s (rate-limited) |
-| ROUTER, ROUTER_T41, GPT41 (full), GPT52 | **not run** | n/a | n/a | n/a | n/a | n/a |
+| Policy | Outcome correct [95% CI] | Numeric agreement (answerable) | Abstain P / R | Cost total (per q) | Latency p50 / p95 | LLM calls | Cached / prompt tokens |
+|---|---|---|---|---|---|---|---|
+| EXPERT (gold spec → executor) | 100.0% [97.7, 100] | 100.0% | 1.00 / 1.00 | $0 | 0.06 / 0.12 s | 0 | n/a |
+| TEMPLATE (no LLM) | 62.0% [54.5, 69.1] | 49.6% | 0.42 / 0.94 | $0 | <0.01 s | 0 | n/a |
+| GPT4O | 95.8% [91.6, 97.9] | 95.0% | 0.88 / 0.98 | $0.895 ($0.0054) | 0.94 / 1.19 s | 166 | 459,264 / 520,134 |
+| GPT41 | **97.6% [94.0, 99.1]** | 98.3% | 0.96 / 0.96 | $0.515 ($0.0031) | 0.85 / 1.10 s | 166 | 438,656 / 520,134 |
+| **ROUTER** (primary; template → 4o → 4.1) | 95.2% [90.8, 97.5] | 95.8% | 0.90 / 0.94 | $0.563 ($0.0034) | 0.85 / 1.10 s | 104 | 285,568 / 325,921 |
+| ROUTER_T41 (exploratory, A2; template → 4.1) | 97.0% [93.1, 98.7] | 99.2% | 0.98 / 0.91 | $0.325 ($0.0020) | 0.79 / 1.06 s | 104 | 273,792 / 325,921 |
+| ROUTER_MINI (**post-hoc exploratory**, A4; template → 4.1-mini → 4.1) | 94.0% [89.3, 96.7] | 97.5% | 0.95 / 0.85 | **$0.077 ($0.00046)** | 1.01 / 1.75 s | 108 | 300,288 / 338,454 |
 
-- **Non-inferiority (primary: ROUTER vs EXPERT, margin −7.5 pp): not decided.** The ROUTER held-out run does
-  not exist.
-- **Descriptive only, not prespecified.** GPT4O − EXPERT = −3.0 pp, Newcombe 95% CI [−6.9, −0.2].
-- **Prompt caching was measured, not assumed.** On the GPT4O test run, the API reported 506,880 of 520,134
-  prompt tokens as cached.
-- **Cost premise of ROUTER.** On dev, gpt-4.1 cost less per call than gpt-4o: its list price is lower and its
-  cached-input discount is larger (25% vs 50% of the input price). So ROUTER's "cheaper model first" premise
-  does not hold at these prices.
+- **TEMPLATE alone** answers 62 items, 59 correctly, and defers the rest. In TEMPLATE-only mode a deferral
+  counts as an abstention, which is why its abstention precision is low.
+- **ROUTER never escalated to gpt-4.1.** gpt-4o never reported `confidence: "low"` and never failed the guard.
+  ROUTER_MINI escalated 4 of 104 items.
+- **Prompt caching was measured from the API usage fields, not assumed.** 84–89% of prompt tokens on the held-out
+  split and 83–94% on the stress set were reported as cached.
+- **Latency** is per-call API latency logged at call time, plus local execution. Router arms reuse the logged
+  latency of identical cached calls.
 
-### Dev split (54 items, prompt iteration, provisional endpoint)
+#### Prespecified non-inferiority decision (protocol §8; `results/noninferiority.json`)
 
-| Policy | prompt v1 | v2 | v3 (frozen) |
+| Comparison (paired, Newcombe method 10) | Difference vs EXPERT | 95% CI | Margin −7.5 pp |
 |---|---|---|---|
-| gpt-4o | 92.6% | 88.9% | 98.1% |
-| gpt-4.1 | 79.6%* | 100% | 100% |
-| ROUTER | 96.3% | 94.4% | 100% |
-| TEMPLATE | 64.8% | 64.8% | 64.8% |
+| **ROUTER vs EXPERT (primary)** | **−4.8 pp** | **[−9.2, −1.6]** | **not shown non-inferior** |
+| GPT41 vs EXPERT (prespecified secondary) | −2.4 pp | [−6.0, +0.3] | non-inferior |
+| GPT4O vs EXPERT (exploratory) | −4.2 pp | [−8.5, −1.1] | not shown |
+| ROUTER_T41 vs EXPERT (exploratory) | −3.0 pp | [−6.9, −0.2] | meets margin (exploratory, not a decision) |
+| ROUTER_MINI vs EXPERT (post-hoc exploratory) | −6.0 pp | [−10.7, −2.5] | not shown |
 
-\*The v1 gpt-4.1 figure is depressed by HTTP 429 errors that v1 scored as abstentions. This was fixed in A2.
+- **The decision.** The prespecified primary result is a **fail**. The router made 8 errors, and EXPERT was
+  correct on every one of them.
+- **Post-hoc sensitivity, not part of the decision.** Item q101 ("flu vaccination among women 65+") was relabeled
+  as answerable, because 65+ is the flu-shot indicator's own universe and so only one subgroup is involved. With
+  that relabel:
+  - ROUTER moves to −4.2 pp [−8.5, −1.1], still not shown non-inferior;
+  - GPT41 moves to −1.8 pp [−5.2, +0.8].
 
-### Stress set (39 items, written after the first held-out results; deterministic policies only)
+### Stress set: 39 items written after the first held-out results, reported separately
 
-TEMPLATE scored 53.8%. It answered 4 of 16 should-abstain items and got 3 answered items wrong. EXPERT scored
-100%. LLM policies were not run on the stress set. Numbers come from `results/stress_nollm_summary.json`.
+Numbers come from `results/stress_summary.json` and `results/stress_exploratory_summary.json`.
+
+| Policy | Outcome correct [95% CI] | Abstain P / R | Cost |
+|---|---|---|---|
+| EXPERT | 100% [91.0, 100] | 1.00 / 1.00 | $0 |
+| TEMPLATE | 53.8% [38.6, 68.4] | 0.52 / 0.75 | $0 |
+| GPT4O | 89.7% [76.4, 95.9] | 0.83 / 0.94 | $0.202 |
+| GPT41 | 92.3% [79.7, 97.3] | 0.93 / 0.88 | $0.117 |
+| ROUTER | 71.8% [56.2, 83.5] | 0.79 / 0.69 | $0.119 |
+| ROUTER_T41 | 74.4% [58.9, 85.4] | 0.91 / 0.63 | $0.066 |
+| ROUTER_MINI (post-hoc) | 76.9% | 1.00 / 0.63 | $0.020 |
+
+On adversarial wording, the template front end is the weakest link. When it is confidently wrong, the router
+inherits the error.
+
+### What the results say
+
+1. **The deterministic analysis is the strong part.** It reproduces CDC exactly, and every LLM answer is
+   grounded in it.
+2. **The best policy is the simplest LLM policy.** gpt-4.1 alone was the most accurate, and it met the
+   non-inferiority margin as the prespecified secondary.
+3. **The prespecified router lost on both accuracy and cost.**
+   - **Accuracy.** Its template tier silently misread questions it was confident about: "among veterans" became
+     the veteran indicator, and "caregivers" was ignored. Its gpt-4o tier over-abstained.
+   - **Cost.** gpt-4.1 is cheaper per call than gpt-4o at list price with caching. So routing through gpt-4o cost
+     more ($0.563) than always using gpt-4.1 ($0.515).
+4. **Cheap tiers trade accuracy for cost.**
+   - ROUTER_T41: template → gpt-4.1 cost 37% less than GPT41 and lost 0.6 pp.
+   - ROUTER_MINI (post-hoc): cost 85% less than GPT41 and lost 3.6 pp, mostly from missed abstentions.
 
 ## Failure modes observed
 
-- **Template: an unknown restriction word is silently dropped and the wrong population is answered.**
-  - "ladies" and "Latino" were not recognized, so the matcher answered for all adults.
-  - "among veterans" was read as the VETERAN3 indicator.
-  - "caregivers" was not recognized.
-  - The matcher can only defer on restriction words it knows, which is an open-world problem.
-- **Template: denominator and compound traps.**
-  - "of adults who drink alcohol, what share binge drink" answered with the all-adult binge-drinking rate.
-  - "flu shot among ALL adults" answered with the 65+ indicator.
-  - "obese or overweight" answered only obese.
-  - "Virginia (not West Virginia)" answered West Virginia.
-- **gpt-4o (provisional): mostly over-abstention.**
-  - It said `topic_not_in_catalog` for prediabetes, for share aged 65+, and for pregnancy-only diabetes.
-  - It said `multiple_subgroups` for a single education subgroup.
-- **A debatable gold label.** In q101, "flu vaccination among women 65+", 65+ is the flu-shot indicator's own
-  universe, so this is arguably a single subgroup. The gold label says abstain. gpt-4o and TEMPLATE answered it.
-  The gold label was not edited.
+- **Template: unknown restriction words are dropped silently.**
+  - "Among veterans in Virginia, what percent smoke?" answered VETERAN3 = Yes.
+  - "Among caregivers in Iowa…" answered for all adults.
+  - In the stress set, "ladies" and "Latino" were not recognized.
+  - Denominator shifts ("of adults who drink alcohol…"), compounds ("obese or overweight") and negation
+    ("Virginia (not West Virginia)") were all answered wrongly.
+  - A regex matcher can only defer on words it knows.
+- **gpt-4o: over-abstention.** It answered `topic_not_in_catalog` for prediabetes, share aged 65+, pregnancy-only
+  diabetes and self-employed. It answered `multiple_subgroups` for single income and education subgroups.
+- **gpt-4.1: a few distinct failure types.**
+  - It abstained `geography_unavailable` on "18–24 year olds in New York".
+  - It treated "75+ flu shot" as two subgroups.
+  - It answered "HIV prevalence in DC" with *HIV testing*, a semantic substitution that the guard cannot catch.
+  - In the stress set it answered an explicit "pooled national, not median" request with the state median. The
+    answer text does label it a median.
+- **gpt-4.1-mini (post-hoc arm): misses multi-subgroup traps.** It answered "college-educated women", "Black
+  men" and "women aged 18–24" with one subgroup dropped.
+- **A debatable gold label.** q101 is discussed above. The gold label was not edited.
+
+## Spend
+
+Total spend on the OpenAI key was **$1.80** at list price, over 538 unique API calls (`results/spend.json`):
+
+| Model | Calls | Spend |
+|---|---|---|
+| gpt-4o | 205 | $1.10 |
+| gpt-4.1 | 205 | $0.63 |
+| gpt-4.1-mini | 128 | $0.07 |
+
+- **Cap.** The USD 8 cap was enforced in the client.
+- **Prices.** OpenAI Standard-tier list prices, retrieved 2026-11-20, are in `docs/pricing.json`.
+- **Not counted.** The superseded provisional Azure calls (637 calls, about $2.54 at Azure list price) were a
+  separate, superseded run and are not part of this total.
 
 ## Limitations and what was NOT done
 
-- **The LLM evaluation is incomplete and provisional.** The primary non-inferiority test, ROUTER/GPT41 on the
-  full held-out split, the stress set for LLM policies, and gpt-5.2 (only 13 calls) were not done.
-- **The same author wrote everything that is scored.** The questions, the gold specs, the template matcher and
-  the prompts were all written by the same AI agent. Prompts and matcher were tuned on dev only, but the author
-  had seen the test wording. The sample is small: 166 held-out items.
+- **The same author wrote everything that is scored.** The questions, the gold specs, the template matcher and the
+  prompts were all written by the same AI agent. Prompts and matcher were tuned on dev only, but the author had
+  seen the test wording. The sample is small: 166 held-out items and 39 stress items.
+- **EXPERT is near-perfect by construction.** It executes the gold spec. The comparison tests NL interpretation
+  and abstention, not arithmetic; Gate 0 tests the arithmetic.
+- **Dev was not re-run on the OpenAI provider.** The prompt was tuned on the superseded Azure deployments of the
+  same model versions.
 - **Crude prevalence only.** No age adjustment, means, counts, trends, multi-subgroup or sub-state estimates.
-  Those requests abstain by design.
-- **One survey year (2025).** California, Mississippi and Nevada contributed no 2025 data.
-- **National values follow CDC's state-median convention.** No pooled national estimate is validated.
-- **Cost is computed at list prices** (Azure Retail Prices API, retrieved 2026-11-20; `docs/pricing.json`).
-  It is not taken from an invoice.
-- **This is not a deployed or user-tested system.** There is no UI and no human-reviewer study.
+- **One survey year (2025).** California, Mississippi and Nevada contributed no 2025 data. National values follow
+  CDC's state-median convention, and no pooled national estimate is validated.
+- **Costs are list-price estimates** from logged tokens, not invoice amounts.
+- **gpt-5.2 was dropped** (A4). This is not a deployed or user-tested system: there is no UI and no
+  human-reviewer study.
 
 ## Running it
 
@@ -154,16 +218,15 @@ make data gate0 questions test
 make eval-offline        # replays cached LLM responses; fails on a cache miss, never calls an API
 ```
 
-- **Live LLM calls (default provider `openai`)** need `OPENAI_API_KEY` and `SURVEYLAB_LLM_ENABLED=1`.
-  `SURVEYLAB_SPEND_CAP_USD` (default 8) stops live calls at the cap. `SURVEYLAB_LLM_PROVIDER=azure` exists only
-  to replay the superseded provisional cache.
-- **No API keys** are used, and nothing is hard-coded. Deployment names are assumed to equal the model names.
-- **Tests:** `uv run pytest` runs 48 tests, covering:
+- **Live calls** need `OPENAI_API_KEY` and `SURVEYLAB_LLM_ENABLED=1`.
+- **Spend cap.** `SURVEYLAB_SPEND_CAP_USD` (default 8) stops live calls at the cap.
+- **Azure.** `SURVEYLAB_LLM_PROVIDER=azure` exists only to replay the superseded Azure cache.
+- **Tests:** `uv run pytest` runs 50 tests, covering:
   - variance vs a hand-computed example and `samplics`;
   - denominator and missing-code rules;
   - guard rejections;
   - grounding;
-  - cost accounting;
+  - cost, snapshot pinning and the spend cap;
   - the Newcombe CI against the published example;
   - CDC regression cells.
 
@@ -171,5 +234,5 @@ make eval-offline        # replays cached LLM responses; fails on a cache miss, 
 
 - `data/manifest.json` lists source URLs and SHA-256 hashes for the raw data.
 - The CDC reference snapshot is `gold/cdc_reference_2025.csv.gz`.
-- `docs/ai-assisted-engineering.md` describes how the code was produced: it was implemented by an AI coding
-  agent directed by Lu Zhang. That file also lists the defects caught by verification.
+- `docs/ai-assisted-engineering.md` describes how the code was produced: it was implemented by an AI coding agent
+  directed by Lu Zhang. That file also lists the defects caught by verification.

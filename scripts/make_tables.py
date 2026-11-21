@@ -21,12 +21,12 @@ for k in ("G0_primary", "G0_breakout", "G0_median"):
     out.append(f"| {k} | {pct(a['rate'])} ({a['reproduced']:,}/{a['cells_compared']:,}) | {pct(b['rate'])} "
                f"({b['reproduced']:,}/{b['cells_compared']:,}) | {b['cells_compared']:,} | {b['max_abs_point_diff_pp']} pp | "
                f"{pct(b.get('sample_size_exact_rate'))} |")
-for split in ("dev_v1", "dev_v2", "dev_v3", "test", "stress"):
+for split in ("test", "test_exploratory", "stress", "stress_exploratory"):
     f = R / f"{split}_summary.json"
     if not f.exists():
         continue
     s = json.loads(f.read_text())
-    out.append(f"\n## {split} (n = {s['n_items']}, commit {s['commit']}, prompt {s['prompt_version']})\n")
+    out.append(f"\n## {split} (n = {s['n_items']}, provider {s.get('provider')}, commit {s['commit']}, code_dirty {s['code_dirty']}, prompt {s['prompt_version']})\n")
     out.append("| Policy | Outcome correct [95% CI] | Spec exact | Numeric agreement (answerable) | Abstain precision | Abstain recall | Cost total | Cost / q | Latency p50 / p95 | LLM calls | Cached / prompt tokens | Paths |")
     out.append("|---|---|---|---|---|---|---|---|---|---|---|---|")
     for p, m in s["policies"].items():

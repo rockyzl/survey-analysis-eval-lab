@@ -257,3 +257,17 @@ nothing was cached, and the logged spend is $0.00.**
 - **Retry behaviour.** Quota errors now fail immediately (`QuotaExhausted`) instead of being retried as rate
   limits.
 - **When credits are added.** Run A4 exactly as written. Nothing else changes.
+
+### A6 (2026-11-20): A4 executed once credits were added (record of what was run; no design change)
+
+- **What was run.** A4 was run exactly as written, at commit `c6e13c6` (`code_dirty: false`), with
+  provider `openai`. One unscored 1-call connectivity check was made first (gpt-4.1-mini). The runs were:
+  - held-out: EXPERT, TEMPLATE, GPT4O, GPT41, ROUTER and ROUTER_T41, once each, all 166 items;
+  - stress set: the same six policies, all 39 items;
+  - the post-hoc exploratory ROUTER_MINI on held-out and stress.
+- **Primary decision.** ROUTER vs EXPERT = −4.8 pp, 95% CI [−9.2, −1.6]. The lower limit is below −7.5 pp, so
+  **non-inferiority is not shown.**
+- **Prespecified secondary.** GPT41 vs EXPERT = −2.4 pp [−6.0, +0.3]. This is within the margin.
+- **Post-hoc analysis, labeled as such in `results/noninferiority.json`.** A sensitivity analysis relabels q101
+  as answerable. It does not change the primary decision.
+- **Spend.** $1.80 at list price, under the USD 8 cap.

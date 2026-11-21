@@ -1,0 +1,92 @@
+{
+ "split": "stress",
+ "provider": "openai",
+ "snapshots": {
+  "gpt-4o": "gpt-4o-2024-11-20",
+  "gpt-4.1": "gpt-4.1-2025-04-14",
+  "gpt-4.1-mini": "gpt-4.1-mini-2025-04-14"
+ },
+ "n_items": 39,
+ "commit": "c6e13c6",
+ "code_dirty": false,
+ "prompt_version": "v3",
+ "run_at": "2026-11-20T19:12:47",
+ "policies": {
+  "EXPERT": {
+   "n": 39,
+   "n_answerable": 23,
+   "n_should_abstain": 16,
+   "outcome_correct": 1.0,
+   "outcome_correct_ci": [
+    0.9103331462924287,
+    1.0
+   ],
+   "spec_exact_match": 1.0,
+   "numeric_agreement_answerable": 1.0,
+   "abstention_precision": 1.0,
+   "abstention_recall": 1.0,
+   "false_abstentions": 0,
+   "missed_abstentions": 0,
+   "cost_total_usd": 0.0,
+   "cost_per_question_usd": 0.0,
+   "latency_median_s": 0.06,
+   "latency_p95_s": 0.10580000000000005,
+   "llm_calls": 0,
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "cached_tokens_reported": 0,
+   "calls_reporting_cached_field": 0,
+   "api_errors": 0,
+   "guard_rejections": 0,
+   "ungrounded_answers": 0,
+   "paths": {
+    "expert": 39
+   }
+  },
+  "ROUTER_MINI": {
+   "n": 39,
+   "n_answerable": 23,
+   "n_should_abstain": 16,
+   "outcome_correct": 0.7692307692307693,
+   "outcome_correct_ci": [
+    0.6166374277165825,
+    0.8735419587485715
+   ],
+   "spec_exact_match": 0.7692307692307693,
+   "numeric_agreement_answerable": 0.8695652173913043,
+   "abstention_precision": 1.0,
+   "abstention_recall": 0.625,
+   "false_abstentions": 0,
+   "missed_abstentions": 6,
+   "cost_total_usd": 0.019912000000000003,
+   "cost_per_question_usd": 0.0005105641025641026,
+   "latency_median_s": 1.025,
+   "latency_p95_s": 1.590100000000001,
+   "llm_calls": 25,
+   "prompt_tokens": 78364,
+   "completion_tokens": 2347,
+   "cached_tokens_reported": 64768,
+   "calls_reporting_cached_field": 25,
+   "api_errors": 0,
+   "guard_rejections": 1,
+   "ungrounded_answers": 0,
+   "paths": {
+    "template>gpt-4.1-mini": 21,
+    "template": 16,
+    "template>gpt-4.1-mini>gpt-4.1": 2
+   }
+  }
+ },
+ "paired_vs_expert": {
+  "ROUTER_MINI": {
+   "n": 39,
+   "p_a": 0.7692307692307693,
+   "p_b": 1.0,
+   "diff": -0.23076923076923073,
+   "ci_low": -0.3833625722834175,
+   "ci_high": -0.09321571786449295,
+   "discordant_a_only": 0,
+   "discordant_b_only": 9
+  }
+ }
+}
